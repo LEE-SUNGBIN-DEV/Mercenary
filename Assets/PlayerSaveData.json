@@ -1,0 +1,133 @@
+{
+  "playerClass": "Lancer",
+  "level": 15,
+  "currentExperience": 0.0,
+  "maxExperience": 150.0,
+  "statPoint": 70,
+  "strength": 10,
+  "vitality": 10,
+  "dexterity": 10,
+  "luck": 10,
+  "mainQuestProcedure": 0,
+  "money": 5000,
+  "inventoryItemNames": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "inventoryItemCounts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "quickSlotItemNames": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "quickSlotItemCounts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "equipmentSlotItemNames": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "equipmentSlotItemCounts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "questSaveList": [
+    {
+      "questState": 0,
+      "questID": 1000,
+      "taskIndex": 0,
+      "taskSuccessAmount": 0
+    },
+    {
+      "questState": 0,
+      "questID": 2000,
+      "taskIndex": 0,
+      "taskSuccessAmount": 0
+    },
+    {
+      "questState": 0,
+      "questID": 3000,
+      "taskIndex": 0,
+      "taskSuccessAmount": 0
+    },
+    {
+      "questState": 0,
+      "questID": 10,
+      "taskIndex": 0,
+      "taskSuccessAmount": 0
+    },
+    {
+      "questState": 0,
+      "questID": 20,
+      "taskIndex": 0,
+      "taskSuccessAmount": 0
+    }
+  ]
+}
