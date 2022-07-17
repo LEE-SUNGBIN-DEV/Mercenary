@@ -2,8 +2,6 @@
 
 (Unity) 3D Shoulder View Action RPG
 
-[Team 111살]
-
 게임 제목: Mercenary
 
 게임 장르: 3D Shoulder View Action RPG
