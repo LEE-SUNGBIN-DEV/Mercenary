@@ -59,7 +59,7 @@ public class Lancer : Player, IDefendable, ICompetable
 
     private IEnumerator CompeteTime()
     {
-        yield return new WaitForSeconds(Constant.competeTime);
+        yield return new WaitForSeconds(GameConstant.competeTime);
         shield.gameObject.SetActive(false);
         PlayerCamera.gameObject.SetActive(true);
         SubCamera.gameObject.SetActive(false);
@@ -84,10 +84,10 @@ public class Lancer : Player, IDefendable, ICompetable
         if (IsMove)
         {
             // Run
-            if (IsLeftShiftKeyDown && CurrentStamina >= Constant.runStamina)
+            if (IsLeftShiftKeyDown && CurrentStamina >= GameConstant.runStamina)
             {
                 IsRun = true;
-                CurrentStamina -= Constant.runStamina * Time.deltaTime;
+                CurrentStamina -= GameConstant.runStamina * Time.deltaTime;
                 PlayerCharacterController.Move(moveDirection * (MoveSpeed * 2) * Time.deltaTime);
                 moveBlendTreeFloat = Mathf.Lerp(moveBlendTreeFloat, 2, 10f * Time.deltaTime);
             }
@@ -152,7 +152,7 @@ public class Lancer : Player, IDefendable, ICompetable
                 shield.gameObject.SetActive(true);
             }
 
-            gameObject.tag = Constant.invincibilityTag;
+            gameObject.tag = GameConstant.invincibilityTag;
             IsDefend = true;
             Animator.SetBool("isDefense", true);
         }
@@ -176,9 +176,9 @@ public class Lancer : Player, IDefendable, ICompetable
         if (IsInteract || IsSkill || IsRoll || IsHit || IsHeavyHit || IsStun || IsCompete || IsDie)
             return;
 
-        if (IsSpaceKeyDown && CurrentStamina >= Constant.rollStamina)
+        if (IsSpaceKeyDown && CurrentStamina >= GameConstant.rollStamina)
         {
-            CurrentStamina -= Constant.rollStamina;
+            CurrentStamina -= GameConstant.rollStamina;
             // 키보드 입력 방향으로 회피
             Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
             Vector3 verticalDirection = new Vector3(PlayerCamera.transform.forward.x, 0, PlayerCamera.transform.forward.z);
@@ -188,7 +188,7 @@ public class Lancer : Player, IDefendable, ICompetable
             transform.forward = (moveDirection == Vector3.zero ? transform.forward : moveDirection);
 
             // Set Roll State
-            gameObject.tag = Constant.invincibilityTag;
+            gameObject.tag = GameConstant.invincibilityTag;
             IsRoll = true;
             Animator.SetTrigger("doRoll");
         }
@@ -220,9 +220,9 @@ public class Lancer : Player, IDefendable, ICompetable
         if (IsInteract || IsSkill || IsRoll || IsHit || IsHeavyHit || IsStun || IsCompete || IsDie)
             return;
 
-        if (IsRKeyDown && CurrentStamina >= Constant.counterSkillStamina)
+        if (IsRKeyDown && CurrentStamina >= GameConstant.counterSkillStamina)
         {
-            CurrentStamina -= Constant.counterSkillStamina;
+            CurrentStamina -= GameConstant.counterSkillStamina;
             // 키보드 입력 방향으로 공격
             Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
             Vector3 verticalDirection = new Vector3(PlayerCamera.transform.forward.x, 0, PlayerCamera.transform.forward.z);
@@ -387,7 +387,7 @@ public class Lancer : Player, IDefendable, ICompetable
         shield.CombatType = COMBAT_TYPE.DEFENCE;
 
         shield.gameObject.SetActive(false);
-        gameObject.tag = Constant.playerTag;
+        gameObject.tag = GameConstant.playerTag;
 
         IsDefend = false;
 
@@ -398,7 +398,7 @@ public class Lancer : Player, IDefendable, ICompetable
     private void OutCompete()
     {
         Animator.SetBool("isPerfectShield", false);
-        gameObject.tag = Constant.playerTag;
+        gameObject.tag = GameConstant.playerTag;
         IsCompete = false;
     }
 
@@ -414,7 +414,7 @@ public class Lancer : Player, IDefendable, ICompetable
     }
     private void OutRoll()
     {
-        gameObject.tag = Constant.playerTag;
+        gameObject.tag = GameConstant.playerTag;
         IsRoll = false;
     }
     private void InHit()

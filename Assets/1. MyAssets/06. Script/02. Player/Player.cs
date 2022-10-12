@@ -71,13 +71,13 @@ public abstract class Player : MonoBehaviour, IPlayer
         };
         PlayerData.onDexterityChanged += (PlayerData playerData) =>
         {
-            AttackSpeed = Constant.defaultAttackSpeed + playerData.Dexterity * 0.01f;
-            MoveSpeed = Constant.defaultMoveSpeed + playerData.Dexterity * 0.02f;
+            AttackSpeed = GameConstant.defaultAttackSpeed + playerData.Dexterity * 0.01f;
+            MoveSpeed = GameConstant.defaultMoveSpeed + playerData.Dexterity * 0.02f;
         };
         PlayerData.onLuckChanged += (PlayerData playerData) =>
         {
             CriticalChance = playerData.Luck;
-            CriticalDamage = Constant.defaultCriticalDamage + playerData.Luck;
+            CriticalDamage = GameConstant.defaultCriticalDamage + playerData.Luck;
         };
     }
 
@@ -109,7 +109,7 @@ public abstract class Player : MonoBehaviour, IPlayer
     }
     public void AutoRecoverStamina()
     {
-        CurrentStamina += (MaxStamina * Constant.recoverStaminaPercentage * 0.01f * Time.deltaTime);
+        CurrentStamina += (MaxStamina * GameConstant.recoverStaminaPercentage * 0.01f * Time.deltaTime);
     }
     public void SetInteract(bool isInteract)
     {
@@ -159,10 +159,6 @@ public abstract class Player : MonoBehaviour, IPlayer
         CriticalDamage = criticalDamage;
         AttackSpeed = attackSpeed;
         MoveSpeed = moveSpeed;
-    }
-    public void PlaySFX(string sourceName)
-    {
-        AudioManager.Instance.PlaySFX(sourceName);
     }
 
     #region Property
@@ -267,14 +263,14 @@ public abstract class Player : MonoBehaviour, IPlayer
         {
             attackSpeed = value;
 
-            if (attackSpeed < Constant.minAttackSpeed)
+            if (attackSpeed < GameConstant.minAttackSpeed)
             {
-                attackSpeed = Constant.minAttackSpeed;
+                attackSpeed = GameConstant.minAttackSpeed;
             }
 
-            if (attackSpeed > Constant.maxAttackSpeed)
+            if (attackSpeed > GameConstant.maxAttackSpeed)
             {
-                attackSpeed = Constant.maxAttackSpeed;
+                attackSpeed = GameConstant.maxAttackSpeed;
             }
 
             onAttackSpeedChanged(this);
@@ -292,14 +288,14 @@ public abstract class Player : MonoBehaviour, IPlayer
         {
             moveSpeed = value;
 
-            if (moveSpeed < Constant.minMoveSpeed)
+            if (moveSpeed < GameConstant.minMoveSpeed)
             {
-                moveSpeed = Constant.minMoveSpeed;
+                moveSpeed = GameConstant.minMoveSpeed;
             }
 
-            if (moveSpeed > Constant.maxMoveSpeed)
+            if (moveSpeed > GameConstant.maxMoveSpeed)
             {
-                moveSpeed = Constant.maxMoveSpeed;
+                moveSpeed = GameConstant.maxMoveSpeed;
             }
 
             onMoveSpeedChanged(this);
@@ -311,14 +307,14 @@ public abstract class Player : MonoBehaviour, IPlayer
         set
         {
             criticalChance = value;
-            if (criticalChance < Constant.minCriticalChance)
+            if (criticalChance < GameConstant.minCriticalChance)
             {
-                criticalChance = Constant.minCriticalChance;
+                criticalChance = GameConstant.minCriticalChance;
             }
 
-            if (criticalChance > Constant.maxCriticalChance)
+            if (criticalChance > GameConstant.maxCriticalChance)
             {
-                criticalChance = Constant.maxCriticalChance;
+                criticalChance = GameConstant.maxCriticalChance;
             }
 
             onCriticalChanceChanged(this);
@@ -330,9 +326,9 @@ public abstract class Player : MonoBehaviour, IPlayer
         set
         {
             criticalDamage = value;
-            if (criticalDamage < Constant.mincriticalDamage)
+            if (criticalDamage < GameConstant.mincriticalDamage)
             {
-                criticalDamage = Constant.mincriticalDamage;
+                criticalDamage = GameConstant.mincriticalDamage;
             }
             onCriticalDamageChanged(this);
         }

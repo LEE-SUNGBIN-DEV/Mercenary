@@ -77,30 +77,30 @@ public class PlayerData : MonoBehaviour
         Monster.onDie -= GetExperience;
         Monster.onDie += GetExperience;
 
-        InventoryItemNames = new string[Constant.inventorySlotCount];
-        InventoryItemCounts = new int[Constant.inventorySlotCount];
+        InventoryItemNames = new string[GameConstant.inventorySlotCount];
+        InventoryItemCounts = new int[GameConstant.inventorySlotCount];
 
-        QuickSlotItemNames = new string[Constant.quickSlotCount];
-        QuickSlotItemCounts = new int[Constant.quickSlotCount];
+        QuickSlotItemNames = new string[GameConstant.quickSlotCount];
+        QuickSlotItemCounts = new int[GameConstant.quickSlotCount];
 
-        EquipmentSlotItemNames = new string[Constant.equipmentSlotCount];
-        EquipmentSlotItemCounts = new int[Constant.equipmentSlotCount];
+        EquipmentSlotItemNames = new string[GameConstant.equipmentSlotCount];
+        EquipmentSlotItemCounts = new int[GameConstant.equipmentSlotCount];
 
         questSaveList = new List<QuestSaveData>();
 
-        for (int i = 0; i < Constant.inventorySlotCount; ++i)
+        for (int i = 0; i < GameConstant.inventorySlotCount; ++i)
         {
             InventoryItemNames[i] = null;
             InventoryItemCounts[i] = 0;
         }
 
-        for (int i = 0; i < Constant.quickSlotCount; ++i)
+        for (int i = 0; i < GameConstant.quickSlotCount; ++i)
         {
             QuickSlotItemNames[i] = null;
             QuickSlotItemCounts[i] = 0;
         }
 
-        for (int i = 0; i < Constant.equipmentSlotCount; ++i)
+        for (int i = 0; i < GameConstant.equipmentSlotCount; ++i)
         {
             EquipmentSlotItemNames[i] = null;
             EquipmentSlotItemCounts[i] = 0;
@@ -172,12 +172,12 @@ public class PlayerData : MonoBehaviour
         playerSaveData.luck = luck;
         playerSaveData.mainQuestProcedure = mainQuestProcedure;
         playerSaveData.money = money;
-        playerSaveData.inventoryItemNames = new string[Constant.inventorySlotCount];
-        playerSaveData.inventoryItemCounts = new int[Constant.inventorySlotCount];
-        playerSaveData.quickSlotItemNames = new string[Constant.quickSlotCount];
-        playerSaveData.quickSlotItemCounts = new int[Constant.quickSlotCount];
-        playerSaveData.equipmentSlotItemNames = new string[Constant.equipmentSlotCount];
-        playerSaveData.equipmentSlotItemCounts = new int[Constant.equipmentSlotCount];
+        playerSaveData.inventoryItemNames = new string[GameConstant.inventorySlotCount];
+        playerSaveData.inventoryItemCounts = new int[GameConstant.inventorySlotCount];
+        playerSaveData.quickSlotItemNames = new string[GameConstant.quickSlotCount];
+        playerSaveData.quickSlotItemCounts = new int[GameConstant.quickSlotCount];
+        playerSaveData.equipmentSlotItemNames = new string[GameConstant.equipmentSlotCount];
+        playerSaveData.equipmentSlotItemCounts = new int[GameConstant.equipmentSlotCount];
         playerSaveData.questSaveList = new List<QuestSaveData>();
 
         onSavePlayerData(playerSaveData);

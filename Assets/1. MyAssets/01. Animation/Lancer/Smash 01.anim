@@ -46239,7 +46239,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.6333333
     functionName: PlaySFX
-    data: Player Leg Attack
+    data: Lancer Leg Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

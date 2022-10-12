@@ -18,7 +18,6 @@ public static class ExtensionMethod
             return false;
         }
     }
-
     public static Transform GetRootTransform(this Transform currentTransform)
     {
         while (currentTransform.parent != null)
