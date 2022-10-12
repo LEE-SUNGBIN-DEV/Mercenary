@@ -59055,7 +59055,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.36666667
     functionName: PlaySFX
-    data: Player Smash Attack
+    data: Lancer Smash Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

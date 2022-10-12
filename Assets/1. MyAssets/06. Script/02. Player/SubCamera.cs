@@ -14,7 +14,7 @@ public class SubCamera : MonoBehaviour
     // Private Function
     private void Awake()
     {
-        shakeTime = Constant.competeTime;
+        shakeTime = GameConstant.competeTime;
     }
     private void OnEnable()
     {

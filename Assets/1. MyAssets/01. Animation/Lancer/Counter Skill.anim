@@ -76711,13 +76711,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
-    functionName: PlaySFX
-    data: Player Roll
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.26666668
     functionName: OnCounterableAttack
     data: 
@@ -76727,7 +76720,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5
     functionName: PlaySFX
-    data: Player Counter Skill
+    data: Lancer Counter Skill
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

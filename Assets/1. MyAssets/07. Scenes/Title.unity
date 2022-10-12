@@ -22653,28 +22653,6 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 90b1dd059f8775b458a2a9f07bb8dc7a, type: 3}
   - name: Lightning
     audioClip: {fileID: 8300000, guid: 327fe35519344d949a52bfc2ad0281e4, type: 3}
-  - name: Player Attack
-    audioClip: {fileID: 8300000, guid: 13affabff422d874a9c2fbd253c794d4, type: 3}
-  - name: Player Critical Attack
-    audioClip: {fileID: 8300000, guid: 5a16bb1c78c43f049948e370645db9c7, type: 3}
-  - name: Player Defence
-    audioClip: {fileID: 8300000, guid: c8796eb7c1a4a93459150c925ba37f02, type: 3}
-  - name: Player Perfect Defence
-    audioClip: {fileID: 8300000, guid: 63204070a0d0a6b4684e371db4120112, type: 3}
-  - name: Player Defence Start
-    audioClip: {fileID: 8300000, guid: 109ba2c32f080a44a820dc10878e658c, type: 3}
-  - name: Player Leg Attack
-    audioClip: {fileID: 8300000, guid: f55cb45eeb3471b4abcb7362c8ff1996, type: 3}
-  - name: Player Default Attack
-    audioClip: {fileID: 8300000, guid: ab63ad6221d513e4fb663c1165c56313, type: 3}
-  - name: Player Smash Attack
-    audioClip: {fileID: 8300000, guid: 8d51e8855dec4fe48b7b63a71d09e2b6, type: 3}
-  - name: Player Roll
-    audioClip: {fileID: 8300000, guid: 206785b8b093d944b8cfee4105855b42, type: 3}
-  - name: Player Counter Skill
-    audioClip: {fileID: 8300000, guid: 0b6ed73c5cb18d94192dff0107553833, type: 3}
-  - name: Player Compete Attack
-    audioClip: {fileID: 8300000, guid: 66b49f6441c241249a685f69d8098ed1, type: 3}
   - name: Black Dragon Die
     audioClip: {fileID: 8300000, guid: e34bb543c69c6c34c8a1ce3ddb9c926a, type: 3}
   - name: Black Dragon Fall
@@ -32419,8 +32397,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098641004797805178 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6717809016622571188, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-  m_PrefabInstance: {fileID: 4622291266476874958}
+  m_CorrespondingSourceObject: {fileID: 3419554844528814926, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+  m_PrefabInstance: {fileID: 3633118318280436020}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2244393675357883518
 PrefabInstance:
@@ -32901,155 +32879,87 @@ MonoBehaviour:
   slotImage: {fileID: 3238606859293886791}
   slotCountText: {fileID: 3238606859693294214}
   windowRectTransform: {fileID: 0}
---- !u!4 &3755829033677004043 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-  m_PrefabInstance: {fileID: 4622291266476874958}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3755829033677138223 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-  m_PrefabInstance: {fileID: 4622291266476874958}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4622291266476874959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4386e851f8e00dc418cfa41bd261e870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &4622291266476874958
+--- !u!1001 &3633118318280436020
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 206242366}
     m_Modifications:
-    - target: {fileID: 1435453939073217618, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: damageRatio
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390336553226537731, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: combatType
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932239839, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: m_Name
-      value: Lancer (Player)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932239839, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: subCamera
-      value: 
-      objectReference: {fileID: 8081736044170958032}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: playerData
-      value: 
-      objectReference: {fileID: 4622291266476874960}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1393361078}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: competeCamera
-      value: 
-      objectReference: {fileID: 2098641004466186412}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: playerData.money
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: playerData.playerClass
-      value: Lancer
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932239841, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-      propertyPath: playerData.maxExperience
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8375235094932357573, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+    - target: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    - target: {fileID: 465013462791962651, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+      propertyPath: subCamera
+      value: 
+      objectReference: {fileID: 8081736044170958032}
+    - target: {fileID: 465013462791962651, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1393361078}
+    - target: {fileID: 465013462791962661, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+      propertyPath: m_Name
+      value: Lancer (Player)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
---- !u!1 &4622291266476874959 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8375235094932239839, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
-  m_PrefabInstance: {fileID: 4622291266476874958}
+--- !u!4 &3755829033677004043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 465013462791844927, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+  m_PrefabInstance: {fileID: 3633118318280436020}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4622291266476874960
+--- !u!114 &3755829033677138223 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 465013462791962651, guid: 3b0ea716b33072041b771ea8564b273b, type: 3}
+  m_PrefabInstance: {fileID: 3633118318280436020}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4622291266476874959}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0a0321f9a3f98439fe144c53c48908, type: 3}
+  m_Script: {fileID: 11500000, guid: 4386e851f8e00dc418cfa41bd261e870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClass: Lancer
-  level: 1
-  currentExperience: 0
-  maxExperience: 10
-  statPoint: 0
-  strength: 10
-  vitality: 10
-  dexterity: 10
-  luck: 10
-  mainQuestProcedure: 0
-  money: 1000
-  inventoryItemNames: []
-  inventoryItemCounts: 
-  quickSlotItemNames: []
-  quickSlotItemCounts: 
-  equipmentSlotItemNames: []
-  equipmentSlotItemCounts: 
-  questSaveList: []
 --- !u!222 &5810587481084980960
 CanvasRenderer:
   m_ObjectHideFlags: 0

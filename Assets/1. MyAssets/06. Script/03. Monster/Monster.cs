@@ -48,7 +48,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         Player.onDie -= InitializeTarget;
         Player.onDie += InitializeTarget;
 
-        gameObject.tag = Constant.invincibilityTag;
+        gameObject.tag = GameConstant.invincibilityTag;
         gameObject.layer = 8;
 
         Rebirth();
@@ -126,7 +126,7 @@ public abstract class Monster : MonoBehaviour, IMonster
     public IEnumerator WaitForDisapear(float time)
     {
         onDie(this);
-        gameObject.tag = Constant.invincibilityTag;
+        gameObject.tag = GameConstant.invincibilityTag;
 
         float disapearTime = 0f;
         while(disapearTime <= time)
@@ -175,7 +175,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         IsStun = false;
         IsSpawn = false;
 
-        gameObject.tag = Constant.enemyTag;
+        gameObject.tag = GameConstant.enemyTag;
 
         MonsterNavMeshAgent.enabled = true;
         MonsterNavMeshAgent.speed = MoveSpeed;

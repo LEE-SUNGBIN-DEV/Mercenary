@@ -326,7 +326,7 @@ public class UIManager : Singleton<UIManager>
 
     private IEnumerator WaitForNotice()
     {
-        yield return new WaitForSeconds(Constant.noticeTime);
+        yield return new WaitForSeconds(GameConstant.noticeTime);
         isNotice = false;
         ClosePanel(PANEL_TYPE.SYSTEM_NOTICE);
     }

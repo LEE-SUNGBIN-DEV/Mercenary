@@ -8,12 +8,6 @@ using UnityEngine.UI;
 // 배경음, 효과음 리소스를 관리하고 출력 해주는 클래스
 // =====================================================================================
 
-[System.Serializable]
-public class AudioContainer
-{
-    public string name;
-    public AudioClip audioClip;
-}
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -60,7 +54,29 @@ public class AudioManager : Singleton<AudioManager>
                         return;
                     }
                 }
-                Debug.Log("Notice: All of SFX Player is Playing");
+                Debug.Log("알림: 모든 오디오 플레이어가 동작중입니다.");
+            }
+        }
+    }
+
+    public void PlaySFX(AudioComponent audioComponent, string sfxName)
+    {
+        foreach (AudioContainer audioContainer in audioComponent.SfxContainer)
+        {
+            if (audioContainer.name == sfxName)
+            {
+                for (int i = 0; i < audioComponent.SfxPlayers.Length; ++i)
+                {
+                    // 재생 중이지 않은 sfx 플레이어가 있다면
+                    if (!audioComponent.SfxPlayers[i].isPlaying)
+                    {
+                        audioComponent.SfxPlayers[i].volume = sfxSlider.value; // 볼륨 설정
+                        audioComponent.SfxPlayers[i].clip = audioContainer.audioClip;
+                        audioComponent.SfxPlayers[i].Play();
+                        return;
+                    }
+                }
+                Debug.Log("알림: 모든 오디오 플레이어가 동작중입니다.");
             }
         }
     }

@@ -71916,7 +71916,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.33333334
     functionName: PlaySFX
-    data: Player Smash Attack
+    data: Lancer Smash Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -71937,7 +71937,7 @@ AnimationClip:
     messageOptions: 0
   - time: 1
     functionName: PlaySFX
-    data: Player Smash Attack
+    data: Lancer Smash Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
