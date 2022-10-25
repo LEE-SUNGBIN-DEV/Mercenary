@@ -108244,8 +108244,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayerSFX
-    data: Black Dragon Fly
+    functionName: PlaySFX
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

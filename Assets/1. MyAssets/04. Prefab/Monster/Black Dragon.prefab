@@ -54605,6 +54605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5594978800009427448}
+  - component: {fileID: -5468166136023986553}
   - component: {fileID: 5111175732610425670}
   - component: {fileID: 5111175732610425675}
   - component: {fileID: 5111175732610425674}
@@ -54643,6 +54644,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &-5468166136023986553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111175732610425666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e574420bca63443ab7806a0a1eb011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAmount: 5
+  sfxPlayers: []
+  sfxContainer:
+  - name: Black Dragon Die
+    audioClip: {fileID: 8300000, guid: e34bb543c69c6c34c8a1ce3ddb9c926a, type: 3}
+  - name: Black Dragon Fall
+    audioClip: {fileID: 8300000, guid: 14a49dabf9ea30742a106d7e885c39f7, type: 3}
+  - name: Black Dragon Fire Ball
+    audioClip: {fileID: 8300000, guid: 6ece2c51bf24f2446b8adf050c8c4d56, type: 3}
+  - name: Black Dragon Fly Lightning
+    audioClip: {fileID: 8300000, guid: f01fe2a20036e1f4098c690f5871f0f2, type: 3}
+  - name: Black Dragon Fly
+    audioClip: {fileID: 8300000, guid: 91a0aef6946ffc444aea370ebe95fa15, type: 3}
+  - name: Black Dragon Left Attack
+    audioClip: {fileID: 8300000, guid: 43ad37c9d6193e04f825970c5585447e, type: 3}
+  - name: Black Dragon Right Attack
+    audioClip: {fileID: 8300000, guid: cba5035e2889eb6409455cd602263b13, type: 3}
+  - name: Black Dragon Spawn
+    audioClip: {fileID: 8300000, guid: f9dd4583b73b23f4e9912678be9b5dbe, type: 3}
 --- !u!114 &5111175732610425670
 MonoBehaviour:
   m_ObjectHideFlags: 0

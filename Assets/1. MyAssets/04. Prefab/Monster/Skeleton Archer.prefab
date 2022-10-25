@@ -1058,6 +1058,7 @@ GameObject:
   - component: {fileID: 2693128579931738810}
   - component: {fileID: 2693128579931738813}
   - component: {fileID: 2693128579931738812}
+  - component: {fileID: 3788800612358159876}
   - component: {fileID: 2693128579931738815}
   - component: {fileID: 2693128579931738814}
   - component: {fileID: 2693128579931738801}
@@ -1144,6 +1145,29 @@ MonoBehaviour:
   maxRange: 7
   muzzle: {fileID: 2693128580591146271}
   objectKey: 10000
+--- !u!114 &3788800612358159876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693128579931738800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e574420bca63443ab7806a0a1eb011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAmount: 4
+  sfxPlayers: []
+  sfxContainer:
+  - name: Skeleton Spawn
+    audioClip: {fileID: 8300000, guid: 9683bfb1ee441ca499718e535472b8a2, type: 3}
+  - name: Skeleton Hit
+    audioClip: {fileID: 8300000, guid: 329dd4507574ec347b2066ed96fd4bd4, type: 3}
+  - name: Skeleton Die
+    audioClip: {fileID: 8300000, guid: 41761292ff2d7d745b2e643528dba36f, type: 3}
+  - name: Skeleton Attack
+    audioClip: {fileID: 8300000, guid: 90b1dd059f8775b458a2a9f07bb8dc7a, type: 3}
 --- !u!195 &2693128579931738815
 NavMeshAgent:
   m_ObjectHideFlags: 0
