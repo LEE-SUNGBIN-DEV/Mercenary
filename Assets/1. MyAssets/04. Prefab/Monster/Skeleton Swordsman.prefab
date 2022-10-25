@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 801066336001411469}
   - component: {fileID: 801066336001411468}
   - component: {fileID: 801066336001411467}
+  - component: {fileID: -2905830733386948930}
   - component: {fileID: 801066336001411466}
   - component: {fileID: 801066336001411465}
   - component: {fileID: 801066336001411464}
@@ -387,7 +388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &801066336001411470
 Transform:
   m_ObjectHideFlags: 0
@@ -465,6 +466,29 @@ MonoBehaviour:
   cooldown: 4
   maxRange: 3
   attackCollider: {fileID: 801066336311885166}
+--- !u!114 &-2905830733386948930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801066336001411463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e574420bca63443ab7806a0a1eb011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAmount: 4
+  sfxPlayers: []
+  sfxContainer:
+  - name: Skeleton Spawn
+    audioClip: {fileID: 8300000, guid: 9683bfb1ee441ca499718e535472b8a2, type: 3}
+  - name: Skeleton Hit
+    audioClip: {fileID: 8300000, guid: 329dd4507574ec347b2066ed96fd4bd4, type: 3}
+  - name: Skeleton Die
+    audioClip: {fileID: 8300000, guid: 41761292ff2d7d745b2e643528dba36f, type: 3}
+  - name: Skeleton Attack
+    audioClip: {fileID: 8300000, guid: 90b1dd059f8775b458a2a9f07bb8dc7a, type: 3}
 --- !u!195 &801066336001411466
 NavMeshAgent:
   m_ObjectHideFlags: 0

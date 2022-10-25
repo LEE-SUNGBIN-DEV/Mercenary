@@ -46432,7 +46432,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayerSFX
+    functionName: PlaySFX
     data: Skeleton Hit
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

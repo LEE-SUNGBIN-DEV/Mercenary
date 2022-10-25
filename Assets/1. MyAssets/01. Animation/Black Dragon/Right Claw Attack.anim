@@ -131716,7 +131716,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayerSFX
+    functionName: PlaySFX
     data: Black Dragon Right Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
