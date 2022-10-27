@@ -36,10 +36,10 @@ public class QuestManager : Singleton<QuestManager>
         AddAllQuestToDictionary();
 
         #region Add Event
-        PlayerData.onLoadPlayerData -= LoadQuest;
-        PlayerData.onLoadPlayerData += LoadQuest;
-        PlayerData.onSavePlayerData -= SaveQuest;
-        PlayerData.onSavePlayerData += SaveQuest;
+        CharacterData.onLoadPlayerData -= LoadQuest;
+        CharacterData.onLoadPlayerData += LoadQuest;
+        CharacterData.onSavePlayerData -= SaveQuest;
+        CharacterData.onSavePlayerData += SaveQuest;
 
         GameManager.onCombatSceneLoaded -= RequestNPCQuestList;
         GameManager.onCombatSceneLoaded += RequestNPCQuestList;
@@ -62,8 +62,8 @@ public class QuestManager : Singleton<QuestManager>
         QuestPopUp.onClickCompleteButton -= RequestCompleteList;
         QuestPopUp.onClickCompleteButton += RequestCompleteList;
 
-        PlayerData.onMainQuestProcedureChanged -= RefreshInactiveQuest;
-        PlayerData.onMainQuestProcedureChanged += RefreshInactiveQuest;
+        CharacterData.onMainQuestProcedureChanged -= RefreshInactiveQuest;
+        CharacterData.onMainQuestProcedureChanged += RefreshInactiveQuest;
         #endregion
     }
 
@@ -180,7 +180,7 @@ public class QuestManager : Singleton<QuestManager>
     #endregion
 
     // 비활성화 목록을 검사하여 활성화 가능한 퀘스트가 있으면 활성화 리스트로 이동
-    public void RefreshInactiveQuest(PlayerData playerData)
+    public void RefreshInactiveQuest(CharacterData playerData)
     {
         for (int i = 0; i < InactiveQuestList.Count; ++i)
         {

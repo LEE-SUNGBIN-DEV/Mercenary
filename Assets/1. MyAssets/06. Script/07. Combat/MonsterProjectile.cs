@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterProjectile : CombatController
+public class MonsterProjectile : BaseCombatController
 {
     [SerializeField] private Monster owner;
     [SerializeField] private float speed;

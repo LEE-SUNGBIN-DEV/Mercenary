@@ -76,7 +76,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Smash 03
+  m_Name: Smash 3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -437,22 +437,22 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7820972962929933968}
-    m_Position: {x: 280, y: -20, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3054259970954217195}
-    m_Position: {x: 280, y: 240, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8231000372884374119}
-    m_Position: {x: 280, y: 30, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 875124792680624356}
     m_Position: {x: 280, y: 80, z: 0}
   - serializedVersion: 1
+    m_State: {fileID: 3054259970954217195}
+    m_Position: {x: 280, y: 280, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8231000372884374119}
+    m_Position: {x: 280, y: -70, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 875124792680624356}
+    m_Position: {x: 280, y: 30, z: 0}
+  - serializedVersion: 1
     m_State: {fileID: -1927320144784169193}
-    m_Position: {x: -210, y: 10, z: 0}
+    m_Position: {x: 10, y: -240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3298667402913925637}
-    m_Position: {x: 280, y: 130, z: 0}
+    m_Position: {x: 280, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5579877681719291155}
     m_Position: {x: 160, y: -120, z: 0}
@@ -461,14 +461,14 @@ AnimatorStateMachine:
     m_Position: {x: 410, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8619062221778815663}
-    m_Position: {x: 280, y: -70, z: 0}
+    m_Position: {x: 280, y: 130, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 2611581186026551855}
-    m_Position: {x: 610, y: 240, z: 0}
+    m_Position: {x: 170, y: 200, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -1322311964598895542}
-    m_Position: {x: 280, y: 340, z: 0}
+    m_Position: {x: 390, y: 200, z: 0}
   m_AnyStateTransitions:
   - {fileID: -891683801891465785}
   - {fileID: -2402413338211998366}
@@ -481,7 +481,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 30, y: 10, z: 0}
-  m_EntryPosition: {x: 30, y: 250, z: 0}
+  m_EntryPosition: {x: 300, y: 360, z: 0}
   m_ExitPosition: {x: 590, y: 10, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 3054259970954217195}
@@ -517,7 +517,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Smash 01
+  m_Name: Smash 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -643,7 +643,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Smash 02
+  m_Name: Smash 2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -811,7 +811,7 @@ AnimatorStateMachine:
     m_Position: {x: 640, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3843544934279871554}
-    m_Position: {x: 410, y: 220, z: 0}
+    m_Position: {x: 410, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3772796798188395992}
     m_Position: {x: 180, y: 260, z: 0}
@@ -1773,7 +1773,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Smash 04
+  m_Name: Smash 4
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

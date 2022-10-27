@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackController : CombatController
+public class PlayerAttackController : BaseCombatController
 {
     // Private Function
-    [SerializeField] private Player owner;
+    [SerializeField] private Character owner;
     private Collider attachedCollider;
 
     private void Awake()
@@ -81,7 +81,7 @@ public class PlayerAttackController : CombatController
     }
 
     #region Property
-    public Player Owner
+    public Character Owner
     {
         get { return owner; }
         private set { owner = value; }

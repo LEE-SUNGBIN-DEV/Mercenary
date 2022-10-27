@@ -65,7 +65,7 @@ public abstract class FunctionNPC : NPC, ITalkable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>() != null)
+        if (other.GetComponent<Character>() != null)
         {
             CanTalk = true;
         }
@@ -73,7 +73,7 @@ public abstract class FunctionNPC : NPC, ITalkable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Player>() != null)
+        if (other.GetComponent<Character>() != null)
         {
             OffTalk();
         }

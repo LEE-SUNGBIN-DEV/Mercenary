@@ -158,7 +158,7 @@ public class UIManager : Singleton<UIManager>
         #endregion
 
         #region PlayerData Event
-        PlayerData.OnPlayerDataChanged += (PlayerData playerData) =>
+        CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
         {
             StatusPopUp.ClassText.text = playerData.PlayerClass;
             StatusPopUp.LevelText.text = playerData.Level.ToString();
@@ -175,55 +175,55 @@ public class UIManager : Singleton<UIManager>
         #endregion
 
         #region Player Event
-        Player.onDie += (Player player) =>
+        Character.onDie += (Character player) =>
         {
             OpenPanel(PANEL_TYPE.RETURN);
         };
-        Player.onAttackPowerChanged += (Player player) =>
+        Character.onAttackPowerChanged += (Character player) =>
         {
             StatusPopUp.AttackPowerText.text = player.AttackPower.ToString();
         };
-        Player.onDefensivePowerChanged += (Player player) =>
+        Character.onDefensivePowerChanged += (Character player) =>
         {
             StatusPopUp.DefensivePowerText.text = player.DefensivePower.ToString();
         };
-        Player.onMaxHitPointChanged += (Player player) =>
+        Character.onMaxHitPointChanged += (Character player) =>
         {
             StatusPopUp.HitPointText.text = player.CurrentHitPoint.ToString("F1") + "/" + player.MaxHitPoint.ToString();
             float ratio = player.CurrentHitPoint / player.MaxHitPoint;
             UserPanel.SetUserHPBar(ratio);
         };
-        Player.onCurrentHitPointChanged += (Player player) =>
+        Character.onCurrentHitPointChanged += (Character player) =>
         {
             StatusPopUp.HitPointText.text = player.CurrentHitPoint.ToString("F1") + "/" + player.MaxHitPoint.ToString();
             float ratio = player.CurrentHitPoint / player.MaxHitPoint;
             UserPanel.SetUserHPBar(ratio);
         };
-        Player.onMaxStaminaChanged += (Player player) =>
+        Character.onMaxStaminaChanged += (Character player) =>
         {
             StatusPopUp.StaminaText.text = player.CurrentStamina.ToString("F1") + "/" + player.MaxStamina.ToString();
             float ratio = player.CurrentStamina / player.MaxStamina;
             UserPanel.SetUserStaminaBar(ratio);
         };
-        Player.onCurrentStaminaChanged += (Player player) =>
+        Character.onCurrentStaminaChanged += (Character player) =>
         {
             StatusPopUp.StaminaText.text = player.CurrentStamina.ToString("F1") + "/" + player.MaxStamina.ToString();
             float ratio = player.CurrentStamina / player.MaxStamina;
             UserPanel.SetUserStaminaBar(ratio);
         };
-        Player.onAttackSpeedChanged += (Player player) =>
+        Character.onAttackSpeedChanged += (Character player) =>
         {
             StatusPopUp.AttackSpeedText.text = player.AttackSpeed.ToString();
         };
-        Player.onMoveSpeedChanged += (Player player) =>
+        Character.onMoveSpeedChanged += (Character player) =>
         {
             StatusPopUp.MoveSpeedText.text = player.MoveSpeed.ToString();
         };
-        Player.onCriticalChanceChanged += (Player player) =>
+        Character.onCriticalChanceChanged += (Character player) =>
         {
             StatusPopUp.CriticalChanceText.text = player.CriticalChance.ToString();
         };
-        Player.onCriticalDamageChanged += (Player player) =>
+        Character.onCriticalDamageChanged += (Character player) =>
         {
             StatusPopUp.CriticalDamageText.text = player.CriticalDamage.ToString();
         };

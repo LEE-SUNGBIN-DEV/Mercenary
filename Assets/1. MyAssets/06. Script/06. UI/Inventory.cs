@@ -18,15 +18,15 @@ public class Inventory : MonoBehaviour
 
             slots = GetComponentsInChildren<Slot>();
 
-            PlayerData.OnPlayerDataChanged += (PlayerData playerData) =>
+            CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
             {
                 MoneyText.text = playerData.Money.ToString();
             };
 
-            PlayerData.onLoadPlayerData -= LoadPlayerInventory;
-            PlayerData.onLoadPlayerData += LoadPlayerInventory;
-            PlayerData.onSavePlayerData -= SavePlayerInventory;
-            PlayerData.onSavePlayerData += SavePlayerInventory;
+            CharacterData.onLoadPlayerData -= LoadPlayerInventory;
+            CharacterData.onLoadPlayerData += LoadPlayerInventory;
+            CharacterData.onSavePlayerData -= SavePlayerInventory;
+            CharacterData.onSavePlayerData += SavePlayerInventory;
         }
 
         else
