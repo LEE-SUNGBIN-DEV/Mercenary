@@ -45,8 +45,8 @@ public abstract class Monster : MonoBehaviour, IMonster
     {
         GameManager.onLoadScene -= ReturnObject;
         GameManager.onLoadScene += ReturnObject;
-        Player.onDie -= InitializeTarget;
-        Player.onDie += InitializeTarget;
+        Character.onDie -= InitializeTarget;
+        Character.onDie += InitializeTarget;
 
         gameObject.tag = GameConstants.TAG_INVINCIBILITY;
         gameObject.layer = 8;
@@ -144,7 +144,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         CurrentHitPoint = MaxHitPoint;
         InitializeAllState();
     }
-    public void InitializeTarget(Player player)
+    public void InitializeTarget(Character player)
     {
         Target = null;
     }

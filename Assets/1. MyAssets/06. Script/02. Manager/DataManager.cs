@@ -39,11 +39,11 @@ public class DataManager : Singleton<DataManager>
         GameManager.onSaveGame -= SavePlayerData;
         GameManager.onSaveGame += SavePlayerData;
 
-        PlayerData.onLevelUp -= RefreshExperience;
-        PlayerData.onLevelUp += RefreshExperience;
+        CharacterData.onLevelUp -= RefreshExperience;
+        CharacterData.onLevelUp += RefreshExperience;
     }
 
-    public void RefreshExperience(PlayerData playerData)
+    public void RefreshExperience(CharacterData playerData)
     {
         playerData.MaxExperience = LevelDataDictionary[playerData.Level];
     }

@@ -29,7 +29,7 @@ public class BossRoomController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Player>() != null)
+        if(other.GetComponent<Character>() != null)
         {
             StartBattle();
             entranceEffect.gameObject.SetActive(false);

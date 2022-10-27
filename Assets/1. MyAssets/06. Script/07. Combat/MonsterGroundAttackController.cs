@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterGroundAttackController : CombatController
+public class MonsterGroundAttackController : BaseCombatController
 {
     [SerializeField] private Monster owner;
     [SerializeField] private float dotTime;
@@ -29,7 +29,7 @@ public class MonsterGroundAttackController : CombatController
     {
         if (other.CompareTag("Player") && isRange == true)
         {
-            Player player = other.GetComponent<Player>();
+            Character player = other.GetComponent<Character>();
             if (player != null)
             {
                 GameFunction.MonsterAttackProcess(Owner, player, DamageRatio);

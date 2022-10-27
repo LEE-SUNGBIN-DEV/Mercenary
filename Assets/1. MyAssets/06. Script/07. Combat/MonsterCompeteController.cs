@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MonsterCompeteController : CombatController
+public class MonsterCompeteController : BaseCombatController
 {
     #region Event
     public static event UnityAction<MonsterCompeteController> onCompete;
@@ -39,9 +39,9 @@ public class MonsterCompeteController : CombatController
 
         if (other.CompareTag("Player Defend"))
         {
-            PlayerDefendController defendObject = other.GetComponent<PlayerDefendController>();
+            LancerDefenseController defendObject = other.GetComponent<LancerDefenseController>();
 
-            if (isReady == true && defendObject.CombatType == COMBAT_TYPE.PERFECT_DEFENCE)
+            if (isReady == true && defendObject.CombatType == COMBAT_TYPE.PERFECT_DEFENSE)
             {
                 Vector3 triggerPoint = other.bounds.ClosestPoint(transform.position);
                 EffectPoolManager.Instance.RequestObject(EFFECT_POOL.COMBAT_COMPETE_START, triggerPoint);

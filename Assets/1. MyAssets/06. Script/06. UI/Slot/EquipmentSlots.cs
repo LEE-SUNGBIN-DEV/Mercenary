@@ -24,10 +24,10 @@ public class EquipmentSlots : MonoBehaviour
             Instance = this;
 
             slots = GetComponentsInChildren<Slot>();
-            PlayerData.onLoadPlayerData -= LoadPlayerEquipmentSlots;
-            PlayerData.onLoadPlayerData += LoadPlayerEquipmentSlots;
-            PlayerData.onSavePlayerData -= SavePlayerEquipmentSlots;
-            PlayerData.onSavePlayerData += SavePlayerEquipmentSlots;
+            CharacterData.onLoadPlayerData -= LoadPlayerEquipmentSlots;
+            CharacterData.onLoadPlayerData += LoadPlayerEquipmentSlots;
+            CharacterData.onSavePlayerData -= SavePlayerEquipmentSlots;
+            CharacterData.onSavePlayerData += SavePlayerEquipmentSlots;
 
             EquipmentSlotDictionary = new Dictionary<ITEM_TYPE, EQUIPMENT_SLOT_INDEX>()
             {

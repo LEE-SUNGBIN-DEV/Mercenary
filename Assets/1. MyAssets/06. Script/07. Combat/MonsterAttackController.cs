@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAttackController : CombatController
+public class MonsterAttackController : BaseCombatController
 {
     [SerializeField] private Monster owner;
 
@@ -10,7 +10,7 @@ public class MonsterAttackController : CombatController
     {
         if (other.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
+            Character player = other.GetComponent<Character>();
             if (player != null)
             {
                 GameFunction.MonsterAttackProcess(Owner, player, DamageRatio);

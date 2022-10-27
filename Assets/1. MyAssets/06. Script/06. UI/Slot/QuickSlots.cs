@@ -15,10 +15,10 @@ public class QuickSlots : MonoBehaviour
             Instance = this;
 
             slots = GetComponentsInChildren<Slot>();
-            PlayerData.onLoadPlayerData -= LoadPlayerQuickSlots;
-            PlayerData.onLoadPlayerData += LoadPlayerQuickSlots;
-            PlayerData.onSavePlayerData -= SavePlayerQuickSlots;
-            PlayerData.onSavePlayerData += SavePlayerQuickSlots;
+            CharacterData.onLoadPlayerData -= LoadPlayerQuickSlots;
+            CharacterData.onLoadPlayerData += LoadPlayerQuickSlots;
+            CharacterData.onSavePlayerData -= SavePlayerQuickSlots;
+            CharacterData.onSavePlayerData += SavePlayerQuickSlots;
         }
 
         else

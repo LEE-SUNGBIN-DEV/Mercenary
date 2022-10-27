@@ -30,8 +30,8 @@ public class GameManager : Singleton<GameManager>
     #endregion
     private CURSOR_MODE cursorMode;
     [SerializeField] private Texture2D cursorTexture;
-    [SerializeField] private Player player;
-    [SerializeField] private PlayerCamera playerCamera;
+    [SerializeField] private Character player;
+    [SerializeField] private CharacterCamera playerCamera;
     [SerializeField] private SubCamera subCamera;
     private Dictionary<SCENE_LIST, string> sceneDictionary;
     private string currentSceneName;
@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
         CampaignPopUp.onClickCampaignButton -= LoadScene;
         CampaignPopUp.onClickCampaignButton += LoadScene;
 
-        PlayerData.onLevelUp += (PlayerData playerData) =>
+        CharacterData.onLevelUp += (CharacterData playerData) =>
         {
             Player.LevelUpEffect.SetActive(true);
         };
@@ -270,12 +270,12 @@ public class GameManager : Singleton<GameManager>
     #endregion
 
     #region Property
-    public Player Player
+    public Character Player
     {
         get { return player; }
         private set { player = value; }
     }
-    public PlayerCamera PlayerCamera
+    public CharacterCamera PlayerCamera
     {
         get { return playerCamera; }
         set { playerCamera = value; }
