@@ -33,14 +33,6 @@ public abstract class RCharacter : MonoBehaviour
     {
         CharacterState.SwitchCharacterState(targetState);
     }
-    public void OnTargetCollider(Collider targetCollider)
-    {
-        targetCollider.enabled = true;
-    }
-    public void OffTargetCollider(Collider targetCollider)
-    {
-        targetCollider.enabled = false;
-    }
     #endregion
 
     #region Property

@@ -13,16 +13,22 @@ public class CharacterState
     {
         this.character = character;
         currentState = null;
-        
+
         stateDictionary = new Dictionary<CHARACTER_STATE, ICharacterState>
         {
             // Common
-            { CHARACTER_STATE.MOVE, new CharacterMove() },
-            { CHARACTER_STATE.ATTACK, new CharacterAttack() },
-            { CHARACTER_STATE.ROLL, new CharacterRoll() },
+            { CHARACTER_STATE.MOVE, new CharacterStateMove() },
+            { CHARACTER_STATE.ATTACK, new CharacterStateAttack() },
+            { CHARACTER_STATE.SKILL, new CharacterStateSkill() },
+            { CHARACTER_STATE.ROLL, new CharacterStateRoll() },
+            { CHARACTER_STATE.HIT, new CharacterStateHit() },
+            { CHARACTER_STATE.HEAVY_HIT, new CharacterStateHeavyHit() },
+            { CHARACTER_STATE.STUN, new CharacterStateStun() },
+            { CHARACTER_STATE.COMPETE, new CharacterStateCompete() },
+            { CHARACTER_STATE.DIE, new CharacterStateDie() },
 
             // Lancer
-            { CHARACTER_STATE.LANCER_DEFENSE, new LancerDefense() }
+            { CHARACTER_STATE.LANCER_DEFENSE, new LancerStateDefense() }
         };
 
         stateWeightDictionary = new Dictionary<CHARACTER_STATE, CHARACTER_STATE_WEIGHT>
@@ -30,7 +36,13 @@ public class CharacterState
             // Common
             { CHARACTER_STATE.MOVE, CHARACTER_STATE_WEIGHT.MOVE },
             { CHARACTER_STATE.ATTACK, CHARACTER_STATE_WEIGHT.ATTACK },
+            { CHARACTER_STATE.SKILL, CHARACTER_STATE_WEIGHT.SKILL },
             { CHARACTER_STATE.ROLL, CHARACTER_STATE_WEIGHT.ROLL },
+            { CHARACTER_STATE.HIT, CHARACTER_STATE_WEIGHT.HIT },
+            { CHARACTER_STATE.HEAVY_HIT, CHARACTER_STATE_WEIGHT.HEAVY_HIT },
+            { CHARACTER_STATE.STUN, CHARACTER_STATE_WEIGHT.STUN },
+            { CHARACTER_STATE.COMPETE, CHARACTER_STATE_WEIGHT.COMPETE },
+            { CHARACTER_STATE.DIE, CHARACTER_STATE_WEIGHT.DIE },
 
             // Lancer
             { CHARACTER_STATE.LANCER_DEFENSE, CHARACTER_STATE_WEIGHT.LANCER_DEFENSE }

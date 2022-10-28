@@ -4,5 +4,5 @@ public interface ICompetable
 {
     public bool IsCompete { get; set; }
 
-    public void Compete(MonsterCompeteController competeController);
+    public void Compete(EnemyCompeteAttack competeController);
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class GameFunction
 {
-    public static void PlayerAttackProcess(Character player, Monster monster, float ratio)
+    // 플레이어 대미지 프로세스
+    public static void PlayerAttackProcess(Character player, Enemy monster, float ratio)
     {
         // Damage Func
         float damage = (player.AttackPower - monster.DefensivePower * 0.5f) * 0.5f;
@@ -45,7 +46,9 @@ public static class GameFunction
         FloatingDamageText floatingDamageText = EffectPoolManager.Instance.RequestObject(EFFECT_POOL.COMBAT_DAMAGE_TEXT).GetComponent<FloatingDamageText>();
         floatingDamageText.SetDamageText(isCritical, damage, monster.transform.position);
     }
-    public static void MonsterAttackProcess(Monster monster, Character player, float ratio)
+
+    // 몬스터 대미지 프로세스
+    public static void MonsterAttackProcess(Enemy monster, Character player, float ratio)
     {
         // Damage Func
         float damage

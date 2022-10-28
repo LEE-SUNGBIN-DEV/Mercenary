@@ -20,11 +20,11 @@ public class BossRoomController : MonoBehaviour
     {
         entranceCollider = GetComponent<Collider>();
 
-        Monster.onCurrentHitPointChanged -= UpdateBossHPBar;
-        Monster.onCurrentHitPointChanged += UpdateBossHPBar;
+        Enemy.onCurrentHitPointChanged -= UpdateBossHPBar;
+        Enemy.onCurrentHitPointChanged += UpdateBossHPBar;
 
-        Monster.onDie -= CheckDungeonClear;
-        Monster.onDie += CheckDungeonClear;
+        Enemy.onDie -= CheckDungeonClear;
+        Enemy.onDie += CheckDungeonClear;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,11 +50,11 @@ public class BossRoomController : MonoBehaviour
 
         for (int i = 0; i < bossData.spawnAmount; ++i)
         {
-            Monster monster = MonsterPoolManager.Instance.RequestObject(bossData.monster).GetComponent<Monster>();
+            Enemy monster = MonsterPoolManager.Instance.RequestObject(bossData.monster).GetComponent<Enemy>();
             monster.MonsterNavMeshAgent.Warp(bossSpawnPoint.position);
             monster.Target = GameManager.Instance.Player.transform;
 
-            UIManager.Instance.EntrancePanel.EntranceText.text = monster.GetComponent<Monster>().MonsterName;
+            UIManager.Instance.EntrancePanel.EntranceText.text = monster.GetComponent<Enemy>().MonsterName;
             UIManager.Instance.OpenPanel(PANEL_TYPE.ENTRANCE);
         }
 
@@ -62,7 +62,7 @@ public class BossRoomController : MonoBehaviour
         UIManager.Instance.OpenPanel(PANEL_TYPE.BOSS);
     }
 
-    public void UpdateBossHPBar(Monster monster)
+    public void UpdateBossHPBar(Enemy monster)
     {
         if (monster.MonsterPoolKey == bossData.monster)
         {
@@ -74,7 +74,7 @@ public class BossRoomController : MonoBehaviour
         }
     }
 
-    public void CheckDungeonClear(Monster monster)
+    public void CheckDungeonClear(Enemy monster)
     {
         if(monster.MonsterPoolKey == bossData.monster)
         {
@@ -88,8 +88,8 @@ public class BossRoomController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Time.timeScale = 1f;
 
-        Monster.onCurrentHitPointChanged -= UpdateBossHPBar;
-        Monster.onDie -= CheckDungeonClear;
+        Enemy.onCurrentHitPointChanged -= UpdateBossHPBar;
+        Enemy.onDie -= CheckDungeonClear;
 
         UIManager.Instance.BossPanel.SetBossHPBar(1f);
         UIManager.Instance.ClosePanel(PANEL_TYPE.BOSS);

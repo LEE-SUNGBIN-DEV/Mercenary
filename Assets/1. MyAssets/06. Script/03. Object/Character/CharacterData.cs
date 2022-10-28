@@ -66,8 +66,8 @@ public class CharacterData : MonoBehaviour
         Quest.onReward -= GetQuestReward;
         Quest.onReward += GetQuestReward;
 
-        Monster.onDie -= GetExperience;
-        Monster.onDie += GetExperience;
+        Enemy.onDie -= GetExperience;
+        Enemy.onDie += GetExperience;
 
         InventoryItemNames = new string[GameConstants.CHARACTER_INVENTORY_SLOT_COUNT];
         InventoryItemCounts = new int[GameConstants.CHARACTER_INVENTORY_SLOT_COUNT];
@@ -129,10 +129,10 @@ public class CharacterData : MonoBehaviour
         DataManager.onSavePlayerData -= SavePlayerData;
         QuestManager.onCompleteQuest -= UpdateMainQuestProcedure;
         Quest.onReward -= GetQuestReward;
-        Monster.onDie -= GetExperience;
+        Enemy.onDie -= GetExperience;
     }
 
-    public void GetExperience(Monster monster)
+    public void GetExperience(Enemy monster)
     {
         CurrentExperience += monster.ExperienceAmount;
     }

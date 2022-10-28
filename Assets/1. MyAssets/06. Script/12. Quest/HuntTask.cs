@@ -10,18 +10,18 @@ public class HuntTask : QuestTask
     public override void StartTask()
     {
         onTaskStart(this);
-        Monster.onDie -= Action;
-        Monster.onDie += Action;
+        Enemy.onDie -= Action;
+        Enemy.onDie += Action;
     }
 
     public override void EndTask()
     {
-        Monster.onDie -= Action;
+        Enemy.onDie -= Action;
         ++OwnerQuest.TaskIndex;
         onTaskEnd(this);
     }
 
-    public void Action(Monster monster)
+    public void Action(Enemy monster)
     {
         if(monster.MonsterName == targetName)
         {

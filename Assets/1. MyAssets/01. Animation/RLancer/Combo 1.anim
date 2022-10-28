@@ -36608,14 +36608,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.26666668
-    functionName: OnTargetCollider
+    functionName: OnAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.36666667
-    functionName: OffWeaponCollider
+    functionName: OffAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

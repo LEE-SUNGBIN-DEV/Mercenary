@@ -67,3 +67,17 @@ public enum CHARACTER_STATE_WEIGHT
     LANCER_DEFENSE = 2
 }
 
+public enum ATTACK_TYPE
+{
+    COMBO1,
+    COMBO2,
+    COMBO3,
+    COMBO4,
+
+    SMASH1,
+    SMASH2,
+    SMASH3,
+    SMASH4,
+
+    SKILL
+}
