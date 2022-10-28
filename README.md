@@ -13,4 +13,4 @@
 Youtube: https://www.youtube.com/watch?v=-oXw_7Kr9hA
 
 
-2022 10 13: 코드 구조 수정 및 신규 기능 업데이트 예정
+2022 10 13 ~ Code Refactoring
