@@ -8,10 +8,10 @@ using UnityEngine.Events;
 // =============================================================================
 public class Lancer : Character, IDefendable, ICompetable
 {
-    [SerializeField] private PlayerAttackController spear;
-    [SerializeField] private LancerDefenseController shield;
-    [SerializeField] private PlayerAttackController leg;
-    [SerializeField] private PlayerAttackController counterSkill;
+    [SerializeField] private LancerSpear spear;
+    [SerializeField] private LancerShield shield;
+    [SerializeField] private LancerSpear leg;
+    [SerializeField] private LancerSpear counterSkill;
     [SerializeField] private GameObject competeAttackEffect;
 
     [SerializeField] private bool isRun;
@@ -35,13 +35,13 @@ public class Lancer : Character, IDefendable, ICompetable
     public override void OnEnable()
     {
         base.OnEnable();
-        MonsterCompeteController.onCompete -= Compete;
-        MonsterCompeteController.onCompete += Compete;
+        EnemyCompeteAttack.onCompete -= Compete;
+        EnemyCompeteAttack.onCompete += Compete;
     }
 
     private void OnDisable()
     {
-        MonsterCompeteController.onCompete -= Compete;
+        EnemyCompeteAttack.onCompete -= Compete;
     }
 
     private void Update()
@@ -193,7 +193,7 @@ public class Lancer : Character, IDefendable, ICompetable
             Animator.SetTrigger("doRoll");
         }
     }
-    public void Compete(MonsterCompeteController competeController)
+    public void Compete(EnemyCompeteAttack competeController)
     {
         if (IsDie)
             return;

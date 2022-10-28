@@ -22,7 +22,7 @@ public class MonsterSpawnController : MonoBehaviour
             for (int j = 0; j < spawnDatas[i].spawnAmount; ++j)
             {
                 GameObject poolObject = MonsterPoolManager.Instance.RequestObject(spawnDatas[i].monster);
-                Monster monster = poolObject.GetComponent<Monster>();
+                Enemy monster = poolObject.GetComponent<Enemy>();
                 Vector3 monsterPosition = transform.position + Random.insideUnitSphere * 5f;
                 monster.MonsterNavMeshAgent.Warp(monsterPosition);
                 monster.Target = GameManager.Instance.Player.transform;

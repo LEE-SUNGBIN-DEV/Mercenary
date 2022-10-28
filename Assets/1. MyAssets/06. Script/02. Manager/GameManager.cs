@@ -75,7 +75,7 @@ public class GameManager : Singleton<GameManager>
             LoadScene(SCENE_LIST.VILIAGE);
         };
 
-        MonsterCompeteController.onCompete += (MonsterCompeteController competeController) =>
+        EnemyCompeteAttack.onCompete += (EnemyCompeteAttack competeController) =>
         {
             SetCharacterTransform(competeController.PlayerCompetePoint);
             SetMainCameraTransform(competeController.PlayerCompetePoint);

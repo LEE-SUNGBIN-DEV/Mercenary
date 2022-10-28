@@ -38,8 +38,8 @@ public class CreateAtRayPoint : MonoBehaviour
         {
             if(isGeneratable)
             {
-                MonsterGroundAttackController effect = EffectPoolManager.Instance.RequestObject(EFFECT_POOL.BLACK_DRAGON_BREATH_AFTER).GetComponent<MonsterGroundAttackController>();
-                effect.Owner = GetComponent<MonsterAttackController>().Owner;
+                EnemyAreaAttack effect = EffectPoolManager.Instance.RequestObject(EFFECT_POOL.BLACK_DRAGON_BREATH_AFTER).GetComponent<EnemyAreaAttack>();
+                effect.Owner = GetComponent<EnemyAttack>().Owner;
                 effect.transform.position = hit.point;
                 effect.transform.rotation = Quaternion.Euler(rotationOffset);
                 isGeneratable = false;

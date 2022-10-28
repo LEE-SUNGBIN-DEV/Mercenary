@@ -49687,11 +49687,11 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.46666667
-    functionName: OnNormalAttack
+    functionName: OnAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 3
     messageOptions: 0
   - time: 0.46666667
     functionName: PlaySFX
@@ -49701,7 +49701,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.56666666
-    functionName: OffWeaponCollider
+    functionName: OffAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

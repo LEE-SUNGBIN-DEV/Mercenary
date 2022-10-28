@@ -77025,14 +77025,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: OffWeaponCollider
+    functionName: OffAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.0666667
-    functionName: OffShieldCollider
+    functionName: OffDefense
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
