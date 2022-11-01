@@ -1,0 +1,218 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class CharacterStats
+{
+    public static event UnityAction<CharacterStats> OnCharacterStatsChanged;
+    public static event UnityAction<CharacterStats> OnDie;
+
+    [SerializeField] private Character character;
+    [SerializeField] private float attackPower;
+    [SerializeField] private float defensivePower;
+
+    [SerializeField] private float maxHitPoint;
+    [SerializeField] private float currentHitPoint;
+    [SerializeField] private float maxStamina;
+    [SerializeField] private float currentStamina;
+
+    [SerializeField] private float criticalChance;
+    [SerializeField] private float criticalDamage;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float moveSpeed;
+
+    // »ý¼ºÀÚ
+    public CharacterStats(Character character)
+    {
+        this.character = character;
+
+        CharacterData.OnPlayerDataChanged -= UpdateStats;
+        CharacterData.OnPlayerDataChanged += UpdateStats;
+
+        UpdateStats(this.character.CharacterData);
+    }
+
+    public void UpdateStats(CharacterData characterData)
+    {
+        AttackPower = characterData.Strength * 2;
+        DefensivePower = characterData.Strength;
+
+        MaxHitPoint = characterData.Vitality * 10;
+        CurrentHitPoint = characterData.Vitality * 10;
+        MaxStamina = characterData.Vitality * 10;
+        CurrentStamina = characterData.Vitality * 10;
+
+        CriticalChance = characterData.Luck;
+        CriticalDamage = GameConstants.CHARACTER_STAT_CRITICAL_DAMAGE_DEFAULT + characterData.Luck;
+        AttackSpeed = GameConstants.CHARACTER_STAT_ATTACK_SPEED_DEFAULT + characterData.Dexterity * 0.01f;
+        MoveSpeed = GameConstants.CHARACTER_STAT_MOVE_SPEED_DEFAULT + characterData.Dexterity * 0.02f;
+    }
+
+    #region Property
+    public float AttackPower
+    {
+        get { return attackPower; }
+        set
+        {
+            attackPower = value;
+            if (attackPower < 0)
+            {
+                attackPower = 0;
+            }
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float DefensivePower
+    {
+        get { return defensivePower; }
+        set
+        {
+            defensivePower = value;
+            if (defensivePower < 0)
+            {
+                defensivePower = 0;
+            }
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float MaxHitPoint
+    {
+        get { return maxHitPoint; }
+        set
+        {
+            maxHitPoint = value;
+            if (maxHitPoint <= 0)
+            {
+                maxHitPoint = 1;
+            }
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float CurrentHitPoint
+    {
+        get { return currentHitPoint; }
+        set
+        {
+            currentHitPoint = value;
+            if (currentHitPoint > MaxHitPoint)
+            {
+                currentHitPoint = MaxHitPoint;
+            }
+
+            if (currentHitPoint < 0)
+            {
+                currentHitPoint = 0;
+                OnDie(this);
+            }
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float MaxStamina
+    {
+        get { return maxStamina; }
+        set
+        {
+            maxStamina = value;
+            if (maxStamina <= 0)
+            {
+                maxStamina = 1;
+            }
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float CurrentStamina
+    {
+        get { return currentStamina; }
+        set
+        {
+            currentStamina = value;
+            if (currentStamina > MaxStamina)
+            {
+                currentStamina = MaxStamina;
+            }
+
+            if (currentStamina < 0)
+            {
+                currentStamina = 0;
+            }
+
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float AttackSpeed
+    {
+        get { return attackSpeed; }
+        set
+        {
+            attackSpeed = value;
+
+            if (attackSpeed < GameConstants.CHARACTER_STAT_ATTACK_SPEED_MIN)
+            {
+                attackSpeed = GameConstants.CHARACTER_STAT_ATTACK_SPEED_MIN;
+            }
+
+            if (attackSpeed > GameConstants.CHARACTER_STAT_ATTACK_SPEED_MAX)
+            {
+                attackSpeed = GameConstants.CHARACTER_STAT_ATTACK_SPEED_MAX;
+            }
+
+            character.CharacterAnimator.SetFloat("attackSpeed", attackSpeed);
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set
+        {
+            moveSpeed = value;
+
+            if (moveSpeed < GameConstants.CHARACTER_STAT_MOVE_SPEED_MIN)
+            {
+                moveSpeed = GameConstants.CHARACTER_STAT_MOVE_SPEED_MIN;
+            }
+
+            if (moveSpeed > GameConstants.CHARACTER_STAT_MOVE_SPEED_MAX)
+            {
+                moveSpeed = GameConstants.CHARACTER_STAT_MOVE_SPEED_MAX;
+            }
+
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float CriticalChance
+    {
+        get { return criticalChance; }
+        set
+        {
+            criticalChance = value;
+            if (criticalChance < GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MIN)
+            {
+                criticalChance = GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MIN;
+            }
+
+            if (criticalChance > GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MAX)
+            {
+                criticalChance = GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MAX;
+            }
+
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    public float CriticalDamage
+    {
+        get { return criticalDamage; }
+        set
+        {
+            criticalDamage = value;
+            if (criticalDamage < GameConstants.CHARACTER_STAT_CRITICAL_DAMAGE_MIN)
+            {
+                criticalDamage = GameConstants.CHARACTER_STAT_CRITICAL_DAMAGE_MIN;
+            }
+            OnCharacterStatsChanged?.Invoke(this);
+        }
+    }
+    #endregion
+}
