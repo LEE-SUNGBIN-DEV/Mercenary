@@ -6,18 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MyAssets/Scenes/Title.unity
+    path: Assets/@Scenes/@Common/Title.unity
     guid: 7fbbba3ae35f4e840b5bde653f35186f
   - enabled: 1
-    path: Assets/MyAssets/Scenes/Loading.unity
+    path: Assets/@Scenes/@Common/Loading.unity
     guid: e614340629972924d90fcb133830a380
   - enabled: 1
-    path: Assets/MyAssets/Scenes/Viliage.unity
+    path: Assets/@Scenes/@Chapter 01/Forestia.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/MyAssets/Scenes/Forest.unity
+    path: Assets/@Scenes/@Chapter 01/Starlight_Forest.unity
     guid: d8d478e32699aaa4c8e088b9543edab2
   - enabled: 1
-    path: Assets/MyAssets/Scenes/Temple.unity
+    path: Assets/@Scenes/@Chapter 01/Temple.unity
     guid: 25b46ce9a99ce9244ba703b9e72e8b78
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 32ce33cfb6d8c454ba715f8cfcb8f1ac, type: 2}
