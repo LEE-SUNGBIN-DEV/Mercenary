@@ -56,11 +56,11 @@ public class QuestManager
         QuestTask.onTaskEnd -= RequestNPCQuestList;
         QuestTask.onTaskEnd += RequestNPCQuestList;
 
-        QuestPopUp.onClickAcceptButton -= RequestAcceptList;
-        QuestPopUp.onClickAcceptButton += RequestAcceptList;
+        QuestPopup.onClickAcceptButton -= RequestAcceptList;
+        QuestPopup.onClickAcceptButton += RequestAcceptList;
 
-        QuestPopUp.onClickCompleteButton -= RequestCompleteList;
-        QuestPopUp.onClickCompleteButton += RequestCompleteList;
+        QuestPopup.onClickCompleteButton -= RequestCompleteList;
+        QuestPopup.onClickCompleteButton += RequestCompleteList;
 
         CharacterData.onMainQuestProcedureChanged -= RefreshInactiveQuest;
         CharacterData.onMainQuestProcedureChanged += RefreshInactiveQuest;
@@ -194,7 +194,7 @@ public class QuestManager
         RequestNPCQuestList();
     }
 
-    public void RequestAcceptList(QuestPopUp questPopUp)
+    public void RequestAcceptList(QuestPopup questPopUp)
     {
         for (int i = 0; i < AcceptQuestList.Count; ++i)
         {
@@ -214,7 +214,7 @@ public class QuestManager
         }
     }
 
-    public void RequestCompleteList(QuestPopUp questPopUp)
+    public void RequestCompleteList(QuestPopup questPopUp)
     {
         for (int i = 0; i < CompleteQuestList.Count; ++i)
         {

@@ -5,15 +5,19 @@ using UnityEngine.Events;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager
 {
     private Dictionary<string, Object> resourceDictionary;
     private Dictionary<string, AsyncOperationHandle> asyncHandleDictionary;
 
-    private void Awake()
+    public ResourceManager()
     {
         resourceDictionary = new Dictionary<string, Object>();
         asyncHandleDictionary = new Dictionary<string, AsyncOperationHandle>();
+    }
+
+    public void Initialize()
+    {
         
     }
 

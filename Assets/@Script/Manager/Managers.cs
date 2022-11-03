@@ -4,44 +4,34 @@ using UnityEngine;
 
 public class Managers : Singleton<Managers>
 {
-    private GameObject rootObject;
-    private GameManager gameManager;
-    private GameSceneManager gameSceneManager;
-    private UIManager uiManager;
-    private AudioManager audioManager;
-    private DataManager dataManager;
-    private NPCManager npcManager;
-    private DialogueManager dialogueManager;
-    private QuestManager questManager;
-    private ItemManager itemManager;
-    private ObjectPoolManager objectPoolManager;
+    private GameManager gameManager = new GameManager();
+    private GameSceneManager gameSceneManager = new GameSceneManager();
+    private ResourceManager resourceManager = new ResourceManager();
+    private UIManager uiManager = new UIManager();
+    private AudioManager audioManager = new AudioManager();
+    private DataManager dataManager = new DataManager();
+    private NPCManager npcManager = new NPCManager();
+    private DialogueManager dialogueManager = new DialogueManager();
+    private QuestManager questManager = new QuestManager();
+    private ItemManager itemManager = new ItemManager();
+    private ObjectPoolManager objectPoolManager = new ObjectPoolManager();
 
     private void Awake()
     {
-        rootObject = gameObject;
-        gameManager = new GameManager();
-        gameSceneManager = new GameSceneManager();
-        uiManager = new UIManager();
-        audioManager = new AudioManager();
-        dataManager = new DataManager();
-        npcManager = new NPCManager();
-        dialogueManager = new DialogueManager();
-        questManager = new QuestManager();
-        itemManager = new ItemManager();
-        objectPoolManager = new ObjectPoolManager();
-
         Initialize();
     }
 
     private void Update()
     {
-        UIManager.Update();
+        //UIManager.Update();
     }
 
     public override void Initialize()
     {
         gameManager.Initialize();
         gameSceneManager.Initialize();
+        resourceManager.Initialize();
+        /*
         uiManager.Initialize();
         audioManager.Initialize();
         dataManager.Initialize();
@@ -50,6 +40,7 @@ public class Managers : Singleton<Managers>
         questManager.Initialize();
         itemManager.Initialize();
         objectPoolManager.Initialize(gameObject);
+        */
     }
 
     #region Property
@@ -60,6 +51,10 @@ public class Managers : Singleton<Managers>
     public static GameSceneManager GameSceneManager
     {
         get => Instance?.gameSceneManager;
+    }
+    public static ResourceManager ResourceManager
+    {
+        get { return Instance?.resourceManager; }
     }
     public static UIManager UIManager
     {

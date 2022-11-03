@@ -8,10 +8,10 @@ public class BaseCamera : MonoBehaviour
     [SerializeField] private Transform targetTransform;
     private Vector3 originalPosition;
     private IEnumerator shakeCoroutine;
-
-    protected void Awake()
+    
+    protected virtual void Awake()
     {
-        thisCamera = GetComponent<Camera>();
+        thisCamera = GetComponentInChildren<Camera>();
     }
 
     public void SetCameraTransform(Transform targetTransform)
@@ -21,7 +21,7 @@ public class BaseCamera : MonoBehaviour
 
     public void ShakeCamera(float shakeTime, float shakeIntensity = 0.05f)
     {
-        originalPosition = transform.position;
+        originalPosition = thisCamera.transform.position;
         if (shakeCoroutine != null)
         {
             StopCoroutine(shakeCoroutine);
@@ -41,7 +41,7 @@ public class BaseCamera : MonoBehaviour
             transform.position = (Random.insideUnitSphere * shakeIntensity) + originalPosition;
             yield return null;
         }
-        transform.position = originalPosition;
+        thisCamera.transform.position = originalPosition;
     }
 
     #region Property

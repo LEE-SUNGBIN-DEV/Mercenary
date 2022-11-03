@@ -11,8 +11,7 @@ public enum PANEL_TYPE
     SYSTEM_NOTICE = 3,
     CONFIRM = 4,
     ENTRANCE = 5,
-    RETURN = 6,
-    BOSS = 7,
+    BOSS = 6,
 
     SIZE
 }
@@ -26,6 +25,7 @@ public enum POPUP_TYPE
     QUEST = 4,
     STORE = 5,
     CAMPAIGN = 6,
+    RETURN = 7,
 
     SIZE
 }
@@ -38,10 +38,10 @@ public class UIManager
 
     private GameObject rootObject;
     private List<Panel> panelList;
-    private List<PopUp> popUpList;
-    private LinkedList<PopUp> currentPopUpLinkedList;
+    private List<Popup> popUpList;
+    private LinkedList<Popup> currentPopUpLinkedList;
     private Dictionary<PANEL_TYPE, Panel> panelDictionary;
-    private Dictionary<POPUP_TYPE, PopUp> popupDictionary;
+    private Dictionary<POPUP_TYPE, Popup> popupDictionary;
 
     // Panel
     [SerializeField] private TitlePanel titlePanel;
@@ -50,23 +50,23 @@ public class UIManager
     [SerializeField] private SystemNoticePanel systemNoticePanel;
     [SerializeField] private ConfirmPanel confirmPanel;
     [SerializeField] private EntrancePanel entrancePanel;
-    [SerializeField] private ReturnPanel returnPanel;
+    [SerializeField] private ReturnPopup returnPanel;
     [SerializeField] private BossPanel bossPanel;
 
     // PopUp
-    [SerializeField] private InventoryPopUp inventoryPopUp;
-    [SerializeField] private StatusPopUp statusPopUp;
-    [SerializeField] private SettingPopUp settingPopUp;
-    [SerializeField] private HelpPopUp helpPopUp;
-    [SerializeField] private QuestPopUp questPopUp;
-    [SerializeField] private StorePopUp storePopUp;
-    [SerializeField] private CampaignPopUp campaignPopUp;
+    [SerializeField] private InventoryPopup inventoryPopUp;
+    [SerializeField] private StatusPopup statusPopUp;
+    [SerializeField] private SettingPopup settingPopUp;
+    [SerializeField] private HelpPopup helpPopUp;
+    [SerializeField] private QuestPopup questPopUp;
+    [SerializeField] private StorePopup storePopUp;
+    [SerializeField] private CampaignPopup campaignPopUp;
 
     private bool isNotice;
     private float noticeTime;
     private Queue<string> systemNoticeQueue;
 
-    public void Initialize()
+    public UIManager()
     {
         isNotice = false;
         noticeTime = 0f;
@@ -80,11 +80,10 @@ public class UIManager
                 SystemNoticePanel,
                 ConfirmPanel,
                 EntrancePanel,
-                ReturnPanel,
                 BossPanel
             };
 
-        popUpList = new List<PopUp>()
+        popUpList = new List<Popup>()
             {
                 StatusPopUp,
                 InventoryPopUp,
@@ -93,6 +92,7 @@ public class UIManager
                 QuestPopUp,
                 StorePopUp,
                 CampaignPopUp,
+                ReturnPopup,
             };
 
         panelDictionary = new Dictionary<PANEL_TYPE, Panel>()
@@ -103,11 +103,10 @@ public class UIManager
                 {PANEL_TYPE.SYSTEM_NOTICE, SystemNoticePanel },
                 {PANEL_TYPE.CONFIRM, ConfirmPanel },
                 {PANEL_TYPE.ENTRANCE, EntrancePanel },
-                {PANEL_TYPE.RETURN, ReturnPanel },
                 {PANEL_TYPE.BOSS, BossPanel }
             };
 
-        popupDictionary = new Dictionary<POPUP_TYPE, PopUp>()
+        popupDictionary = new Dictionary<POPUP_TYPE, Popup>()
             {
                 { POPUP_TYPE.HELP, HelpPopUp },
                 { POPUP_TYPE.INVENTORY, InventoryPopUp},
@@ -116,14 +115,18 @@ public class UIManager
                 { POPUP_TYPE.STATUS, StatusPopUp },
                 { POPUP_TYPE.STORE, StorePopUp },
                 { POPUP_TYPE.CAMPAIGN, CampaignPopUp },
+                { POPUP_TYPE.RETURN, ReturnPopup },
             };
 
-        currentPopUpLinkedList = new LinkedList<PopUp>();
+        currentPopUpLinkedList = new LinkedList<Popup>();
+    }
 
+    public void Initialize()
+    {
         #region Add Event
 
-        PopUp.onFocus -= FocusPopUp;
-        PopUp.onFocus += FocusPopUp;
+        Popup.onFocus -= FocusPopUp;
+        Popup.onFocus += FocusPopUp;
 
         Quest.onTaskIndexChanged -= NoticeQuestState;
         Quest.onTaskIndexChanged += NoticeQuestState;
@@ -175,7 +178,6 @@ public class UIManager
         // CharacterStats Event
         CharacterStats.OnCharacterStatsChanged += (CharacterStats characterStats) =>
         {
-            OpenPanel(PANEL_TYPE.RETURN);
             StatusPopUp.AttackPowerText.text = characterStats.AttackPower.ToString();
             StatusPopUp.DefensivePowerText.text = characterStats.DefensivePower.ToString();
 
@@ -218,7 +220,7 @@ public class UIManager
         {
             if (currentPopUpLinkedList.Count > 0)
             {
-                ClosePopUp(currentPopUpLinkedList.First.Value.PopUpType);
+                ClosePopUp(currentPopUpLinkedList.First.Value.PopupType);
             }
 
             else
@@ -281,7 +283,7 @@ public class UIManager
     }
 
     #region PopUp Function
-    public void FocusPopUp(PopUp popUp)
+    public void FocusPopUp(Popup popUp)
     {
         currentPopUpLinkedList.Remove(popUp);
         currentPopUpLinkedList.AddFirst(popUp);
@@ -290,7 +292,7 @@ public class UIManager
 
     public void RefreshPopUpOrder()
     {
-        foreach (PopUp popUp in currentPopUpLinkedList)
+        foreach (Popup popUp in currentPopUpLinkedList)
         {
             popUp.transform.SetAsFirstSibling();
         }
@@ -308,9 +310,9 @@ public class UIManager
         }
     }
 
-    public void TogglePopUp(PopUp popUp)
+    public void TogglePopUp(Popup popUp)
     {
-        TogglePopUp(popUp.PopUpType);
+        TogglePopUp(popUp.PopupType);
     }
     #endregion
 
@@ -424,7 +426,7 @@ public class UIManager
         get { return userPanel; }
         private set { userPanel = value; }
     }
-    public CampaignPopUp CampaignPopUp
+    public CampaignPopup CampaignPopUp
     {
         get { return campaignPopUp; }
         private set { campaignPopUp = value; }
@@ -444,7 +446,7 @@ public class UIManager
         get { return entrancePanel; }
         private set { entrancePanel = value; }
     }
-    public ReturnPanel ReturnPanel
+    public ReturnPopup ReturnPopup
     {
         get { return returnPanel; }
         private set { returnPanel = value; }
@@ -454,32 +456,32 @@ public class UIManager
         get { return bossPanel; }
         private set { bossPanel = value; }
     }
-    public StatusPopUp StatusPopUp
+    public StatusPopup StatusPopUp
     {
         get { return statusPopUp; }
         private set { statusPopUp = value; }
     }
-    public InventoryPopUp InventoryPopUp
+    public InventoryPopup InventoryPopUp
     {
         get { return inventoryPopUp; }
         private set { inventoryPopUp = value; }
     }
-    public SettingPopUp SettingPopUp
+    public SettingPopup SettingPopUp
     {
         get { return settingPopUp; }
         private set { settingPopUp = value; }
     }
-    public HelpPopUp HelpPopUp
+    public HelpPopup HelpPopUp
     {
         get { return helpPopUp; }
         private set { helpPopUp = value; }
     }
-    public QuestPopUp QuestPopUp
+    public QuestPopup QuestPopUp
     {
         get { return questPopUp; }
         private set { questPopUp = value; }
     }
-    public StorePopUp StorePopUp
+    public StorePopup StorePopUp
     {
         get { return storePopUp; }
         private set { storePopUp = value; }

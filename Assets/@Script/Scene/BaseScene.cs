@@ -5,8 +5,8 @@ using UnityEngine;
 public class BaseScene : MonoBehaviour
 {
     [SerializeField] private string mapName;
-    private SCENE_TYPE sceneType;
-    private SCENE_LIST scene;
+    [SerializeField] private SCENE_TYPE sceneType;
+    [SerializeField] private SCENE_LIST scene;
 
     protected virtual void Awake()
     {

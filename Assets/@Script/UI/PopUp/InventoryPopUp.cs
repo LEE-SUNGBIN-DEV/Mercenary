@@ -1,3 +1,3 @@
-public class InventoryPopUp : PopUp
+public class InventoryPopup : Popup
 {
 }
