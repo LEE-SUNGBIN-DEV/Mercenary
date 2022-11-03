@@ -1,3 +1,3 @@
-public class StorePopUp : PopUp
+public class StorePopup : Popup
 {
 }

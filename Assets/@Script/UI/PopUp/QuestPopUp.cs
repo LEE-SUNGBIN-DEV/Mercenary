@@ -4,11 +4,11 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-public class QuestPopUp : PopUp
+public class QuestPopup : Popup
 {
     #region Event
-    public static event UnityAction<QuestPopUp> onClickAcceptButton;
-    public static event UnityAction<QuestPopUp> onClickCompleteButton;
+    public static event UnityAction<QuestPopup> onClickAcceptButton;
+    public static event UnityAction<QuestPopup> onClickCompleteButton;
     #endregion
 
     [SerializeField] private GameObject buttonPrefab;

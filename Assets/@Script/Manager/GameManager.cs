@@ -13,12 +13,11 @@ public class GameManager
     [SerializeField] private Character currentCharacter;
 
     [Header("Camera")]
-    [SerializeField] private CharacterCamera playerCamera;
+    [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private BaseCamera directingCamera;
 
     [Header("Cursor")]
     private CURSOR_MODE cursorMode;
-    private Texture2D cursorTexture;
 
     public void Initialize()
     {
@@ -26,7 +25,7 @@ public class GameManager
         Screen.SetResolution(GameConstants.RESOLUTION_DEFAULT_WIDTH, GameConstants.RESOLUTION_DEFAULT_HEIGHT, true);
 
         // Ä¿¼­
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        Managers.ResourceManager.LoadResourceAsync<Texture2D>("Sprite_Cursor", SetCursorTexture);
         SetCursorMode(CURSOR_MODE.UNLOCK);
     }
 
@@ -63,6 +62,10 @@ public class GameManager
     #endregion
 
     #region Cursor Control
+    public void SetCursorTexture(Texture2D texture)
+    {
+        Cursor.SetCursor(texture, Vector2.zero, CursorMode.Auto);
+    }
     public void SetCursorMode(CURSOR_MODE cursorMode)
     {
         switch(cursorMode)
@@ -103,7 +106,7 @@ public class GameManager
         get { return currentCharacter; }
         private set { currentCharacter = value; }
     }
-    public CharacterCamera PlayerCamera
+    public PlayerCamera PlayerCamera
     {
         get { return playerCamera; }
         set { playerCamera = value; }

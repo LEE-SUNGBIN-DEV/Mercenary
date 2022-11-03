@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class CampaignPopUp : PopUp
+public class CampaignPopup : Popup
 {
     [SerializeField] private Button forestButton;
     [SerializeField] private Button templeButton;

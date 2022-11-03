@@ -5,15 +5,38 @@ using UnityEngine;
 public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     private static T instance = null;
+    public static T Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                GameObject root = GameObject.Find(typeof(T).Name);
+                if (root == null)
+                {
+                    root = new GameObject(typeof(T).Name);
+                }
+
+                instance = GameFunction.GetOrAddComponent<T>(root);
+                DontDestroyOnLoad(instance.gameObject);
+            }
+
+            return instance;
+        }
+    }
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
-            instance = (T)this;
-            DontDestroyOnLoad(gameObject);
+            GameObject root = GameObject.Find(typeof(T).Name);
+            if (root == null)
+            {
+                root = new GameObject(typeof(T).Name);
+            }
 
-            Initialize();
+            instance = GameFunction.GetOrAddComponent<T>(root);
+            DontDestroyOnLoad(instance.gameObject);
         }
 
         else
@@ -23,9 +46,4 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     }
 
     public abstract void Initialize();
-
-    public static T Instance
-    {
-        get { return instance; }
-    }
 }

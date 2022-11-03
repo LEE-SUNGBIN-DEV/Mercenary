@@ -2,20 +2,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class PopUp : MonoBehaviour, IPointerDownHandler
+public class Popup : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] private POPUP_TYPE popUpType;
+    [SerializeField] private POPUP_TYPE popupType;
 
-    public static event UnityAction<PopUp> onFocus;
+    public static event UnityAction<Popup> onFocus;
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         onFocus(this);
     }
 
-    public POPUP_TYPE PopUpType
+    public POPUP_TYPE PopupType
     {
-        get { return popUpType; }
-        private set { popUpType = value; }
+        get { return popupType; }
+        private set { popupType = value; }
     }
 }

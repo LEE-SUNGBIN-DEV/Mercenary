@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class StatusPopUp : PopUp
+public class StatusPopup : Popup
 {
     [SerializeField] private TextMeshProUGUI classText;
     [SerializeField] private TextMeshProUGUI levelText;
