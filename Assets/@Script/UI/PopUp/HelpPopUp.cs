@@ -1,3 +1,3 @@
-public class HelpPopup : Popup
+public class HelpPopup : UIPopup
 {
 }

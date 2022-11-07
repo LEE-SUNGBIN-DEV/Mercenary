@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-public class DialoguePanel : Panel
+public class DialoguePanel : UIPanel
 {
     #region Event
     public static event UnityAction onClickFunctionButton;
@@ -16,6 +16,18 @@ public class DialoguePanel : Panel
     [SerializeField] private Button npcFunctionButton;
     [SerializeField] private TextMeshProUGUI npcFunctionButtonText;
     [SerializeField] private QuestListPanel npcQuestListPanel;
+
+    private void Awake()
+    {
+        FunctionNPC.onTalkStart -= SetDialogueText;
+        FunctionNPC.onTalkStart += SetDialogueText;
+
+        FunctionNPC.onDialogueStart -= NpcQuestListPanel.ActiveQuestButton;
+        FunctionNPC.onDialogueStart += NpcQuestListPanel.ActiveQuestButton;
+
+        FunctionNPC.onDialogueEnd -= NpcQuestListPanel.InavtiveQuestButton;
+        FunctionNPC.onDialogueEnd += NpcQuestListPanel.InavtiveQuestButton;
+    }
 
     public void SetNameText(string name)
     {
@@ -30,6 +42,7 @@ public class DialoguePanel : Panel
     {
         SetNameText(name);
         SetContentText(content);
+        Managers.UIManager.OpenPanel(PANEL.DialoguePanel);
     }
     
     public void ActiveNPCButton(string buttonName)

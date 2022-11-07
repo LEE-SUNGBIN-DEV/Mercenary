@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 
-public class QuestListPanel : Panel
+public class QuestListPanel : UIBase
 {
     [System.Serializable]
     public class NPCQuestButton

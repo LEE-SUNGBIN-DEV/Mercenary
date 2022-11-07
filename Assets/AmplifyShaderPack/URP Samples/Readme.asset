@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78934177bebe0545ab566bb787b0282, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 3f13670c9e75ad74fb524755828d8a60, type: 3}
+  Title: URP Samples
+  Description:
+    Heading: 
+    Text: This folder contains all URP compatible samples. Please note that some
+      properties on your URP Pipeline asset must be tweaked for samples to properly
+      work.
+    LinkText: 
+    Url: 
+  PropertiesHeader:
+    Heading: Properties
+    Text: 
+    LinkText: 
+    Url: 
+  Properties:
+  - Heading: General  > Depth Texture
+    Text: This toggle must be turned on for all depth operations to properly work.
+    LinkText: 
+    Url: 
+  - Heading: General  > Opaque Texture
+    Text: This toggle must be turned on for operations that require access to opaque
+      color buffer.
+    LinkText: 
+    Url: 
+  - Heading: Lighting > Additional Lights
+    Text: This value/slider must be set to 8 as samples use more that the default
+      4 additionals lights.
+    LinkText: 
+    Url: 
+  AdditionalProperties: []
+  AdditionalScripts: []
+  LoadedLayout: 0
+  RPType: 3

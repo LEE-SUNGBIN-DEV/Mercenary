@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78934177bebe0545ab566bb787b0282, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 582443f7949763746829b1c7af43e2b2, type: 3}
+  Title: Cutout
+  Description:
+    Heading: 
+    Text: This samples shows usage of both a cutout with a mask and transparency
+      effects.
+    LinkText: 
+    Url: 
+  PropertiesHeader:
+    Heading: Cutout Properties
+    Text: Simple panning cutout texture example.
+    LinkText: 
+    Url: 
+  Properties:
+  - Heading: Albedo
+    Text: Albedo color value.
+    LinkText: 
+    Url: 
+  - Heading: Mask
+    Text: Texture mask.
+    LinkText: 
+    Url: 
+  - Heading: Cutoff
+    Text: Alpha Clip Threshold value.
+    LinkText: 
+    Url: 
+  - Heading: Pan Speed
+    Text: Mask texture panning speed.
+    LinkText: 
+    Url: 
+  - Heading: Tiling
+    Text: Mask texture tile amount.
+    LinkText: 
+    Url: 
+  AdditionalProperties:
+  - BlockHeader:
+      Heading: Transparent Properties
+      Text: Simple pulsating transparent effect.
+      LinkText: 
+      Url: 
+    BlockContent:
+    - Heading: Albedo
+      Text: Albedo color value.
+      LinkText: 
+      Url: 
+    - Heading: Speed
+      Text: Pulsate speed.
+      LinkText: 
+      Url: 
+  AdditionalScripts: []
+  LoadedLayout: 0
+  RPType: 2

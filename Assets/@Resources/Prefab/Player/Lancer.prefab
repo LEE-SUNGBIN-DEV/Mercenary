@@ -9784,7 +9784,6 @@ GameObject:
   - component: {fileID: 300146211694548626}
   - component: {fileID: 300146211694548653}
   - component: {fileID: 300146211694548652}
-  - component: {fileID: 300146211694548627}
   m_Layer: 7
   m_Name: Level Up Effect
   m_TagString: Untagged
@@ -14668,19 +14667,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &300146211694548627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300146211419534915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcea238f608e9cb4c8018d6fe09310ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableTime: 1
 --- !u!1 &300146211422372852
 GameObject:
   m_ObjectHideFlags: 0
@@ -29350,7 +29336,6 @@ GameObject:
   - component: {fileID: 300146212769598897}
   - component: {fileID: 300146212769598924}
   - component: {fileID: 300146212769598899}
-  - component: {fileID: 300146212769598898}
   m_Layer: 7
   m_Name: Compete Attack Effect
   m_TagString: Untagged
@@ -34235,19 +34220,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &300146212769598898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300146212292942986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcea238f608e9cb4c8018d6fe09310ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableTime: 2
 --- !u!1 &300146212477025915
 GameObject:
   m_ObjectHideFlags: 0
@@ -58846,7 +58818,6 @@ GameObject:
   - component: {fileID: 8106544608598234353}
   - component: {fileID: 340853753741128488}
   - component: {fileID: 340853753748463921}
-  - component: {fileID: 7563663795537283946}
   m_Layer: 7
   m_Name: Lancer
   m_TagString: Player
@@ -58888,19 +58859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 0}
-  characterStats:
-    character: {fileID: 0}
-    attackPower: 0
-    defensivePower: 0
-    maxHitPoint: 0
-    currentHitPoint: 0
-    maxStamina: 0
-    currentStamina: 0
-    criticalChance: 0
-    criticalDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-  characterInventory: {fileID: 0}
   spear: {fileID: 8451662315173187546}
   shield: {fileID: 4120379128144039190}
   skill: {fileID: 6357182177998987979}
@@ -58973,45 +58931,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &7563663795537283946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340853753748463920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89e574420bca63443ab7806a0a1eb011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioAmount: 5
-  sfxPlayers: []
-  sfxContainer:
-  - name: Lancer Attack
-    audioClip: {fileID: 8300000, guid: 13affabff422d874a9c2fbd253c794d4, type: 3}
-  - name: Lancer Counter Skill
-    audioClip: {fileID: 8300000, guid: 0b6ed73c5cb18d94192dff0107553833, type: 3}
-  - name: Lancer Critical Attack
-    audioClip: {fileID: 8300000, guid: 5a16bb1c78c43f049948e370645db9c7, type: 3}
-  - name: Lancer Default Attack
-    audioClip: {fileID: 8300000, guid: ab63ad6221d513e4fb663c1165c56313, type: 3}
-  - name: Lancer Defense Start
-    audioClip: {fileID: 8300000, guid: 109ba2c32f080a44a820dc10878e658c, type: 3}
-  - name: Lancer Defense
-    audioClip: {fileID: 8300000, guid: c8796eb7c1a4a93459150c925ba37f02, type: 3}
-  - name: Lancer Leg Attack
-    audioClip: {fileID: 8300000, guid: f55cb45eeb3471b4abcb7362c8ff1996, type: 3}
-  - name: Lancer Perfect Defense
-    audioClip: {fileID: 8300000, guid: 63204070a0d0a6b4684e371db4120112, type: 3}
-  - name: Lancer Smash Attack
-    audioClip: {fileID: 8300000, guid: 8d51e8855dec4fe48b7b63a71d09e2b6, type: 3}
-  - name: Player Compete Attack
-    audioClip: {fileID: 8300000, guid: 66b49f6441c241249a685f69d8098ed1, type: 3}
-  - name: Player Roll
-    audioClip: {fileID: 8300000, guid: 206785b8b093d944b8cfee4105855b42, type: 3}
-  - name: Player Step
-    audioClip: {fileID: 8300000, guid: 74ba421e23eaa4542829ceaba224005e, type: 3}
 --- !u!1 &340853753748464454
 GameObject:
   m_ObjectHideFlags: 0

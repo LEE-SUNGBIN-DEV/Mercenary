@@ -25,10 +25,6 @@ public enum SLOT_TYPE
 }
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    #region Event
-    public static event UnityAction onItemDestroy;
-    #endregion
-
     [SerializeField] private SLOT_TYPE slotType;
     [SerializeField] private Item item;
     [SerializeField] private int itemCount;
@@ -139,12 +135,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         slotCountText.enabled = false;
     }
-    public void OnConfirm()
+    public void DestroyItem()
     {
         ClearSlot();
         DragSlot.Instance.ClearDragSlot();
-        ConfirmPanel.onConfirm = null;
-        Managers.UIManager.ClosePanel(PANEL_TYPE.CONFIRM);
+        ConfirmPopup.OnConfirm -= DestroyItem;
+        Managers.UIManager.ClosePopup(POPUP.ConfirmPopup);
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
@@ -166,7 +162,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                             case SLOT_TYPE.ARMOR:
                             case SLOT_TYPE.BOOTS:
                                 {
-                                    Managers.UIManager.OpenPopUp(POPUP_TYPE.STATUS);
+                                    Managers.UIManager.OpenPopup(POPUP.StatusPopup);
 
                                     EquipmentItem clickedItem = Item as EquipmentItem;
                                     clickedItem.Toggle();
@@ -247,9 +243,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
         if(endDragStrategy == null)
         {
-            ConfirmPanel.onConfirm -= OnConfirm;
-            ConfirmPanel.onConfirm += OnConfirm;
-            onItemDestroy();
+            Managers.UIManager.RequestConfirm("아이템을 파괴하시겠습니까?", DestroyItem);
 
             DragSlot.Instance.EnableSlotImage(false);
 

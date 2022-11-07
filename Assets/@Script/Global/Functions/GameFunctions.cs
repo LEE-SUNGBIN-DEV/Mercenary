@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public static class GameFunction
 {
+    #region Async Operation
+    public static IEnumerator WaitAsyncOperation(System.Func<bool> isLoaded, UnityAction callback = null)
+    {
+        while (!isLoaded.Invoke())
+        {
+            yield return null;
+        }
+
+        callback?.Invoke();
+    }
+    #endregion
+
     public static T GetOrAddComponent<T>(GameObject gameObject) where T : Component
     {
         T targetComponent = gameObject.GetComponent<T>();
@@ -42,7 +55,7 @@ public static class GameFunction
 
         else
         {
-            foreach (T component in gameObject.GetComponentsInChildren<T>())
+            foreach (T component in gameObject.GetComponentsInChildren<T>(true))
             {
                 if (string.IsNullOrEmpty(name) || component.name == name)
                 {

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78934177bebe0545ab566bb787b0282, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 0abae75e6064cb74b83677d9078e60ec, type: 3}
+  Title: Outline Toon
+  Description:
+    Heading: 
+    Text: Simple custom lighting toon outline effect.
+    LinkText: 
+    Url: 
+  PropertiesHeader:
+    Heading: Properties
+    Text: 
+    LinkText: 
+    Url: 
+  Properties:
+  - Heading: Base Color
+    Text: 'Albedo texture to be applied to surface. '
+    LinkText: 
+    Url: 
+  - Heading: Normal
+    Text: 'Normals texture to be applied to surface. '
+    LinkText: 
+    Url: 
+  - Heading: Normal Scale
+    Text: 'Normal intensity value.  '
+    LinkText: 
+    Url: 
+  - Heading: Outline Width
+    Text: 'Outline thickness amount.  '
+    LinkText: 
+    Url: 
+  - Heading: Distance Cutoff
+    Text: 'Outline distance cutoff value.  '
+    LinkText: 
+    Url: 
+  - Heading: Rim Color
+    Text: 'Rim effect color value.  '
+    LinkText: 
+    Url: 
+  - Heading: Rim Offset
+    Text: 'Rim effect offset amount.  '
+    LinkText: 
+    Url: 
+  - Heading: Rim Falloff
+    Text: 'Rim falloff amount.  '
+    LinkText: 
+    Url: 
+  - Heading: Rim Shadow
+    Text: 'Rim shadow intensity.  '
+    LinkText: 
+    Url: 
+  - Heading: Wire Color
+    Text: 'Outline color value.  '
+    LinkText: 
+    Url: 
+  AdditionalProperties: []
+  AdditionalScripts: []
+  LoadedLayout: 0
+  RPType: 2

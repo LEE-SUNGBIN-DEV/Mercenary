@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ReturnPopup : Popup
+public class ReturnPopup : UIPopup
 {
     private SCENE_LIST returnScene;
 
     public void ReturnViliage()
     {
-        Managers.GameSceneManager.LoadScene(returnScene);
+        Managers.GameSceneManager.LoadSceneAsync(returnScene);
     }
 
     #region Property

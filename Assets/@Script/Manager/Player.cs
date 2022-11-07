@@ -6,9 +6,16 @@ using UnityEngine;
 public class Player
 {
     [Header("Characters")]
-    [SerializeField] private Character[] characters;
+    [SerializeField] private CharacterData[] characterDatas;
 
     [Header("Option")]
     [SerializeField] private float bgmVolume;
     [SerializeField] private float sfxVolume;
+
+    #region Property
+    public CharacterData[] CharacterDatas
+    {
+        get { return characterDatas; }
+    }
+    #endregion
 }

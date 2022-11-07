@@ -101,6 +101,11 @@ public class GameManager
     #endregion
 
     #region Property
+    public Player Player
+    {
+        get { return player; }
+    }
+
     public Character CurrentCharacter
     {
         get { return currentCharacter; }

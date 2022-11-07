@@ -6,18 +6,18 @@ public class StoreNPC : FunctionNPC
 {
     public override void OpenNPCUI()
     {
-        Managers.UIManager.OpenPopUp(POPUP_TYPE.INVENTORY);
-        Managers.UIManager.OpenPopUp(POPUP_TYPE.STORE);
+        Managers.UIManager.OpenPopup(POPUP.InventoryPopup);
+        Managers.UIManager.OpenPopup(POPUP.StorePopup);
     }
 
     public override void CloseNPCUI()
     {
-        Managers.UIManager.ClosePopUp(POPUP_TYPE.INVENTORY);
-        Managers.UIManager.ClosePopUp(POPUP_TYPE.STORE);
+        Managers.UIManager.ClosePopup(POPUP.InventoryPopup);
+        Managers.UIManager.ClosePopup(POPUP.StorePopup);
     }
 
     public override void ActiveNPCFunctionButton()
     {
-        Managers.UIManager.DialoguePanel.ActiveNPCButton("상점");
+        //Managers.UIManager.DialoguePanel.ActiveNPCButton("상점");
     }
 }

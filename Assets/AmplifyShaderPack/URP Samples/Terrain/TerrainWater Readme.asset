@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78934177bebe0545ab566bb787b0282, type: 3}
+  m_Name: TerrainWater Readme
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 87d148f4d403bf44098fa60d80c16017, type: 3}
+  Title: Water Terrain
+  Description:
+    Heading: 
+    Text: Simple water effect with depth-based darkening and foam.
+    LinkText: 
+    Url: 
+  PropertiesHeader:
+    Heading: Properties
+    Text: 
+    LinkText: 
+    Url: 
+  Properties:
+  - Heading: Water Normal
+    Text: Water Normals texture.
+    LinkText: 
+    Url: 
+  - Heading: Normal Scale
+    Text: Normal intensity value.
+    LinkText: 
+    Url: 
+  - Heading: Deep Color
+    Text: Deep water color tint value.
+    LinkText: 
+    Url: 
+  - Heading: Shalow Color
+    Text: Shallow water color tint value.
+    LinkText: 
+    Url: 
+  - Heading: Water Depth
+    Text: Water depth multiplier.e.
+    LinkText: 
+    Url: 
+  - Heading: Water Falloff
+    Text: Water depth falloff value.
+    LinkText: 
+    Url: 
+  - Heading: Water Specular
+    Text: Water Specular value.
+    LinkText: 
+    Url: 
+  - Heading: Water Smoothness
+    Text: Water Smoothness value.
+    LinkText: 
+    Url: 
+  - Heading: Distortion
+    Text: Water distortion amount based on Normals texture.
+    LinkText: 
+    Url: 
+  - Heading: Foam
+    Text: Foam texture.
+    LinkText: 
+    Url: 
+  - Heading: Foam Depth
+    Text: Foam Depth value, influences visibility.
+    LinkText: 
+    Url: 
+  - Heading: Foam Falloff
+    Text: Foam Falloff value.
+    LinkText: 
+    Url: 
+  - Heading: Foam Specular
+    Text: Foam Specular value.
+    LinkText: 
+    Url: 
+  - Heading: Foam Smoothness
+    Text: Foam Smoothness value.
+    LinkText: 
+    Url: 
+  AdditionalProperties: []
+  AdditionalScripts: []
+  LoadedLayout: 0
+  RPType: 2

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class StatusPopup : Popup
+public class StatusPopup : UIPopup
 {
     [SerializeField] private TextMeshProUGUI classText;
     [SerializeField] private TextMeshProUGUI levelText;
@@ -20,6 +20,35 @@ public class StatusPopup : Popup
     [SerializeField] private TextMeshProUGUI vitalityText;
     [SerializeField] private TextMeshProUGUI dexterityText;
     [SerializeField] private TextMeshProUGUI luckText;
+
+    private void Awake()
+    {
+        CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
+        {
+            ClassText.text = playerData.CharacterClass;
+            LevelText.text = playerData.Level.ToString();
+
+            StatPointText.text = playerData.StatPoint.ToString();
+            StrengthText.text = playerData.Strength.ToString();
+            VitalityText.text = playerData.Vitality.ToString();
+            DexterityText.text = playerData.Dexterity.ToString();
+            LuckText.text = playerData.Luck.ToString();
+        };
+
+        CharacterStats.OnCharacterStatsChanged += (CharacterStats characterStats) =>
+        {
+            AttackPowerText.text = characterStats.AttackPower.ToString();
+            DefensivePowerText.text = characterStats.DefensivePower.ToString();
+
+            HitPointText.text = characterStats.CurrentHitPoint.ToString("F1") + "/" + characterStats.MaxHitPoint.ToString();
+            StaminaText.text = characterStats.CurrentStamina.ToString("F1") + "/" + characterStats.MaxStamina.ToString();
+
+            AttackSpeedText.text = characterStats.AttackSpeed.ToString();
+            MoveSpeedText.text = characterStats.MoveSpeed.ToString();
+            CriticalChanceText.text = characterStats.CriticalChance.ToString();
+            CriticalDamageText.text = characterStats.CriticalDamage.ToString();
+        };
+    }
 
     #region Button Event Function
     public void IncreaseStrength()
