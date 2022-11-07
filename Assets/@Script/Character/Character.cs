@@ -7,10 +7,10 @@ public abstract class Character : MonoBehaviour
 {
     [SerializeField] private CharacterData characterData;
 
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private CharacterStats characterStats;
-    [SerializeField] private CharacterState characterState;
-    [SerializeField] private Inventory characterInventory;
+    private PlayerInput playerInput;
+    private CharacterStats characterStats;
+    private CharacterState characterState;
+    private Inventory characterInventory;
 
     private Animator characterAnimator;
     private CharacterController characterController;

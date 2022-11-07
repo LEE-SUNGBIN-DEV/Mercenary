@@ -3,224 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum PANEL_TYPE
+public enum PANEL
 {
-    TITLE = 0,
-    DIALOGUE = 1,
-    USER = 2,
-    SYSTEM_NOTICE = 3,
-    CONFIRM = 4,
-    ENTRANCE = 5,
-    BOSS = 6,
-
-    SIZE
+    TitleScenePanel,
+    SelectionScenePanel,
+    UserPanel,
+    DialoguePanel,
+    MonsterInformationPanel,
+    MapInformationPanel,
+    SystemNoticePanel
 }
 
-public enum POPUP_TYPE
+public enum POPUP
 {
-    INVENTORY = 0,
-    STATUS = 1,
-    SETTING = 2,
-    HELP = 3,
-    QUEST = 4,
-    STORE = 5,
-    CAMPAIGN = 6,
-    RETURN = 7,
-
-    SIZE
+    ReturnPopup,
+    InventoryPopup,
+    StatusPopup,
+    OptionPopup,
+    HelpPopup,
+    StorePopup,
+    CampaignPopup,
+    ConfirmPopup,
+    QuestPopup
 }
 
 public class UIManager
 {
     #region Event
     public static event UnityAction<bool> InteractPlayer;
+    public event UnityAction<string> OnRequestNotice;
+    public event UnityAction<string> OnRequestConfirm;
     #endregion
 
-    private GameObject rootObject;
-    private List<Panel> panelList;
-    private List<Popup> popUpList;
-    private LinkedList<Popup> currentPopUpLinkedList;
-    private Dictionary<PANEL_TYPE, Panel> panelDictionary;
-    private Dictionary<POPUP_TYPE, Popup> popupDictionary;
-
-    // Panel
-    [SerializeField] private TitlePanel titlePanel;
-    [SerializeField] private DialoguePanel dialoguePanel;
-    [SerializeField] private UserPanel userPanel;
-    [SerializeField] private SystemNoticePanel systemNoticePanel;
-    [SerializeField] private ConfirmPanel confirmPanel;
-    [SerializeField] private EntrancePanel entrancePanel;
-    [SerializeField] private ReturnPopup returnPanel;
-    [SerializeField] private BossPanel bossPanel;
-
-    // PopUp
-    [SerializeField] private InventoryPopup inventoryPopUp;
-    [SerializeField] private StatusPopup statusPopUp;
-    [SerializeField] private SettingPopup settingPopUp;
-    [SerializeField] private HelpPopup helpPopUp;
-    [SerializeField] private QuestPopup questPopUp;
-    [SerializeField] private StorePopup storePopUp;
-    [SerializeField] private CampaignPopup campaignPopUp;
-
-    private bool isNotice;
-    private float noticeTime;
-    private Queue<string> systemNoticeQueue;
+    private Canvas canvas;
+    private LinkedList<UIPopup> currentPopUpLinkedList = new LinkedList<UIPopup>();
+    private Dictionary<System.Type, UIPanel[]> panelDictionary = new Dictionary<System.Type, UIPanel[]>();
+    private Dictionary<System.Type, UIPopup[]> popupDictionary = new Dictionary<System.Type, UIPopup[]>();
 
     public UIManager()
     {
-        isNotice = false;
-        noticeTime = 0f;
-        systemNoticeQueue = new Queue<string>();
-
-        panelList = new List<Panel>()
-            {
-                TitlePanel,
-                DialoguePanel,
-                UserPanel,
-                SystemNoticePanel,
-                ConfirmPanel,
-                EntrancePanel,
-                BossPanel
-            };
-
-        popUpList = new List<Popup>()
-            {
-                StatusPopUp,
-                InventoryPopUp,
-                SettingPopUp,
-                HelpPopUp,
-                QuestPopUp,
-                StorePopUp,
-                CampaignPopUp,
-                ReturnPopup,
-            };
-
-        panelDictionary = new Dictionary<PANEL_TYPE, Panel>()
-            {
-                {PANEL_TYPE.TITLE, TitlePanel },
-                {PANEL_TYPE.DIALOGUE, DialoguePanel },
-                {PANEL_TYPE.USER, UserPanel },
-                {PANEL_TYPE.SYSTEM_NOTICE, SystemNoticePanel },
-                {PANEL_TYPE.CONFIRM, ConfirmPanel },
-                {PANEL_TYPE.ENTRANCE, EntrancePanel },
-                {PANEL_TYPE.BOSS, BossPanel }
-            };
-
-        popupDictionary = new Dictionary<POPUP_TYPE, Popup>()
-            {
-                { POPUP_TYPE.HELP, HelpPopUp },
-                { POPUP_TYPE.INVENTORY, InventoryPopUp},
-                { POPUP_TYPE.QUEST, QuestPopUp },
-                { POPUP_TYPE.SETTING, SettingPopUp },
-                { POPUP_TYPE.STATUS, StatusPopUp },
-                { POPUP_TYPE.STORE, StorePopUp },
-                { POPUP_TYPE.CAMPAIGN, CampaignPopUp },
-                { POPUP_TYPE.RETURN, ReturnPopup },
-            };
-
-        currentPopUpLinkedList = new LinkedList<Popup>();
-    }
-
-    public void Initialize()
-    {
-        #region Add Event
-
-        Popup.onFocus -= FocusPopUp;
-        Popup.onFocus += FocusPopUp;
-
         Quest.onTaskIndexChanged -= NoticeQuestState;
         Quest.onTaskIndexChanged += NoticeQuestState;
+    }
+    
+    public void Initialize(GameObject gameObject)
+    {
+        canvas = gameObject.GetComponent<Canvas>();
 
-        ConfirmPanel.onCancel += () =>
+        BindUI<UIPanel>(typeof(PANEL), panelDictionary);
+        BindUI<UIPopup>(typeof(POPUP), popupDictionary);
+
+        if (popupDictionary.TryGetValue(typeof(POPUP), out UIPopup[] popups))
         {
-            ClosePanel(PANEL_TYPE.CONFIRM);
-        };
-
-        TitlePanel.onToggleHelpPopUp += () =>
-        {
-            TogglePopUp(POPUP_TYPE.HELP);
-        };
-
-        Slot.onItemDestroy += () =>
-        {
-            ConfirmPanel.SetConfirmText("아이템을 파괴하시겠습니까?");
-            OpenPanel(PANEL_TYPE.CONFIRM);
-        };
-        #endregion
-
-        #region Function NPC Event
-        FunctionNPC.onTalkStart -= SetDialougeContent;
-        FunctionNPC.onTalkStart += SetDialougeContent;
-
-        FunctionNPC.onDialogueStart -= DialoguePanel.NpcQuestListPanel.ActiveQuestButton;
-        FunctionNPC.onDialogueStart += DialoguePanel.NpcQuestListPanel.ActiveQuestButton;
-
-        FunctionNPC.onDialogueEnd -= DialoguePanel.NpcQuestListPanel.InavtiveQuestButton;
-        FunctionNPC.onDialogueEnd += DialoguePanel.NpcQuestListPanel.InavtiveQuestButton;
-        #endregion
-
-        // PlayerData Event
-        CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
-        {
-            StatusPopUp.ClassText.text = playerData.PlayerClass;
-            StatusPopUp.LevelText.text = playerData.Level.ToString();
-
-            float expRatio = playerData.CurrentExperience / playerData.MaxExperience;
-            UserPanel.SetUserExpBar(expRatio);
-
-            StatusPopUp.StatPointText.text = playerData.StatPoint.ToString();
-            StatusPopUp.StrengthText.text = playerData.Strength.ToString();
-            StatusPopUp.VitalityText.text = playerData.Vitality.ToString();
-            StatusPopUp.DexterityText.text = playerData.Dexterity.ToString();
-            StatusPopUp.LuckText.text = playerData.Luck.ToString();
-        };
-
-        // CharacterStats Event
-        CharacterStats.OnCharacterStatsChanged += (CharacterStats characterStats) =>
-        {
-            StatusPopUp.AttackPowerText.text = characterStats.AttackPower.ToString();
-            StatusPopUp.DefensivePowerText.text = characterStats.DefensivePower.ToString();
-
-            StatusPopUp.HitPointText.text = characterStats.CurrentHitPoint.ToString("F1") + "/" + characterStats.MaxHitPoint.ToString();
-            float ratio = characterStats.CurrentHitPoint / characterStats.MaxHitPoint;
-            UserPanel.SetUserHPBar(ratio);
-
-            StatusPopUp.StaminaText.text = characterStats.CurrentStamina.ToString("F1") + "/" + characterStats.MaxStamina.ToString();
-            ratio = characterStats.CurrentStamina / characterStats.MaxStamina;
-            UserPanel.SetUserStaminaBar(ratio);
-
-            StatusPopUp.AttackSpeedText.text = characterStats.AttackSpeed.ToString();
-            StatusPopUp.MoveSpeedText.text = characterStats.MoveSpeed.ToString();
-            StatusPopUp.CriticalChanceText.text = characterStats.CriticalChance.ToString();
-            StatusPopUp.CriticalDamageText.text = characterStats.CriticalDamage.ToString();
-        };
-
-        OpenAllUI();
-        CloseAllUI();
+            for (int i = 0; i < popups.Length; ++i)
+            {
+                popups[i].OnFocus -= FocusPopup;
+                popups[i].OnFocus += FocusPopup;
+            }
+        }
     }
 
     public void Update()
     {
-        if (isNotice == false && systemNoticeQueue.Count != 0)
-        {
-            isNotice = true;
-            noticeTime += Time.deltaTime;
-            SystemNoticePanel.SystemNoticeText.text = systemNoticeQueue.Dequeue();
-            OpenPanel(PANEL_TYPE.SYSTEM_NOTICE);
-
-            if(noticeTime >= GameConstants.TIME_CLIENT_NOTICE)
-            {
-                isNotice = false;
-                noticeTime = 0f;
-                ClosePanel(PANEL_TYPE.SYSTEM_NOTICE);
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (currentPopUpLinkedList.Count > 0)
             {
-                ClosePopUp(currentPopUpLinkedList.First.Value.PopupType);
+                ClosePopup(currentPopUpLinkedList.First.Value.PopupType);
             }
 
             else
@@ -234,33 +83,66 @@ public class UIManager
         {
             if (Input.GetKeyDown(KeyCode.O))
             {
-                TogglePopUp(POPUP_TYPE.SETTING);
+                TogglePopup(POPUP.OptionPopup);
             }
 
             if (Input.GetKeyDown(KeyCode.I))
             {
-                TogglePopUp(POPUP_TYPE.INVENTORY);
+                TogglePopup(POPUP.InventoryPopup);
             }
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                TogglePopUp(POPUP_TYPE.STATUS);
+                TogglePopup(POPUP.StatusPopup);
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                TogglePopUp(POPUP_TYPE.QUEST);
+                TogglePopup(POPUP.QuestPopup);
             }
             if (Input.GetKeyDown(KeyCode.H))
             {
-                TogglePopUp(POPUP_TYPE.HELP);
+                TogglePopup(POPUP.HelpPopup);
             }
+        }
+    }
+
+    public void BindUI<T>(System.Type type, Dictionary<System.Type, T[]> dictionary) where T : UIBase
+    {
+        string[] uiNameArray = System.Enum.GetNames(type);
+        T[] uiArray = new T[uiNameArray.Length];
+        dictionary.Add(typeof(T), uiArray);
+
+        for (int i = 0; i < uiArray.Length; i++)
+        {
+            uiArray[i] = GameFunction.FindChild<T>(canvas.gameObject, uiNameArray[i], true);
+            if (uiArray[i] == null)
+            {
+                Debug.Log($"Failed to bind({uiNameArray[i]})");
+            }
+        }
+    }
+    public T GetUI<T>(int index, Dictionary<System.Type, T[]> dictionary) where T : UIBase
+    {
+        if (dictionary.TryGetValue(typeof(T), out T[] uiArray) == false)
+        {
+            return null;
+        }
+        else
+        {
+            return uiArray[index];
         }
     }
 
     public void RequestNotice(string content)
     {
-        systemNoticeQueue.Enqueue(content);
+        OnRequestNotice(content);
+    }
+    public void RequestConfirm(string content, UnityAction action)
+    {
+        ConfirmPopup.OnConfirm -= action;
+        ConfirmPopup.OnConfirm += action;
+        OpenPopup(POPUP.ConfirmPopup);
     }
 
     public void NoticeQuestState(Quest quest)
@@ -276,215 +158,125 @@ public class UIManager
         }
     }
 
-    public void SetDialougeContent(string npcName, string dialogueData)
-    {
-        DialoguePanel.SetDialogueText(npcName, dialogueData);
-        OpenPanel(PANEL_TYPE.DIALOGUE);
-    }
-
-    #region PopUp Function
-    public void FocusPopUp(Popup popUp)
+    #region Popup Function
+    public void FocusPopup(UIPopup popUp)
     {
         currentPopUpLinkedList.Remove(popUp);
         currentPopUpLinkedList.AddFirst(popUp);
-        RefreshPopUpOrder();
+        RefreshPopupOrder();
     }
 
-    public void RefreshPopUpOrder()
+    public void RefreshPopupOrder()
     {
-        foreach (Popup popUp in currentPopUpLinkedList)
+        foreach (UIPopup popUp in currentPopUpLinkedList)
         {
             popUp.transform.SetAsFirstSibling();
         }
     }
-
-    public void TogglePopUp(POPUP_TYPE popUpType)
+    public void OpenPopup(POPUP popupType)
     {
-        if (popupDictionary[popUpType].gameObject.activeSelf)
-        {
-            ClosePopUp(popUpType);
-        }
-        else
-        {
-            OpenPopUp(popUpType);
-        }
-    }
+        UIPopup popup = GetUI((int)popupType, popupDictionary);
 
-    public void TogglePopUp(Popup popUp)
-    {
-        TogglePopUp(popUp.PopupType);
-    }
-    #endregion
-
-    #region UI Open & Close Function
-    public void OpenPopUp(POPUP_TYPE popUpType)
-    {
-        if (Managers.GameManager.CurrentCharacter.isActiveAndEnabled)
+        if (currentPopUpLinkedList.Contains(popup) == false)
         {
-            InteractPlayer(true);
+            PlayPopupOpenSFX();
+            currentPopUpLinkedList.AddFirst(popup);
+            popup.gameObject.SetActive(true);
         }
 
-        if(currentPopUpLinkedList.Contains(popupDictionary[popUpType]) == false)
-        {
-            Managers.AudioManager.PlaySFX("PopUp Open");
-            currentPopUpLinkedList.AddFirst(popupDictionary[popUpType]);
-            popupDictionary[popUpType].gameObject.SetActive(true);
-        }
-        
-        RefreshPopUpOrder();
+        RefreshPopupOrder();
         Managers.GameManager.SetCursorMode(CURSOR_MODE.UNLOCK);
     }
 
-    public void ClosePopUp(POPUP_TYPE popUpType)
+    public void ClosePopup(POPUP popupType)
     {
-        if (currentPopUpLinkedList.Contains(popupDictionary[popUpType]) == true)
+        UIPopup popup = GetUI((int)popupType, popupDictionary);
+
+        if (currentPopUpLinkedList.Contains(popup) == true)
         {
-            Managers.AudioManager.PlaySFX("PopUp Close");
-            currentPopUpLinkedList.Remove(popupDictionary[popUpType]);
-            popupDictionary[popUpType].gameObject.SetActive(false);
+            PlayPopupCloseSFX();
+            currentPopUpLinkedList.Remove(popup);
+            popup.gameObject.SetActive(false);
         }
-        
-        RefreshPopUpOrder();
+
+        RefreshPopupOrder();
 
         if (currentPopUpLinkedList.Count == 0)
         {
             Managers.GameManager.SetCursorMode(CURSOR_MODE.LOCK);
-            if (Managers.GameManager.CurrentCharacter.isActiveAndEnabled)
-            {
-                InteractPlayer(false);
-            }
         }
     }
-    public void OpenPanel(PANEL_TYPE panelType)
+    public void TogglePopup(POPUP popupType)
     {
-        if(panelType == PANEL_TYPE.DIALOGUE)
+        UIPopup popup = GetUI((int)popupType, popupDictionary);
+        if (popup.gameObject.activeSelf)
         {
-            if (Managers.GameManager.CurrentCharacter.isActiveAndEnabled)
-            {
-                InteractPlayer(true);
-            }
+            ClosePopup(popupType);
+        }
+        else
+        {
+            OpenPopup(popupType);
+        }
+    }
+
+    public void TogglePopup(UIPopup popUp)
+    {
+        TogglePopup(popUp.PopupType);
+    }
+    #endregion
+
+    #region Panel Function
+    public void OpenPanel(PANEL panelType)
+    {
+        UIPanel panel = GetUI((int)panelType, panelDictionary);
+
+        if (panelType == PANEL.DialoguePanel)
+        {
             Managers.GameManager.SetCursorMode(CURSOR_MODE.UNLOCK);
         }
-        panelDictionary[panelType].gameObject.SetActive(true);
+        panel.gameObject.SetActive(true);
     }
-    public void ClosePanel(PANEL_TYPE panelType)
+    public void ClosePanel(PANEL panelType)
     {
-        if (panelType == PANEL_TYPE.DIALOGUE)
+        UIPanel panel = GetUI((int)panelType, panelDictionary);
+
+        if (panelType == PANEL.DialoguePanel)
         {
-            if (Managers.GameManager.CurrentCharacter.isActiveAndEnabled)
-            {
-                InteractPlayer(false);
-            }
             Managers.GameManager.SetCursorMode(CURSOR_MODE.LOCK);
         }
-        panelDictionary[panelType].gameObject.SetActive(false);
-    }    
-
-    public void OpenAllUI()
-    {
-        for(int i=0; i<(int)PANEL_TYPE.SIZE; ++i)
-        {
-            OpenPanel((PANEL_TYPE)i);
-        }
-
-        for (int i=0; i<(int)POPUP_TYPE.SIZE; ++i)
-        {
-            OpenPopUp((POPUP_TYPE)i);
-        }
+        panel.gameObject.SetActive(false);
     }
+    #endregion
+
+
     public void CloseAllUI()
     {
-        for (int i = 0; i < panelList.Count; ++i)
+        for (int i = 0; i < panelDictionary.Count; ++i)
         {
-            ClosePanel((PANEL_TYPE)i);
+            ClosePanel((PANEL)i);
         }
 
-        for (int i = 0; i < popUpList.Count; ++i)
+        for (int i = 0; i < popupDictionary.Count; ++i)
         {
-            ClosePopUp((POPUP_TYPE)i);
+            ClosePopup((POPUP)i);
         }
+    }
+
+    #region UI SFX Function
+    public void PlayPopupOpenSFX()
+    {
+        Managers.AudioManager.PlaySFX("Popup Open");
+    }
+    public void PlayPopupCloseSFX()
+    {
+        Managers.AudioManager.PlaySFX("Popup Close");
     }
     #endregion
 
     #region Property
-    public GameObject RootObject
+    public Canvas Canvas
     {
-        get => rootObject;
-    }
-    public TitlePanel TitlePanel
-    {
-        get { return titlePanel; }
-        private set { titlePanel = value; }
-    }
-    public DialoguePanel DialoguePanel
-    {
-        get { return dialoguePanel; }
-        private set { dialoguePanel = value; }
-    }
-    public UserPanel UserPanel
-    {
-        get { return userPanel; }
-        private set { userPanel = value; }
-    }
-    public CampaignPopup CampaignPopUp
-    {
-        get { return campaignPopUp; }
-        private set { campaignPopUp = value; }
-    }
-    public SystemNoticePanel SystemNoticePanel
-    {
-        get { return systemNoticePanel; }
-        private set { systemNoticePanel = value; }
-    }
-    public ConfirmPanel ConfirmPanel
-    {
-        get { return confirmPanel; }
-        private set { confirmPanel = value; }
-    }
-    public EntrancePanel EntrancePanel
-    {
-        get { return entrancePanel; }
-        private set { entrancePanel = value; }
-    }
-    public ReturnPopup ReturnPopup
-    {
-        get { return returnPanel; }
-        private set { returnPanel = value; }
-    }
-    public BossPanel BossPanel
-    {
-        get { return bossPanel; }
-        private set { bossPanel = value; }
-    }
-    public StatusPopup StatusPopUp
-    {
-        get { return statusPopUp; }
-        private set { statusPopUp = value; }
-    }
-    public InventoryPopup InventoryPopUp
-    {
-        get { return inventoryPopUp; }
-        private set { inventoryPopUp = value; }
-    }
-    public SettingPopup SettingPopUp
-    {
-        get { return settingPopUp; }
-        private set { settingPopUp = value; }
-    }
-    public HelpPopup HelpPopUp
-    {
-        get { return helpPopUp; }
-        private set { helpPopUp = value; }
-    }
-    public QuestPopup QuestPopUp
-    {
-        get { return questPopUp; }
-        private set { questPopUp = value; }
-    }
-    public StorePopup StorePopUp
-    {
-        get { return storePopUp; }
-        private set { storePopUp = value; }
+        get { return canvas; }
     }
     #endregion
 }

@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DungeonScene : MonoBehaviour
+public class DungeonScene : BaseScene
 {
-    [SerializeField] private SCENE_TYPE sceneType;
-    [SerializeField] private string sceneName;
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private MonsterSpawnController[] normalMonsterSpawnPoint;
     [SerializeField] private BossRoomController bossRoomController;
 
     private int spawnOrder;
 
-    private void Awake()
+    protected override void Awake()
     {
-        spawnOrder = 0;
+        base.Awake();
+        sceneType = SCENE_TYPE.DUNGEON;
+    }
 
-        if(normalMonsterSpawnPoint.Length > 0)
+    public override void Initialize()
+    {
+        base.Initialize();
+        Managers.UIManager.OpenPanel(PANEL.UserPanel);
+
+        //Managers.UIManager.EntrancePanel.EntranceText.text = sceneName;
+        //Managers.UIManager.EntrancePanel.gameObject.SetActive(true);
+
+        spawnOrder = 0;
+        if (normalMonsterSpawnPoint.Length > 0)
         {
-            for(int i=0; i<normalMonsterSpawnPoint.Length; ++i)
+            for (int i = 0; i < normalMonsterSpawnPoint.Length; ++i)
             {
                 normalMonsterSpawnPoint[i].OnSpawn += ActiveNextSpawnPoint;
             }
@@ -31,12 +40,6 @@ public class DungeonScene : MonoBehaviour
         {
             bossRoomController.gameObject.SetActive(true);
         }
-    }
-
-    private void Start()
-    {
-        Managers.UIManager.EntrancePanel.EntranceText.text = sceneName;
-        Managers.UIManager.EntrancePanel.gameObject.SetActive(true);
     }
 
     public void ActiveNextSpawnPoint()

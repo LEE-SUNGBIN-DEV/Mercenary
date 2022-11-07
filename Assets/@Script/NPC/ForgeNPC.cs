@@ -15,6 +15,6 @@ public class ForgeNPC : FunctionNPC
 
     public override void ActiveNPCFunctionButton()
     {
-        Managers.UIManager.DialoguePanel.ActiveNPCButton("대장간");
+        //Managers.UIManager.DialoguePanel.ActiveNPCButton("대장간");
     }
 }

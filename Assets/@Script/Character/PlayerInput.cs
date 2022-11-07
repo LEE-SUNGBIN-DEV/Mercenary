@@ -5,25 +5,25 @@ using UnityEngine.Events;
 
 public class PlayerInput
 {
-    public UnityAction<PlayerInput> OnPlayerInput;
+    public event UnityAction<PlayerInput> OnPlayerInput;
 
     private Vector3 moveInput;
 
-    [SerializeField] private bool isMouseLeftDown;
-    [SerializeField] private bool isMouseLeftUp;
-    [SerializeField] private bool isMouseRightDown;
-    [SerializeField] private bool isMouseRightUp;
+    private bool isMouseLeftDown;
+    private bool isMouseLeftUp;
+    private bool isMouseRightDown;
+    private bool isMouseRightUp;
 
-    [SerializeField] private bool isLeftShiftKeyDown;
-    [SerializeField] private bool isSpaceKeyDown;
-    [SerializeField] private bool isEscapeKeyDown;
+    private bool isLeftShiftKeyDown;
+    private bool isSpaceKeyDown;
+    private bool isEscapeKeyDown;
 
-    [SerializeField] private bool isRKeyDown;
-    [SerializeField] private bool isOKeyDown;
-    [SerializeField] private bool isIKeyDown;
-    [SerializeField] private bool isTKeyDown;
-    [SerializeField] private bool isQKeyDown;
-    [SerializeField] private bool isHKeyDown;
+    private bool isRKeyDown;
+    private bool isOKeyDown;
+    private bool isIKeyDown;
+    private bool isTKeyDown;
+    private bool isQKeyDown;
+    private bool isHKeyDown;
 
     // »ý¼ºÀÚ
     public PlayerInput()

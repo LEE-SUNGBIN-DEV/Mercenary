@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Managers : Singleton<Managers>
 {
+    private bool isInitialized = false;
+    private bool isCanvasLoaded = false;
+
     private GameManager gameManager = new GameManager();
     private GameSceneManager gameSceneManager = new GameSceneManager();
     private ResourceManager resourceManager = new ResourceManager();
@@ -28,11 +32,38 @@ public class Managers : Singleton<Managers>
 
     public override void Initialize()
     {
+        if(isInitialized == true)
+        {
+            Debug.Log("[Managers] Already Initialized.");
+            return;
+        }
+
+        isInitialized = true;
+
+        // UI Canvas ·Îµå
+        GameObject canvas = GameObject.Find("@UI Canvas");
+        if (canvas == null)
+        {
+            ResourceManager.InstantiatePrefab("@UI Canvas", this.transform,
+                (GameObject gameObject) =>
+                {
+                    canvas = gameObject;
+                    uiManager.Initialize(canvas);
+                    isCanvasLoaded = true;
+                });
+        }
+        else
+        {
+            uiManager.Initialize(canvas);
+            canvas.transform.SetParent(this.transform);
+            isCanvasLoaded = true;
+        }
+
         gameManager.Initialize();
         gameSceneManager.Initialize();
         resourceManager.Initialize();
+
         /*
-        uiManager.Initialize();
         audioManager.Initialize();
         dataManager.Initialize();
         npcManager.Initialize();
@@ -41,16 +72,30 @@ public class Managers : Singleton<Managers>
         itemManager.Initialize();
         objectPoolManager.Initialize(gameObject);
         */
+
+        StartCoroutine(GameFunction.WaitAsyncOperation(IsLoaded, () =>
+        {
+            Debug.Log("[Managers] Initialization Complete!");
+        }));
     }
+
+    public bool IsLoaded()
+    {
+        if (isCanvasLoaded == false)
+            return false;
+
+        return true;
+    }
+    
 
     #region Property
     public static GameManager GameManager
     {
-        get => Instance?.gameManager;
+        get { return Instance?.gameManager; }
     }
     public static GameSceneManager GameSceneManager
     {
-        get => Instance?.gameSceneManager;
+        get { return Instance?.gameSceneManager; }
     }
     public static ResourceManager ResourceManager
     {
@@ -58,35 +103,35 @@ public class Managers : Singleton<Managers>
     }
     public static UIManager UIManager
     {
-        get => Instance?.uiManager;
+        get { return Instance?.uiManager; }
     }
     public static AudioManager AudioManager
     {
-        get => Instance?.audioManager;
+        get { return Instance?.audioManager; }
     }
     public static DataManager DataManager
     {
-        get => Instance?.dataManager;
+        get { return Instance?.dataManager; }
     }
     public static NPCManager NPCManager
     {
-        get => Instance?.npcManager;
+        get { return Instance?.npcManager; }
     }
     public static DialogueManager DialogueManager
     {
-        get => Instance?.dialogueManager;
+        get { return Instance?.dialogueManager; }
     }
     public static QuestManager QuestManager
     {
-        get => Instance?.questManager;
+        get { return Instance?.questManager; }
     }
     public static ItemManager ItemManager
     {
-        get => Instance?.itemManager;
+        get { return Instance?.itemManager; }
     }
     public static ObjectPoolManager ObjectPoolManager
     {
-        get => Instance?.objectPoolManager;
+        get { return Instance?.objectPoolManager; }
     }
     #endregion
 }

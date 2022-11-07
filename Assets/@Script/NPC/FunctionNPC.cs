@@ -149,7 +149,7 @@ public abstract class FunctionNPC : NPC, ITalkable
         CloseNPCUI();
 
         DialoguePanel.onClickFunctionButton -= OpenNPCUI;
-        Managers.UIManager.ClosePanel(PANEL_TYPE.DIALOGUE);
+        Managers.UIManager.ClosePanel(PANEL.DialoguePanel);
     }
 
     public abstract void OpenNPCUI();

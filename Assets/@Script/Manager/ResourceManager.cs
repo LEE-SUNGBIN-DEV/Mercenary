@@ -21,6 +21,16 @@ public class ResourceManager
         
     }
 
+    public void InstantiatePrefab(string key, Transform parent = null, UnityAction <GameObject> callback = null)
+    {
+        LoadResourceAsync<GameObject>(key, (GameObject targetPrefab) =>
+        {
+            GameObject newObject = GameObject.Instantiate(targetPrefab, parent);
+            newObject.name = targetPrefab.name;
+            newObject.transform.localPosition = targetPrefab.transform.position;
+            callback?.Invoke(newObject);
+        });
+    }
     public void LoadResourceAsync<T>(string key, UnityAction<T> callback = null) where T : Object
     {
         if(resourceDictionary.TryGetValue(key, out Object resource) == true)

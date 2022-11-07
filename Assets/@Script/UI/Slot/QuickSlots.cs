@@ -30,7 +30,7 @@ public class QuickSlots : MonoBehaviour
 
     private void Update()
     {
-        if (Managers.UIManager.UserPanel.enabled)
+        if (Managers.GameSceneManager.CurrentScene.SceneType == SCENE_TYPE.DUNGEON)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {

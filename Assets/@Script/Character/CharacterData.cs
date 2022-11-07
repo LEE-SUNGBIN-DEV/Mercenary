@@ -98,7 +98,7 @@ public class CharacterData : MonoBehaviour
 
     public void RefreshData()
     {
-        PlayerClass = characterClass;
+        CharacterClass = characterClass;
         Level = level;
         CurrentExperience = currentExperience;
         MaxExperience = maxExperience;
@@ -179,7 +179,7 @@ public class CharacterData : MonoBehaviour
 
     public void LoadPlayerData(PlayerSaveData playerSaveData)
     {
-        PlayerClass = playerSaveData.playerClass;
+        CharacterClass = playerSaveData.playerClass;
         Level = playerSaveData.level;
         CurrentExperience = playerSaveData.currentExperience;
         MaxExperience = playerSaveData.maxExperience;
@@ -195,7 +195,7 @@ public class CharacterData : MonoBehaviour
     }
 
     #region Property
-    public string PlayerClass
+    public string CharacterClass
     {
         get { return characterClass; }
         set

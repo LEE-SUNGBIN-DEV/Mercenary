@@ -9,19 +9,19 @@ public class CharacterStats
     public static event UnityAction<CharacterStats> OnCharacterStatsChanged;
     public static event UnityAction<CharacterStats> OnDie;
 
-    [SerializeField] private Character character;
-    [SerializeField] private float attackPower;
-    [SerializeField] private float defensivePower;
+    private Character character;
+    private float attackPower;
+    private float defensivePower;
 
-    [SerializeField] private float maxHitPoint;
-    [SerializeField] private float currentHitPoint;
-    [SerializeField] private float maxStamina;
-    [SerializeField] private float currentStamina;
+    private float maxHitPoint;
+    private float currentHitPoint;
+    private float maxStamina;
+    private float currentStamina;
 
-    [SerializeField] private float criticalChance;
-    [SerializeField] private float criticalDamage;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private float moveSpeed;
+    private float criticalChance;
+    private float criticalDamage;
+    private float attackSpeed;
+    private float moveSpeed;
 
     // »ý¼ºÀÚ
     public CharacterStats(Character character)

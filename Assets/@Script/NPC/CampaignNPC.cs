@@ -6,15 +6,15 @@ public class CampaignNPC : FunctionNPC
 {
     public override void OpenNPCUI()
     {
-        Managers.UIManager.OpenPopUp(POPUP_TYPE.CAMPAIGN);
+        Managers.UIManager.OpenPopup(POPUP.CampaignPopup);
     }
     public override void CloseNPCUI()
     {
-        Managers.UIManager.ClosePopUp(POPUP_TYPE.CAMPAIGN);
+        Managers.UIManager.ClosePopup(POPUP.CampaignPopup);
     }
 
     public override void ActiveNPCFunctionButton()
     {
-        Managers.UIManager.DialoguePanel.ActiveNPCButton("출정");
+        //Managers.UIManager.DialoguePanel.ActiveNPCButton("출정");
     }
 }

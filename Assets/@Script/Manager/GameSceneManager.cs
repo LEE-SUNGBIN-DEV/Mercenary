@@ -19,15 +19,20 @@ public class GameSceneManager
         return sceneList.GetEnumName();
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadSceneFade(string sceneName)
+    {
+
+        OnLoadScene?.Invoke();
+    }
+    public void LoadSceneAsync(string sceneName)
     {
         OnLoadScene?.Invoke();
         LoadingManager.LoadScene(sceneName);
     }
 
-    public void LoadScene(SCENE_LIST requestScene)
+    public void LoadSceneAsync(SCENE_LIST requestScene)
     {
-        LoadScene(requestScene.GetEnumName());
+        LoadSceneAsync(requestScene.GetEnumName());
     }
 
     #region Property

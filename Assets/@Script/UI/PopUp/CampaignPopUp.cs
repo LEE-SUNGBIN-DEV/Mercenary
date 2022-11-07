@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class CampaignPopup : Popup
+public class CampaignPopup : UIPopup
 {
     [SerializeField] private Button forestButton;
     [SerializeField] private Button templeButton;
@@ -22,7 +22,7 @@ public class CampaignPopup : Popup
     public void CampaignButton(SCENE_LIST scene)
     {
         Managers.AudioManager.PlaySFX("Button Click");
-        Managers.GameSceneManager.LoadScene(scene);
+        Managers.GameSceneManager.LoadSceneAsync(scene);
     }
 
     public void SetForestButton(bool isEnable)

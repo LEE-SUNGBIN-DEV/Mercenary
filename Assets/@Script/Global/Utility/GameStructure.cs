@@ -32,6 +32,7 @@ public enum SCENE_LIST
 {
     // Common
     Title,
+    Selection,
 
     // Chapter 01
     Forestia,
@@ -45,6 +46,7 @@ public enum SCENE_TYPE
 {
     UNKNOWN,
     TITLE,
+    SELECTION,
     VILIAGE,
     DUNGEON,
     LOADING,
@@ -106,4 +108,10 @@ public enum CURSOR_MODE
 {
     LOCK,
     UNLOCK
+}
+
+public enum UI_EVENT
+{
+    CLICK,
+    PRESS
 }

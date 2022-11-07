@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78934177bebe0545ab566bb787b0282, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 28d04194f1a8cfc4284a7b5a1e5ebc17, type: 3}
+  Title: Parallax Mapping
+  Description:
+    Heading: 
+    Text: This sample performs regular parallax mapping according to a given heightmap.
+    LinkText: 
+    Url: 
+  PropertiesHeader:
+    Heading: Properties
+    Text: 
+    LinkText: 
+    Url: 
+  Properties:
+  - Heading: Tiling
+    Text: Amount of tiling to apply across all textures.
+    LinkText: 
+    Url: 
+  - Heading: Albedo
+    Text: Albedo texture to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Normal
+    Text: Normals texture to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Normal Scale
+    Text: Amount of scaling applied to normals.
+    LinkText: 
+    Url: 
+  - Heading: Metallic
+    Text: Metallic texture to be applied to surface. (Only R channel used)
+    LinkText: 
+    Url: 
+  - Heading: Metallic Amount
+    Text: Extra metallic amount added on top of given by texture.
+    LinkText: 
+    Url: 
+  - Heading: Smoothness
+    Text: Smoothness texture to be applied to surface. (Only R channel used)
+    LinkText: 
+    Url: 
+  - Heading: Smoothness Scale
+    Text: Scale value to be applied over texture value.
+    LinkText: 
+    Url: 
+  - Heading: Occlusion
+    Text: Occlusion texture to be applied to surface. (Only R channel used)
+    LinkText: 
+    Url: 
+  - Heading: HeightMap
+    Text: Texture containg heigh information to be used by parallax mapping.
+    LinkText: 
+    Url: 
+  - Heading: Parallax
+    Text: Scale value to be applied over the parallax effect.
+    LinkText: 
+    Url: 
+  AdditionalProperties: []
+  AdditionalScripts: []
+  LoadedLayout: 0
+  RPType: 2

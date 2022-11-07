@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-public class QuestPopup : Popup
+public class QuestPopup : UIPopup
 {
     #region Event
     public static event UnityAction<QuestPopup> onClickAcceptButton;

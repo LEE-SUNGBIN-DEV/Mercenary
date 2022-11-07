@@ -1,3 +1,3 @@
-public class StorePopup : Popup
+public class StorePopup : UIPopup
 {
 }

@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78934177bebe0545ab566bb787b0282, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 136a776aeff9cae4c815844b50e93199, type: 3}
+  Title: Substance
+  Description:
+    Heading: 
+    Text: Substance based tile material with noise variation based on world position.
+      Import Allegorithmic's Substance plugin before using.
+    LinkText: 
+    Url: 
+  PropertiesHeader:
+    Heading: Properties
+    Text: 
+    LinkText: 
+    Url: 
+  Properties:
+  - Heading: Assembly_Tiles - height
+    Text: 'Substance Height map output used for displacement control. '
+    LinkText: 
+    Url: 
+  - Heading: Assembly_Tiles - ambientOcclusion
+    Text: Tile Substance Occlusion map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Moss - roughness
+    Text: Moss substance Smoothness map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Assembly_Tiles - roughness
+    Text: Substance Roughness map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Moss - baseColor
+    Text: Moss Substance Albedo map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Assembly_Tiles - baseColor
+    Text: Tile Substance Albedo map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Moss - normal
+    Text: Moss Substance Normals map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Assembly_Tiles - normal
+    Text: Tile Substance Normals map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Assembly_Tiles - mask
+    Text: Substance extra noise map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Max Tessellation
+    Text: Maximum tessellation amount.
+    LinkText: 
+    Url: 
+  - Heading: Phong Tess Strength
+    Text: Modifies the positions of the subdivided faces so that the resulting surface
+      follows the mesh normals a bit; set to OFF by Default.
+    LinkText: 
+    Url: 
+  - Heading: Assembly_Tiles_noisemask
+    Text: Substance extra noise map output to be applied to surface.
+    LinkText: 
+    Url: 
+  - Heading: Moss Coverage Hardness
+    Text: Moss coverage falloff softness.
+    LinkText: 
+    Url: 
+  - Heading: Moss Coverage
+    Text: Moss coverage amount.
+    LinkText: 
+    Url: 
+  - Heading: Moss Tint
+    Text: Moss color tint value.
+    LinkText: 
+    Url: 
+  - Heading: Moss Extra Tweak
+    Text: Moss intensity multiplier.
+    LinkText: 
+    Url: 
+  - Heading: Moss Roughness Tweak
+    Text: 'Moss smoothness value multiplier. '
+    LinkText: 
+    Url: 
+  - Heading: Darken Moss
+    Text: Moss albedo multiplier, influences overall brightness.
+    LinkText: 
+    Url: 
+  - Heading: Tile Tint
+    Text: Tile tint color value.
+    LinkText: 
+    Url: 
+  - Heading: Tile Height
+    Text: Tile displacement amount.
+    LinkText: 
+    Url: 
+  - Heading: Tile Noise
+    Text: Base noise tiling amount.
+    LinkText: 
+    Url: 
+  - Heading: Base Substance Roughness Multiplier
+    Text: 'Base Substance smoothness map output multiplier. '
+    LinkText: 
+    Url: 
+  - Heading: Substance Albedo Tweak
+    Text: Noise map influence on base Albedo.
+    LinkText: 
+    Url: 
+  - Heading: Occlusion Intensity
+    Text: 'Occlusion intensity value. '
+    LinkText: 
+    Url: 
+  AdditionalProperties:
+  - BlockHeader:
+      Heading: WARNING
+      Text: 'Substance sample made specifically for Unity 2018 or above. Please note
+        that it uses Allegorithmic''s Substance in Unity plugin available at:'
+      LinkText: Unity Asset Store
+      Url: https://assetstore.unity.com/packages/tools/utilities/substance-in-unity-110555
+    BlockContent: []
+  AdditionalScripts: []
+  LoadedLayout: 0
+  RPType: 2
