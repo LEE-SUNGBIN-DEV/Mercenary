@@ -35,9 +35,7 @@ public class UIBase : MonoBehaviour
     // Getting Function
     public T GetObject<T>(int index) where T : Object
     {
-        Object[] uiObjectArray = null;
-
-        if(uiObjectDictionary.TryGetValue(typeof(T), out uiObjectArray) == false)
+        if(uiObjectDictionary.TryGetValue(typeof(T), out Object[] uiObjectArray) == false)
         {
             return null;
         }

@@ -12,15 +12,15 @@ public class Inventory : MonoBehaviour
     {
         slots = GetComponentsInChildren<Slot>();
 
-        CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
+        Managers.DataManager.CurrentCharacter.CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
         {
             MoneyText.text = playerData.Money.ToString();
         };
 
-        CharacterData.onLoadPlayerData -= LoadPlayerInventory;
-        CharacterData.onLoadPlayerData += LoadPlayerInventory;
-        CharacterData.onSavePlayerData -= SavePlayerInventory;
-        CharacterData.onSavePlayerData += SavePlayerInventory;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData -= LoadPlayerInventory;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData += LoadPlayerInventory;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData -= SavePlayerInventory;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData += SavePlayerInventory;
     }
 
     public void AddItemToInventory(Item item, int itemCount = 1)
@@ -83,13 +83,13 @@ public class Inventory : MonoBehaviour
     }
 
     #region Save & Load
-    public void LoadPlayerInventory(PlayerSaveData playerSaveData)
+    public void LoadPlayerInventory(CharacterData characterData)
     {
         for (int i = 0; i < slots.Length; ++i)
         {
-            if (playerSaveData.inventoryItemNames != null)
+            if (characterData.InventoryItemNames != null)
             {
-                slots[i].LoadItem(Managers.ItemManager.FindItemFromList(playerSaveData.inventoryItemNames[i]), playerSaveData.inventoryItemCounts[i]);
+                slots[i].LoadItem(Managers.ItemManager.FindItemFromList(characterData.InventoryItemNames[i]), characterData.InventoryItemCounts[i]);
             }
 
             else
@@ -98,23 +98,23 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        MoneyText.text = playerSaveData.money.ToString();
+        MoneyText.text = characterData.Money.ToString();
     }
 
-    public void SavePlayerInventory(PlayerSaveData playerSaveData)
+    public void SavePlayerInventory(CharacterData characterData)
     {
         for (int i = 0; i < slots.Length; ++i)
         {
             if (slots[i].Item != null)
             {
-                playerSaveData.inventoryItemNames[i] = Slots[i].Item.ItemName;
-                playerSaveData.inventoryItemCounts[i] = Slots[i].ItemCount;
+                characterData.InventoryItemNames[i] = Slots[i].Item.ItemName;
+                characterData.InventoryItemCounts[i] = Slots[i].ItemCount;
             }
 
             else
             {
-                playerSaveData.inventoryItemNames[i] = null;
-                playerSaveData.inventoryItemCounts[i] = 0;
+                characterData.InventoryItemNames[i] = null;
+                characterData.InventoryItemCounts[i] = 0;
             }
         }
     }

@@ -12,7 +12,7 @@ public class UserPanel : UIPanel
 
     private void Awake()
     {
-        CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
+        Managers.DataManager.CurrentCharacter.CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
         {
             float expRatio = playerData.CurrentExperience / playerData.MaxExperience;
             SetUserExpBar(expRatio);

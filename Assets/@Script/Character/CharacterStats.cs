@@ -23,15 +23,14 @@ public class CharacterStats
     private float attackSpeed;
     private float moveSpeed;
 
-    // »ý¼ºÀÚ
-    public CharacterStats(Character character)
+    public CharacterStats(Character owner)
     {
-        this.character = character;
+        character = owner;
 
-        CharacterData.OnPlayerDataChanged -= UpdateStats;
-        CharacterData.OnPlayerDataChanged += UpdateStats;
+        character.CharacterData.OnPlayerDataChanged -= UpdateStats;
+        character.CharacterData.OnPlayerDataChanged += UpdateStats;
 
-        UpdateStats(this.character.CharacterData);
+        UpdateStats(character.CharacterData);
     }
 
     public void UpdateStats(CharacterData characterData)

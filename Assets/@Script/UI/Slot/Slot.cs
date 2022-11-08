@@ -167,7 +167,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                                     EquipmentItem clickedItem = Item as EquipmentItem;
                                     clickedItem.Toggle();
 
-                                    Managers.GameManager.CurrentCharacter.CharacterInventory.AddItemToInventory(clickedItem);
+                                    Managers.DataManager.CurrentCharacter.CharacterInventory.AddItemToInventory(clickedItem);
                                     ClearSlot();
                                     break;
                                 }

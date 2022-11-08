@@ -23,7 +23,7 @@ public class StatusPopup : UIPopup
 
     private void Awake()
     {
-        CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
+        Managers.DataManager.CurrentCharacter.CharacterData.OnPlayerDataChanged += (CharacterData playerData) =>
         {
             ClassText.text = playerData.CharacterClass;
             LevelText.text = playerData.Level.ToString();
@@ -53,36 +53,36 @@ public class StatusPopup : UIPopup
     #region Button Event Function
     public void IncreaseStrength()
     {
-        if (Managers.GameManager.CurrentCharacter.CharacterData.StatPoint > 0)
+        if (Managers.DataManager.CurrentCharacter.CharacterData.StatPoint > 0)
         {
-            --Managers.GameManager.CurrentCharacter.CharacterData.StatPoint;
-            ++Managers.GameManager.CurrentCharacter.CharacterData.Strength;
+            --Managers.DataManager.CurrentCharacter.CharacterData.StatPoint;
+            ++Managers.DataManager.CurrentCharacter.CharacterData.Strength;
         }
     }
     public void IncreaseVitality()
     {
-        if (Managers.GameManager.CurrentCharacter.CharacterData.StatPoint > 0)
+        if (Managers.DataManager.CurrentCharacter.CharacterData.StatPoint > 0)
         {
-            --Managers.GameManager.CurrentCharacter.CharacterData.StatPoint;
-            ++Managers.GameManager.CurrentCharacter.CharacterData.Vitality;
+            --Managers.DataManager.CurrentCharacter.CharacterData.StatPoint;
+            ++Managers.DataManager.CurrentCharacter.CharacterData.Vitality;
         }
     }
 
     public void IncreaseDexterity()
     {
-        if (Managers.GameManager.CurrentCharacter.CharacterData.StatPoint > 0)
+        if (Managers.DataManager.CurrentCharacter.CharacterData.StatPoint > 0)
         {
-            --Managers.GameManager.CurrentCharacter.CharacterData.StatPoint;
-            ++Managers.GameManager.CurrentCharacter.CharacterData.Dexterity;
+            --Managers.DataManager.CurrentCharacter.CharacterData.StatPoint;
+            ++Managers.DataManager.CurrentCharacter.CharacterData.Dexterity;
         }
     }
 
     public void IncreaseLuck()
     {
-        if (Managers.GameManager.CurrentCharacter.CharacterData.StatPoint > 0)
+        if (Managers.DataManager.CurrentCharacter.CharacterData.StatPoint > 0)
         {
-            --Managers.GameManager.CurrentCharacter.CharacterData.StatPoint;
-            ++Managers.GameManager.CurrentCharacter.CharacterData.Luck;
+            --Managers.DataManager.CurrentCharacter.CharacterData.StatPoint;
+            ++Managers.DataManager.CurrentCharacter.CharacterData.Luck;
         }
     }
     #endregion

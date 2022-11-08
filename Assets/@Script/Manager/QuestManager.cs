@@ -10,16 +10,15 @@ public class QuestManager
     public static event UnityAction<FunctionNPC> onRequestNPCQuestList;
     #endregion
 
-    [SerializeField] private Dictionary<uint, Quest> questDictionary;
+    [SerializeField] private Dictionary<uint, Quest> questDictionary = new Dictionary<uint, Quest>();
     [SerializeField] private Quest[] mainQuestDatabase;
     [SerializeField] private Quest[] subQuestDatabase;
 
-    [SerializeField] private List<Quest> inactiveQuestList;
-    [SerializeField] private List<Quest> activeQuestList;
-    [SerializeField] private List<Quest> acceptQuestList;
-    [SerializeField] private List<Quest> completeQuestList;
+    [SerializeField] private List<Quest> inactiveQuestList = new List<Quest>();
+    [SerializeField] private List<Quest> activeQuestList = new List<Quest>();
+    [SerializeField] private List<Quest> acceptQuestList = new List<Quest>();
+    [SerializeField] private List<Quest> completeQuestList = new List<Quest>();
     
-
     private void Start()
     {
         ClassifyByQuestState();
@@ -27,19 +26,13 @@ public class QuestManager
 
     public void Initialize()
     {
-        QuestDictionary = new Dictionary<uint, Quest>();
-        InactiveQuestList = new List<Quest>();
-        ActiveQuestList = new List<Quest>();
-        AcceptQuestList = new List<Quest>();
-        CompleteQuestList = new List<Quest>();
-
         AddAllQuestToDictionary();
 
         #region Add Event
-        CharacterData.onLoadPlayerData -= LoadQuest;
-        CharacterData.onLoadPlayerData += LoadQuest;
-        CharacterData.onSavePlayerData -= SaveQuest;
-        CharacterData.onSavePlayerData += SaveQuest;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData -= LoadQuest;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData += LoadQuest;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData -= SaveQuest;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData += SaveQuest;
 
         Managers.GameSceneManager.OnSceneLoaded -= RequestNPCQuestList;
         Managers.GameSceneManager.OnSceneLoaded += RequestNPCQuestList;
@@ -62,8 +55,8 @@ public class QuestManager
         QuestPopup.onClickCompleteButton -= RequestCompleteList;
         QuestPopup.onClickCompleteButton += RequestCompleteList;
 
-        CharacterData.onMainQuestProcedureChanged -= RefreshInactiveQuest;
-        CharacterData.onMainQuestProcedureChanged += RefreshInactiveQuest;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnMainQuestProcedureChanged -= RefreshInactiveQuest;
+        Managers.DataManager.CurrentCharacter.CharacterData.OnMainQuestProcedureChanged += RefreshInactiveQuest;
         #endregion
     }
 
@@ -180,12 +173,12 @@ public class QuestManager
     #endregion
 
     // 비활성화 목록을 검사하여 활성화 가능한 퀘스트가 있으면 활성화 리스트로 이동
-    public void RefreshInactiveQuest(CharacterData playerData)
+    public void RefreshInactiveQuest(CharacterData chracterData)
     {
         for (int i = 0; i < InactiveQuestList.Count; ++i)
         {
-            if (playerData.Level >= InactiveQuestList[i].LevelCondition
-                && playerData.MainQuestProcedure >= InactiveQuestList[i].QuestCondition)
+            if (chracterData.Level >= InactiveQuestList[i].LevelCondition
+                && chracterData.MainQuestProcedure >= InactiveQuestList[i].QuestCondition)
             {
                 InactiveQuestList[i].ActiveQuest();
                 --i;
@@ -232,24 +225,24 @@ public class QuestManager
     }
 
     #region Save & Load
-    public void SaveQuest(PlayerSaveData playerSaveData)
+    public void SaveQuest(CharacterData characterData)
     {
         for (int i = 0; i < MainQuestDatabase.Length; ++i)
         {
-            playerSaveData.questSaveList.Add(MainQuestDatabase[i].SaveQuest());
+            characterData.QuestSaveList.Add(MainQuestDatabase[i].SaveQuest());
         }
 
         for (int i = 0; i < SubQuestDatabase.Length; ++i)
         {
-            playerSaveData.questSaveList.Add(SubQuestDatabase[i].SaveQuest());
+            characterData.QuestSaveList.Add(SubQuestDatabase[i].SaveQuest());
         }
     }
 
-    public void LoadQuest(PlayerSaveData playerSaveData)
+    public void LoadQuest(CharacterData characterData)
     {
-        for (int i = 0; i < playerSaveData.questSaveList.Count; ++i)
+        for (int i = 0; i < characterData.QuestSaveList.Count; ++i)
         {
-            QuestDictionary[playerSaveData.questSaveList[i].questID].LoadQuest(playerSaveData.questSaveList[i]);
+            QuestDictionary[characterData.QuestSaveList[i].questID].LoadQuest(characterData.QuestSaveList[i]);
         }
     }
     #endregion
