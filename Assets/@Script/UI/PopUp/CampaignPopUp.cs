@@ -9,7 +9,7 @@ public class CampaignPopup : UIPopup
 
     private void Awake()
     {
-        CharacterData.onMainQuestProcedureChanged += (CharacterData playerData) =>
+        Managers.DataManager.CurrentCharacter.CharacterData.OnMainQuestProcedureChanged += (CharacterData playerData) =>
         {
             bool canEnable = playerData.MainQuestProcedure >= 1000 ? true : false;
             SetForestButton(canEnable);

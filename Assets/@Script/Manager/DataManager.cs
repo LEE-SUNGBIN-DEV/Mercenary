@@ -9,38 +9,32 @@ using Newtonsoft.Json;
 // 데이터 경로, 세이브, 로드를 관리해주는 클래스
 // ========================================================================
 
+[System.Serializable]
 public class DataManager
 {
-    #region Event
-    public static event UnityAction<PlayerSaveData> onLoadPlayerData;
-    public static event UnityAction<PlayerSaveData> onSavePlayerData;
-    #endregion
-    private Dictionary<int, float> levelDataDictionary;
-    private LevelTable levelData;
+    private Dictionary<int, float> levelTableDictionary = new Dictionary<int, float>();
+    private LevelTable levelTable;
 
     private string playerDataPath;
     private string levelDataPath;
 
+    [SerializeField] private PlayerData playerData = null;
+    private Character currentCharacter;
+
     public void Initialize()
     {
-        playerDataPath = Application.dataPath + "/PlayerSaveData.json";
+        playerDataPath = Application.dataPath + "/PlayerData.json";
         levelDataPath = Application.dataPath + "/LevelTable.json";
 
-        LevelDataDictionary = new Dictionary<int, float>();
         LoadLevelData();
-        for (int i = 0; i < levelData.MaxLevel; ++i)
+        for (int i = 0; i < levelTable.MaxLevel; ++i)
         {
-            LevelDataDictionary.Add(LevelData.Level[i], LevelData.MaxExperience[i]);
+            LevelDataDictionary.Add(LevelTable.Level[i], LevelTable.MaxExperience[i]);
         }
 
-        //Managers.GameManager.OnClickLoadGameButton -= LoadPlayerData;
-        //Managers.GameManager.OnClickLoadGameButton += LoadPlayerData;
-
-        Managers.GameManager.OnSaveGame -= SavePlayerData;
-        Managers.GameManager.OnSaveGame += SavePlayerData;
+        LoadPlayerData();
     }
 
-    #region Save & Load Function
     public bool FileCheck()
     {
         FileInfo loadFile = new FileInfo(playerDataPath);
@@ -52,37 +46,47 @@ public class DataManager
     public void LoadLevelData()
     {
         string jsonLevelData = File.ReadAllText(levelDataPath);
-        LevelData = JsonUtility.FromJson<LevelTable>(jsonLevelData);
+        levelTable = JsonUtility.FromJson<LevelTable>(jsonLevelData);
     }
 
     // Save & Load Player Data
     public void LoadPlayerData()
     {
-        string jsonPlayerData = File.ReadAllText(playerDataPath);
-        PlayerSaveData playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(jsonPlayerData);
-        onLoadPlayerData(playerSaveData);
+        if (FileCheck())
+        {
+            string jsonPlayerData = File.ReadAllText(playerDataPath);
+            playerData = JsonConvert.DeserializeObject<PlayerData>(jsonPlayerData);
+            Debug.Log($"{playerData.BgmVolume}");
+        }
+        else
+        {
+            playerData = new PlayerData(true);
+            SavePlayerData();
+        }
     }
 
     public void SavePlayerData()
     {
-        PlayerSaveData playerSaveData = new PlayerSaveData();
-        onSavePlayerData(playerSaveData);
-
-        string jsonPlayerData = JsonConvert.SerializeObject(playerSaveData, Formatting.Indented);
+        string jsonPlayerData = JsonConvert.SerializeObject(playerData, Formatting.Indented);
         File.WriteAllText(playerDataPath, jsonPlayerData);
     }
-    #endregion
 
     #region Property
-    public LevelTable LevelData
+    public LevelTable LevelTable
     {
-        get { return levelData; }
-        set { levelData = value; }
+        get { return levelTable; }
     }
     public Dictionary<int, float> LevelDataDictionary
     {
-        get { return levelDataDictionary; }
-        private set { levelDataDictionary = value; }
+        get { return levelTableDictionary; }
+    }
+    public PlayerData PlayerData
+    {
+        get { return playerData; }
+    }
+    public Character CurrentCharacter
+    {
+        get { return currentCharacter; }
     }
     #endregion
 }

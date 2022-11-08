@@ -15,4 +15,20 @@ public class TitleScene : BaseScene
         base.Initialize();
         Managers.UIManager.OpenPanel(PANEL.TitleScenePanel);
     }
+
+    public void PlayButtonClickSound()
+    {
+        Managers.AudioManager.PlaySFX("Button Click");
+    }
+
+    public void StartGame()
+    {
+        PlayButtonClickSound();
+    }
+
+    public void QuitGame()
+    {
+        PlayButtonClickSound();
+        Application.Quit();
+    }
 }

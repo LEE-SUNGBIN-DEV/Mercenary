@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class CharacterData : MonoBehaviour
+public class CharacterData
 {
     #region Event
-    public static event UnityAction<CharacterData> OnPlayerDataChanged;
-    public static event UnityAction<CharacterData> onMainQuestProcedureChanged;
-
-    public static event UnityAction<PlayerSaveData> onSavePlayerData;
-    public static event UnityAction<PlayerSaveData> onLoadPlayerData;
+    public event UnityAction<CharacterData> OnPlayerDataChanged;
+    public event UnityAction<CharacterData> OnMainQuestProcedureChanged;
+    public event UnityAction<CharacterData> OnSavePlayerData;
+    public event UnityAction<CharacterData> OnLoadPlayerData;
     #endregion
 
     [SerializeField] private string characterClass;
@@ -29,9 +28,6 @@ public class CharacterData : MonoBehaviour
     [SerializeField] private int dexterity;
     [SerializeField] private int luck;
 
-    // Main Quest
-    [SerializeField] private uint mainQuestProcedure;
-
     // Inventory
     [SerializeField] private int money;
     [SerializeField] private string[] inventoryItemNames;
@@ -45,16 +41,14 @@ public class CharacterData : MonoBehaviour
     [SerializeField] private string[] equipmentSlotItemNames;
     [SerializeField] private int[] equipmentSlotItemCounts;
 
+    // Main Quest
+    [SerializeField] private uint mainQuestProcedure;
+
     // Quest Save List
-    [SerializeField] private List<QuestSaveData> questSaveList;
+    [SerializeField] private List<QuestSaveData> questSaveList = new List<QuestSaveData>();
 
-    private void Awake()
+    public CharacterData(CHARACTER_CLASS selectedClass)
     {
-        DataManager.onLoadPlayerData -= LoadPlayerData;
-        DataManager.onLoadPlayerData += LoadPlayerData;
-        DataManager.onSavePlayerData -= SavePlayerData;
-        DataManager.onSavePlayerData += SavePlayerData;
-
         QuestManager.onCompleteQuest -= UpdateMainQuestProcedure;
         QuestManager.onCompleteQuest += UpdateMainQuestProcedure;
 
@@ -64,37 +58,51 @@ public class CharacterData : MonoBehaviour
         Enemy.onDie -= GetExperience;
         Enemy.onDie += GetExperience;
 
-        InventoryItemNames = new string[GameConstants.CHARACTER_INVENTORY_SLOT_COUNT];
-        InventoryItemCounts = new int[GameConstants.CHARACTER_INVENTORY_SLOT_COUNT];
+        characterClass = System.Enum.GetName(typeof(CHARACTER_CLASS), selectedClass);
+        characterLocation = Vector3.zero;
 
-        QuickSlotItemNames = new string[GameConstants.CHARACTER_QUICK_SLOT_COUNT];
-        QuickSlotItemCounts = new int[GameConstants.CHARACTER_QUICK_SLOT_COUNT];
+        // Level
+        level = GameConstants.CHARACTER_DATA_DEFALUT_LEVEL;
+        currentExperience = GameConstants.CHARACTER_DATA_DEFALUT_EXPERIENCE;
+        maxExperience = Managers.DataManager.LevelDataDictionary[level];
 
-        EquipmentSlotItemNames = new string[GameConstants.CHARACTER_EQUIPMENT_SLOT_COUNT];
-        EquipmentSlotItemCounts = new int[GameConstants.CHARACTER_EQUIPMENT_SLOT_COUNT];
+        // Stats
+        statPoint = GameConstants.CHARACTER_DATA_DEFALUT_STATPOINT;
+        strength = GameConstants.CHARACTER_DATA_DEFALUT_STRENGTH;
+        vitality = GameConstants.CHARACTER_DATA_DEFALUT_VITALITY;
+        dexterity = GameConstants.CHARACTER_DATA_DEFALUT_DEXTERITY;
+        luck = GameConstants.CHARACTER_DATA_DEFALUT_LUCK;
 
-        questSaveList = new List<QuestSaveData>();
+        InventoryItemNames = new string[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
+        InventoryItemCounts = new int[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
 
-        for (int i = 0; i < GameConstants.CHARACTER_INVENTORY_SLOT_COUNT; ++i)
+        QuickSlotItemNames = new string[GameConstants.MAX_QUICK_SLOT_NUMBER];
+        QuickSlotItemCounts = new int[GameConstants.MAX_QUICK_SLOT_NUMBER];
+
+        EquipmentSlotItemNames = new string[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
+        EquipmentSlotItemCounts = new int[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
+
+        for (int i = 0; i < GameConstants.MAX_INVENTORY_SLOT_NUMBER; ++i)
         {
             InventoryItemNames[i] = null;
             InventoryItemCounts[i] = 0;
         }
 
-        for (int i = 0; i < GameConstants.CHARACTER_QUICK_SLOT_COUNT; ++i)
+        for (int i = 0; i < GameConstants.MAX_QUICK_SLOT_NUMBER; ++i)
         {
             QuickSlotItemNames[i] = null;
             QuickSlotItemCounts[i] = 0;
         }
 
-        for (int i = 0; i < GameConstants.CHARACTER_EQUIPMENT_SLOT_COUNT; ++i)
+        for (int i = 0; i < GameConstants.MAX_EQUIPMENT_SLOT_NUMBER; ++i)
         {
             EquipmentSlotItemNames[i] = null;
             EquipmentSlotItemCounts[i] = 0;
         }
 
-        RefreshData();
-    }
+        mainQuestProcedure = 0;
+}
+
 
     public void RefreshData()
     {
@@ -116,14 +124,6 @@ public class CharacterData : MonoBehaviour
         EquipmentSlotItemNames = equipmentSlotItemNames;
         EquipmentSlotItemCounts = equipmentSlotItemCounts;
         QuestSaveList = questSaveList;
-    }
-    private void OnDestroy()
-    {
-        DataManager.onLoadPlayerData -= LoadPlayerData;
-        DataManager.onSavePlayerData -= SavePlayerData;
-        QuestManager.onCompleteQuest -= UpdateMainQuestProcedure;
-        Quest.onReward -= GetQuestReward;
-        Enemy.onDie -= GetExperience;
     }
 
     public void LevelUp()
@@ -153,45 +153,45 @@ public class CharacterData : MonoBehaviour
     }
 
     // Save & Load
-    public void SavePlayerData(PlayerSaveData playerSaveData)
+    public void SaveCharacterData(CharacterData characterData)
     {
-        playerSaveData.playerClass = characterClass;
-        playerSaveData.level = level;
-        playerSaveData.currentExperience = currentExperience;
-        playerSaveData.maxExperience = maxExperience;
-        playerSaveData.statPoint = statPoint;
-        playerSaveData.strength = strength;
-        playerSaveData.vitality = vitality;
-        playerSaveData.dexterity = dexterity;
-        playerSaveData.luck = luck;
-        playerSaveData.mainQuestProcedure = mainQuestProcedure;
-        playerSaveData.money = money;
-        playerSaveData.inventoryItemNames = new string[GameConstants.CHARACTER_INVENTORY_SLOT_COUNT];
-        playerSaveData.inventoryItemCounts = new int[GameConstants.CHARACTER_INVENTORY_SLOT_COUNT];
-        playerSaveData.quickSlotItemNames = new string[GameConstants.CHARACTER_QUICK_SLOT_COUNT];
-        playerSaveData.quickSlotItemCounts = new int[GameConstants.CHARACTER_QUICK_SLOT_COUNT];
-        playerSaveData.equipmentSlotItemNames = new string[GameConstants.CHARACTER_EQUIPMENT_SLOT_COUNT];
-        playerSaveData.equipmentSlotItemCounts = new int[GameConstants.CHARACTER_EQUIPMENT_SLOT_COUNT];
-        playerSaveData.questSaveList = new List<QuestSaveData>();
+        characterData.characterClass = characterClass;
+        characterData.level = level;
+        characterData.currentExperience = currentExperience;
+        characterData.maxExperience = maxExperience;
+        characterData.statPoint = statPoint;
+        characterData.strength = strength;
+        characterData.vitality = vitality;
+        characterData.dexterity = dexterity;
+        characterData.luck = luck;
+        characterData.mainQuestProcedure = mainQuestProcedure;
+        characterData.money = money;
+        characterData.inventoryItemNames = new string[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
+        characterData.inventoryItemCounts = new int[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
+        characterData.quickSlotItemNames = new string[GameConstants.MAX_QUICK_SLOT_NUMBER];
+        characterData.quickSlotItemCounts = new int[GameConstants.MAX_QUICK_SLOT_NUMBER];
+        characterData.equipmentSlotItemNames = new string[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
+        characterData.equipmentSlotItemCounts = new int[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
+        characterData.questSaveList = new List<QuestSaveData>();
 
-        onSavePlayerData(playerSaveData);
+        OnSavePlayerData(characterData);
     }
 
-    public void LoadPlayerData(PlayerSaveData playerSaveData)
+    public void LoadCharacterData(CharacterData characterData)
     {
-        CharacterClass = playerSaveData.playerClass;
-        Level = playerSaveData.level;
-        CurrentExperience = playerSaveData.currentExperience;
-        MaxExperience = playerSaveData.maxExperience;
-        StatPoint = playerSaveData.statPoint;
-        Strength = playerSaveData.strength;
-        Vitality = playerSaveData.vitality;
-        Dexterity = playerSaveData.dexterity;
-        Luck = playerSaveData.luck;
-        MainQuestProcedure = playerSaveData.mainQuestProcedure;
-        Money = playerSaveData.money;
+        CharacterClass = characterData.characterClass;
+        Level = characterData.level;
+        CurrentExperience = characterData.currentExperience;
+        MaxExperience = characterData.maxExperience;
+        StatPoint = characterData.statPoint;
+        Strength = characterData.strength;
+        Vitality = characterData.vitality;
+        Dexterity = characterData.dexterity;
+        Luck = characterData.luck;
+        MainQuestProcedure = characterData.mainQuestProcedure;
+        Money = characterData.money;
 
-        onLoadPlayerData(playerSaveData);
+        OnLoadPlayerData(characterData);
     }
 
     #region Property
@@ -327,7 +327,7 @@ public class CharacterData : MonoBehaviour
         set
         {
             mainQuestProcedure = value;
-            onMainQuestProcedureChanged?.Invoke(this);
+            OnMainQuestProcedureChanged?.Invoke(this);
         }
     }
     public int Money

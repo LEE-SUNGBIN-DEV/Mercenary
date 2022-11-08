@@ -54,6 +54,12 @@ public enum SCENE_TYPE
     LENGTH
 }
 
+public enum CHARACTER_CLASS
+{
+    Null,
+    Lancer
+}
+
 public enum CHARACTER_STATE
 {
     // Common Character

@@ -45,9 +45,9 @@ public class StoreSlot : MonoBehaviour, IPointerClickHandler
     {
         if (Item != null
             && eventData.button == PointerEventData.InputButton.Right
-            && Managers.GameManager.CurrentCharacter != null)
+            && Managers.DataManager.CurrentCharacter != null)
         {
-            RequestBuy(this, Managers.GameManager.CurrentCharacter);
+            RequestBuy(this, Managers.DataManager.CurrentCharacter);
         }
     }
 

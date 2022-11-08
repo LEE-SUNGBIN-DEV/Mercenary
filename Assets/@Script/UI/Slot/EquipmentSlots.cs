@@ -24,10 +24,10 @@ public class EquipmentSlots : MonoBehaviour
             Instance = this;
 
             slots = GetComponentsInChildren<Slot>();
-            CharacterData.onLoadPlayerData -= LoadPlayerEquipmentSlots;
-            CharacterData.onLoadPlayerData += LoadPlayerEquipmentSlots;
-            CharacterData.onSavePlayerData -= SavePlayerEquipmentSlots;
-            CharacterData.onSavePlayerData += SavePlayerEquipmentSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData -= LoadPlayerEquipmentSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData += LoadPlayerEquipmentSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData -= SavePlayerEquipmentSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData += SavePlayerEquipmentSlots;
 
             EquipmentSlotDictionary = new Dictionary<ITEM_TYPE, EQUIPMENT_SLOT_INDEX>()
             {
@@ -46,13 +46,13 @@ public class EquipmentSlots : MonoBehaviour
     }
 
     #region Save & Load
-    public void LoadPlayerEquipmentSlots(PlayerSaveData playerSaveData)
+    public void LoadPlayerEquipmentSlots(CharacterData characterData)
     {
         for (int i = 0; i < slots.Length; ++i)
         {
-            if (playerSaveData.equipmentSlotItemNames != null)
+            if (characterData.EquipmentSlotItemNames != null)
             {
-                slots[i].LoadItem(Managers.ItemManager.FindItemFromList(playerSaveData.equipmentSlotItemNames[i]), playerSaveData.equipmentSlotItemCounts[i]);
+                slots[i].LoadItem(Managers.ItemManager.FindItemFromList(characterData.EquipmentSlotItemNames[i]), characterData.EquipmentSlotItemCounts[i]);
                 if(slots[i].Item != null)
                 {
                     EquipmentItem equipmentItem = slots[i].Item as EquipmentItem;
@@ -67,20 +67,20 @@ public class EquipmentSlots : MonoBehaviour
         }
     }
 
-    public void SavePlayerEquipmentSlots(PlayerSaveData playerSaveData)
+    public void SavePlayerEquipmentSlots(CharacterData characterData)
     {
         for (int i = 0; i < slots.Length; ++i)
         {
             if (slots[i].Item != null)
             {
-                playerSaveData.equipmentSlotItemNames[i] = Slots[i].Item.ItemName;
-                playerSaveData.equipmentSlotItemCounts[i] = Slots[i].ItemCount;
+                characterData.EquipmentSlotItemNames[i] = Slots[i].Item.ItemName;
+                characterData.EquipmentSlotItemCounts[i] = Slots[i].ItemCount;
             }
 
             else
             {
-                playerSaveData.equipmentSlotItemNames[i] = null;
-                playerSaveData.equipmentSlotItemCounts[i] = 0;
+                characterData.EquipmentSlotItemNames[i] = null;
+                characterData.EquipmentSlotItemCounts[i] = 0;
             }
         }
     }

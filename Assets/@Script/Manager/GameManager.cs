@@ -1,17 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class GameManager
 {
-    public event UnityAction OnSaveGame;
-
-    [Header("Player Data")]
-    [SerializeField] private Player player;
-    [SerializeField] private Character currentCharacter;
-
     [Header("Camera")]
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private BaseCamera directingCamera;
@@ -29,43 +21,12 @@ public class GameManager
         SetCursorMode(CURSOR_MODE.UNLOCK);
     }
 
-    #region Game Control
-    public void PlayButtonClickSound()
-    {
-        Managers.AudioManager.PlaySFX("Button Click");
-    }
-
-    public void StartGame()
-    {
-        PlayButtonClickSound();
-
-        if (Managers.DataManager.FileCheck())
-        {
-            //CurrentCharacter.CharacterData.MaxExperience = Managers.DataManager.LevelDataDictionary[CurrentCharacter.CharacterData.Level];
-        }
-
-        else
-        {
-            Managers.UIManager.RequestNotice("플레이 데이터가 없습니다.");
-        }
-    }
-
-    public void SaveGame()
-    {
-        OnSaveGame();
-    }
-    public void QuitGame()
-    {
-        PlayButtonClickSound();
-        Application.Quit();
-    }
-    #endregion
-
-    #region Cursor Control
+    #region Cursor Function
     public void SetCursorTexture(Texture2D texture)
     {
         Cursor.SetCursor(texture, Vector2.zero, CursorMode.Auto);
     }
+
     public void SetCursorMode(CURSOR_MODE cursorMode)
     {
         switch(cursorMode)
@@ -101,16 +62,6 @@ public class GameManager
     #endregion
 
     #region Property
-    public Player Player
-    {
-        get { return player; }
-    }
-
-    public Character CurrentCharacter
-    {
-        get { return currentCharacter; }
-        private set { currentCharacter = value; }
-    }
     public PlayerCamera PlayerCamera
     {
         get { return playerCamera; }

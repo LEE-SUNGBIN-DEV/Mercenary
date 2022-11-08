@@ -25,11 +25,11 @@ public class SelectionScenePanel : UIPanel
         }
     }
     private CharacterData[] characterDatas;
-    private CharacterSlot[] characterSlot = new CharacterSlot[GameConstants.NUMBER_MAX_CHARACTER_SLOT];
+    private CharacterSlot[] characterSlot = new CharacterSlot[GameConstants.MAX_CHARACTER_SLOT_NUMBER];
 
     public void Initialize()
     {
-        characterDatas = Managers.GameManager.Player?.CharacterDatas;
+        characterDatas = Managers.DataManager.PlayerData?.CharacterDatas;
         characterSlot = new CharacterSlot[characterDatas.Length];
 
         SetCharacterSlot();
@@ -48,5 +48,22 @@ public class SelectionScenePanel : UIPanel
                 characterSlot[i] = new CharacterSlot();
             }
         }
+    }
+
+    public void CreateCharacter()
+    {
+
+    }
+    public void RemoveCharacter()
+    {
+
+    }
+    public void SelectSlot()
+    {
+    }
+
+    public void StartGame()
+    {
+        //CurrentCharacter.CharacterData.MaxExperience = Managers.DataManager.LevelDataDictionary[CurrentCharacter.CharacterData.Level];
     }
 }

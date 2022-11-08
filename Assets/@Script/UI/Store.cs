@@ -24,7 +24,7 @@ public class Store : MonoBehaviour
 
     public void BuyItem(StoreSlot targetSlot, Character requester)
     {
-        if (Managers.GameManager.CurrentCharacter.CharacterData.Money < targetSlot.Item.ItemPrice)
+        if (Managers.DataManager.CurrentCharacter.CharacterData.Money < targetSlot.Item.ItemPrice)
         {
             Managers.UIManager.RequestNotice("소지금이 부족합니다.");
         }
@@ -36,7 +36,7 @@ public class Store : MonoBehaviour
 
         else
         {
-            Managers.GameManager.CurrentCharacter.CharacterData.Money -= targetSlot.Item.ItemPrice;
+            Managers.DataManager.CurrentCharacter.CharacterData.Money -= targetSlot.Item.ItemPrice;
             requester.CharacterInventory.AddItemToInventory(targetSlot.Item);
         }
 

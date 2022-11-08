@@ -25,7 +25,7 @@ public class MonsterSpawnController : MonoBehaviour
                 Enemy monster = poolObject.GetComponent<Enemy>();
                 Vector3 monsterPosition = transform.position + Random.insideUnitSphere * 5f;
                 monster.MonsterNavMeshAgent.Warp(monsterPosition);
-                monster.Target = Managers.GameManager.CurrentCharacter.transform;
+                monster.Target = Managers.DataManager.CurrentCharacter.transform;
             }
         }
     }

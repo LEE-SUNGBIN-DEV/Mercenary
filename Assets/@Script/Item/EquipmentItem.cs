@@ -27,22 +27,22 @@ public class EquipmentItem : Item, IEquipmentItem
         {
             case ITEM_TYPE.WEAPON:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.AttackPower += increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.AttackPower += increasedAmount;
                     break;
                 }
             case ITEM_TYPE.HELMET:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.DefensivePower += increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.DefensivePower += increasedAmount;
                     break;
                 }
             case ITEM_TYPE.ARMOR:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.DefensivePower += increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.DefensivePower += increasedAmount;
                     break;
                 }
             case ITEM_TYPE.BOOTS:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.DefensivePower += increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.DefensivePower += increasedAmount;
                     break;
                 }
         }
@@ -56,22 +56,22 @@ public class EquipmentItem : Item, IEquipmentItem
         {
             case ITEM_TYPE.WEAPON:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.AttackPower -= increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.AttackPower -= increasedAmount;
                     break;
                 }
             case ITEM_TYPE.HELMET:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.DefensivePower -= increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.DefensivePower -= increasedAmount;
                     break;
                 }
             case ITEM_TYPE.ARMOR:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.DefensivePower -= increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.DefensivePower -= increasedAmount;
                     break;
                 }
             case ITEM_TYPE.BOOTS:
                 {
-                    Managers.GameManager.CurrentCharacter.CharacterStats.DefensivePower -= increasedAmount;
+                    Managers.DataManager.CurrentCharacter.CharacterStats.DefensivePower -= increasedAmount;
                     break;
                 }
         }

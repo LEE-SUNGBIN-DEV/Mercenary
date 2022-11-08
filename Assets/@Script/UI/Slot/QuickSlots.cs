@@ -15,10 +15,10 @@ public class QuickSlots : MonoBehaviour
             Instance = this;
 
             slots = GetComponentsInChildren<Slot>();
-            CharacterData.onLoadPlayerData -= LoadPlayerQuickSlots;
-            CharacterData.onLoadPlayerData += LoadPlayerQuickSlots;
-            CharacterData.onSavePlayerData -= SavePlayerQuickSlots;
-            CharacterData.onSavePlayerData += SavePlayerQuickSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData -= LoadPlayerQuickSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnLoadPlayerData += LoadPlayerQuickSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData -= SavePlayerQuickSlots;
+            Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData += SavePlayerQuickSlots;
         }
 
         else
@@ -73,13 +73,13 @@ public class QuickSlots : MonoBehaviour
     }
 
     #region Save & Load
-    public void LoadPlayerQuickSlots(PlayerSaveData playerSaveData)
+    public void LoadPlayerQuickSlots(CharacterData characterData)
     {
         for (int i = 0; i < slots.Length; ++i)
         {
-            if (playerSaveData.quickSlotItemNames != null)
+            if (characterData.QuickSlotItemNames != null)
             {
-                slots[i].LoadItem(Managers.ItemManager.FindItemFromList(playerSaveData.quickSlotItemNames[i]), playerSaveData.quickSlotItemCounts[i]);
+                slots[i].LoadItem(Managers.ItemManager.FindItemFromList(characterData.QuickSlotItemNames[i]), characterData.QuickSlotItemCounts[i]);
             }
 
             else
@@ -89,20 +89,20 @@ public class QuickSlots : MonoBehaviour
         }
     }
 
-    public void SavePlayerQuickSlots(PlayerSaveData playerSaveData)
+    public void SavePlayerQuickSlots(CharacterData characterData)
     {
         for (int i = 0; i < slots.Length; ++i)
         {
             if (slots[i].Item != null)
             {
-                playerSaveData.quickSlotItemNames[i] = Slots[i].Item.ItemName;
-                playerSaveData.quickSlotItemCounts[i] = Slots[i].ItemCount;
+                characterData.QuickSlotItemNames[i] = Slots[i].Item.ItemName;
+                characterData.QuickSlotItemCounts[i] = Slots[i].ItemCount;
             }
 
             else
             {
-                playerSaveData.quickSlotItemNames[i] = null;
-                playerSaveData.quickSlotItemCounts[i] = 0;
+                characterData.QuickSlotItemNames[i] = null;
+                characterData.QuickSlotItemCounts[i] = 0;
             }
         }
     }

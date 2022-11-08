@@ -13,7 +13,7 @@ public class Managers : Singleton<Managers>
     private ResourceManager resourceManager = new ResourceManager();
     private UIManager uiManager = new UIManager();
     private AudioManager audioManager = new AudioManager();
-    private DataManager dataManager = new DataManager();
+    [SerializeField] private DataManager dataManager = new DataManager();
     private NPCManager npcManager = new NPCManager();
     private DialogueManager dialogueManager = new DialogueManager();
     private QuestManager questManager = new QuestManager();
@@ -62,10 +62,10 @@ public class Managers : Singleton<Managers>
         gameManager.Initialize();
         gameSceneManager.Initialize();
         resourceManager.Initialize();
+        dataManager.Initialize();
 
         /*
         audioManager.Initialize();
-        dataManager.Initialize();
         npcManager.Initialize();
         dialogueManager.Initialize();
         questManager.Initialize();

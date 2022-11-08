@@ -52,7 +52,7 @@ public class BossRoomController : MonoBehaviour
         {
             Enemy monster = Managers.ObjectPoolManager.RequestObject(bossData.monster.key).GetComponent<Enemy>();
             monster.MonsterNavMeshAgent.Warp(bossSpawnPoint.position);
-            monster.Target = Managers.GameManager.CurrentCharacter.transform;
+            monster.Target = Managers.DataManager.CurrentCharacter.transform;
 
             //Managers.UIManager.EntrancePanel.EntranceText.text = monster.GetComponent<Enemy>().MonsterName;
             Managers.UIManager.OpenPanel(PANEL.MapInformationPanel);
