@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: EventSystem
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 3b08386f9eacbe44fac0e8713709d202
+    m_Address: Material_Lancer_Outline
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2caae8ca8451fa243848d9aac70d7793
+    m_Address: Prefab_Lancer_Slot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 985155d037619ca4ca86e1e414f07244, type: 2}
   m_SchemaSet:

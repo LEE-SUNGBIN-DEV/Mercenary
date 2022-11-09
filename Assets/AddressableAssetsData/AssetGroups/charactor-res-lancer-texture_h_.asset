@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 04a62cfa736c39346b4dfb7a51abd14d
   m_SerializeEntries:
   - m_GUID: a459c3423e3cd9a4c9c09cf8d096ea5b
-    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Lancer/Materials&&Texture/ch_h_Lancer_D.mat
+    m_Address: Material_Lancer_Default
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 33d475cc2206ecb489f56cab15bf9780

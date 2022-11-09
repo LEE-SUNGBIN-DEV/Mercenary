@@ -52,19 +52,17 @@ public class UIBase : MonoBehaviour
     // targetObject에 UIEventHandler 컴포넌트를 부착하고, eventType에 맞게 action을 등록한다.
     public void BindEvent(GameObject targetObject, UnityAction action, UI_EVENT eventType)
     {
-        UIEventHandler newEventHandler = GameFunction.GetOrAddComponent<UIEventHandler>(targetObject);
-
-        switch (eventType)
-        {
-            case UI_EVENT.CLICK:
-                newEventHandler.OnClickHandler -= action;
-                newEventHandler.OnClickHandler += action;
-                break;
-
-            case UI_EVENT.PRESS:
-                newEventHandler.OnPressHandler -= action;
-                newEventHandler.OnPressHandler += action;
-                break;
-        }
+        UIEventHandler targetEventHandler = GameFunction.GetOrAddComponent<UIEventHandler>(targetObject);
+        targetEventHandler.AddEvent(action, eventType);
+    }
+    public void RemoveEvent(GameObject targetObject, UnityAction action, UI_EVENT eventType)
+    {
+        UIEventHandler targetEventHandler = GameFunction.GetOrAddComponent<UIEventHandler>(targetObject);
+        targetEventHandler.RemoveEvent(action, eventType);
+    }
+    public void ClearEvent(GameObject targetObject)
+    {
+        UIEventHandler targetEventHandler = GameFunction.GetOrAddComponent<UIEventHandler>(targetObject);
+        targetEventHandler.ClearEvent();
     }
 }
