@@ -1,6 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class CharacterSlot
+{
+    public int slotIndex;
+    public SelectionCharacter selectionCharacter;
+    public Vector3 characterPoint;
+    public TextMeshProUGUI slotText;
+    public Button slotButton;
+
+    public CharacterSlot()
+    {
+        slotText = null;
+        slotButton = null;
+    }
+}
 
 [System.Serializable]
 public class AudioContainer

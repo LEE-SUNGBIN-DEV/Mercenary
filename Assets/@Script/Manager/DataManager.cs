@@ -56,7 +56,6 @@ public class DataManager
         {
             string jsonPlayerData = File.ReadAllText(playerDataPath);
             playerData = JsonConvert.DeserializeObject<PlayerData>(jsonPlayerData);
-            Debug.Log($"{playerData.BgmVolume}");
         }
         else
         {
