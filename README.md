@@ -1,16 +1,17 @@
 # Mercenary
 
-(Unity) 3D Shoulder View Action RPG
+Title: Mercenary
 
-게임 제목: Mercenary
+Genre: 3D Shoulder View Action RPG
 
-게임 장르: 3D Shoulder View Action RPG
+Engine: Unity
 
-제작 기간: 6주
+Creator: Sungbin Lee
 
-제작자: 이성빈
+Period: 6 Weeks
 
-Youtube: https://www.youtube.com/watch?v=-oXw_7Kr9hA
+Video: https://www.youtube.com/watch?v=-oXw_7Kr9hA
 
 
-2022 10 13 ~ Code Refactoring
+# Mercenary Refactoring
+2022 10 13 ~
