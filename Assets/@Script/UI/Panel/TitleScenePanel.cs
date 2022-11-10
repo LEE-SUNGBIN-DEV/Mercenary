@@ -31,11 +31,11 @@ public class TitleScenePanel : UIPanel
     #region Event Function
     public void OnClickStartGameButton()
     {
-        Debug.Log("Start Game Button Pressed");
+        Managers.GameSceneManager.LoadScene(SCENE_LIST.Selection);
     }
     public void OnClickQuitButton()
     {
-        Debug.Log("Quit Button Pressed");
+        Application.Quit();
     }
     public void OnClickOptionButton()
     {

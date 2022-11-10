@@ -2,16 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameSceneManager
 {
-    public event UnityAction OnLoadScene;
-    public event UnityAction OnSceneLoaded;
+    public event UnityAction OnSceneExit;
+    public event UnityAction OnSceneEnter;
 
     private BaseScene currentScene;
+    private FadeEffect fadeEffect;
 
     public void Initialize()
     {
+        SceneManager.sceneLoaded += SceneEnter;
+        SceneManager.sceneUnloaded += SceneExit;
+        fadeEffect = Managers.UIManager.Canvas.GetComponentInChildren<FadeEffect>();
+    }
+
+    public void SceneEnter(Scene scene, LoadSceneMode loadMode)
+    {
+        OnSceneEnter?.Invoke();
+    }
+    public void SceneExit(Scene scene)
+    {
+        fadeEffect.FadeIn(1.5f);
+        OnSceneExit?.Invoke();
+        currentScene.ExitScene();
     }
 
     public string GetSceneName(SCENE_LIST sceneList)
@@ -19,17 +35,21 @@ public class GameSceneManager
         return sceneList.GetEnumName();
     }
 
-    public void LoadSceneFade(string sceneName)
+    // Load Scene Fade
+    public void LoadScene(string sceneName)
     {
-
-        OnLoadScene?.Invoke();
+        fadeEffect.FadeOut(1.5f, () => { SceneManager.LoadScene(sceneName); });
     }
+    public void LoadScene(SCENE_LIST requestScene)
+    {
+        LoadScene(requestScene.GetEnumName());
+    }
+
+    // Load Scene Async 
     public void LoadSceneAsync(string sceneName)
     {
-        OnLoadScene?.Invoke();
-        LoadingManager.LoadScene(sceneName);
+        fadeEffect.FadeOut(2f, () => { LoadingScene.LoadScene(sceneName); });
     }
-
     public void LoadSceneAsync(SCENE_LIST requestScene)
     {
         LoadSceneAsync(requestScene.GetEnumName());

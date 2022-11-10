@@ -34,8 +34,8 @@ public class QuestManager
         Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData -= SaveQuest;
         Managers.DataManager.CurrentCharacter.CharacterData.OnSavePlayerData += SaveQuest;
 
-        Managers.GameSceneManager.OnSceneLoaded -= RequestNPCQuestList;
-        Managers.GameSceneManager.OnSceneLoaded += RequestNPCQuestList;
+        Managers.GameSceneManager.OnSceneEnter -= RequestNPCQuestList;
+        Managers.GameSceneManager.OnSceneEnter += RequestNPCQuestList;
 
         Quest.onActiveQuest -= ActiveQuest;
         Quest.onActiveQuest += ActiveQuest;

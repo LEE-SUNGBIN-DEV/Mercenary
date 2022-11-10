@@ -16,4 +16,10 @@ public class SelectionScene : BaseScene
         base.Initialize();
         Managers.UIManager.OpenPanel(PANEL.SelectionScenePanel);
     }
+
+    public override void ExitScene()
+    {
+        base.ExitScene();
+        Managers.UIManager.ClosePanel(PANEL.SelectionScenePanel);
+    }
 }

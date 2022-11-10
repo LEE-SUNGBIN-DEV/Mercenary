@@ -16,6 +16,12 @@ public class TitleScene : BaseScene
         Managers.UIManager.OpenPanel(PANEL.TitleScenePanel);
     }
 
+    public override void ExitScene()
+    {
+        base.ExitScene();
+        Managers.UIManager.ClosePanel(PANEL.TitleScenePanel);
+    }
+
     public void PlayButtonClickSound()
     {
         Managers.AudioManager.PlaySFX("Button Click");

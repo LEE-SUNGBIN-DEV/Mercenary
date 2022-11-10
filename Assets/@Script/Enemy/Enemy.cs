@@ -41,8 +41,8 @@ public abstract class Enemy : MonoBehaviour, IMonster
     }
     public virtual void OnEnable()
     {
-        Managers.GameSceneManager.OnLoadScene -= ReturnObject;
-        Managers.GameSceneManager.OnLoadScene += ReturnObject;
+        Managers.GameSceneManager.OnSceneExit -= ReturnObject;
+        Managers.GameSceneManager.OnSceneExit += ReturnObject;
         CharacterStats.OnDie -= InitializeTarget;
         CharacterStats.OnDie += InitializeTarget;
 

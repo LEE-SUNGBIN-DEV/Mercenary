@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour
 {
     [SerializeField] private CharacterData characterData;
 
-    private PlayerInput playerInput;
+    private UserInput playerInput;
     private CharacterStats characterStats;
     private CharacterState characterState;
     private Inventory characterInventory;
@@ -21,7 +21,7 @@ public abstract class Character : MonoBehaviour
         characterAnimator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
 
-        playerInput = new PlayerInput();
+        playerInput = new UserInput();
         characterStats = new CharacterStats(this);
         characterState = new CharacterState(this);
 
@@ -89,7 +89,7 @@ public abstract class Character : MonoBehaviour
     #endregion
 
     #region Property
-    public PlayerInput PlayerInput
+    public UserInput PlayerInput
     {
         get => playerInput;
     }
