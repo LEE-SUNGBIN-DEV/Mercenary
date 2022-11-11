@@ -21,7 +21,7 @@ public class Lancer : Character
 
     private void Update()
     {
-        PlayerInput?.GetInput();
+        PlayerInput?.GetUserInput();
         CharacterState?.SwitchCharacterStateByWeight(DetermineCharacterState());
         CharacterState?.CurrentState?.Update(this);
     }

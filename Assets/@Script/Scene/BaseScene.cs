@@ -26,7 +26,12 @@ public class BaseScene : MonoBehaviour
 
     public virtual void Initialize()
     {
-        Debug.Log("Scene Initialize");
+        Managers.GameSceneManager.CurrentScene = this;
+    }
+
+    public virtual void ExitScene()
+    {
+        Managers.GameSceneManager.CurrentScene = null;
     }
 
     #region Property

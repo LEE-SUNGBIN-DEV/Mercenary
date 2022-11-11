@@ -63,6 +63,7 @@ public class UIManager
         }
     }
 
+    // Called By Managers
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -71,38 +72,9 @@ public class UIManager
             {
                 ClosePopup(currentPopUpLinkedList.First.Value.PopupType);
             }
-
             else
             {
                 Managers.GameManager.ToggleCursorMode();
-            }
-        }
-
-        if (Managers.GameSceneManager.CurrentScene.SceneType == SCENE_TYPE.VILIAGE
-            || Managers.GameSceneManager.CurrentScene.SceneType == SCENE_TYPE.DUNGEON)
-        {
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                TogglePopup(POPUP.OptionPopup);
-            }
-
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                TogglePopup(POPUP.InventoryPopup);
-            }
-
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                TogglePopup(POPUP.StatusPopup);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                TogglePopup(POPUP.QuestPopup);
-            }
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                TogglePopup(POPUP.HelpPopup);
             }
         }
     }

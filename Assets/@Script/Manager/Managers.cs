@@ -59,10 +59,7 @@ public class Managers : Singleton<Managers>
             isCanvasLoaded = true;
         }
 
-        gameManager.Initialize();
-        gameSceneManager.Initialize();
-        resourceManager.Initialize();
-        dataManager.Initialize();
+        
 
         /*
         audioManager.Initialize();
@@ -75,6 +72,11 @@ public class Managers : Singleton<Managers>
 
         StartCoroutine(GameFunction.WaitAsyncOperation(IsLoaded, () =>
         {
+            gameManager.Initialize();
+            gameSceneManager.Initialize();
+            resourceManager.Initialize();
+            dataManager.Initialize();
+
             Debug.Log("[Managers] Initialization Complete!");
         }));
     }
