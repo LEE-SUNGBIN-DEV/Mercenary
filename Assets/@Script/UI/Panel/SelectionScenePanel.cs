@@ -186,21 +186,26 @@ public class SelectionScenePanel : UIPanel
     }
     public void OnClickStartGameButton(int slotIndex)
     {
+        Managers.DataManager.SavePlayerData();
+        Managers.DataManager.CurrentCharacterData = characterDatas[slotIndex];
 
+        Managers.GameSceneManager.LoadSceneAsync(SCENE_LIST.Forestia);
     }
     public void OnClickQuitGameButton()
     {
-
+        Managers.GameManager.SaveAndQuit();
     }
     public void OnClickOptionButton()
     {
-
+        Managers.UIManager.TogglePopup(POPUP.OptionPopup);
     }
 
-    // CreateCharacterSubPanel
+    // Create Character SubPanel
     public void OnClickCreateButton(int slotIndex, CHARACTER_CLASS selectClass)
     {
         characterDatas[slotIndex] = new CharacterData(selectClass);
+        Managers.DataManager.SavePlayerData();
+
         createCharacterSubPanel.SetAnimation(false);
         RefreshCharacterSlot();
     }

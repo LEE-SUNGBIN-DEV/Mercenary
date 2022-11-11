@@ -19,6 +19,7 @@ public class DataManager
     private string levelDataPath;
 
     [SerializeField] private PlayerData playerData = null;
+    private CharacterData currentCharacterData;
     private Character currentCharacter;
 
     public void Initialize()
@@ -86,6 +87,12 @@ public class DataManager
     public Character CurrentCharacter
     {
         get { return currentCharacter; }
+        set { currentCharacter = value; }
+    }
+    public CharacterData CurrentCharacterData
+    {
+        get { return currentCharacterData; }
+        set { currentCharacterData = value; }
     }
     #endregion
 }

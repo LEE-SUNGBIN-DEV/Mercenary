@@ -35,11 +35,11 @@ public class TitleScenePanel : UIPanel
     }
     public void OnClickQuitButton()
     {
-        Application.Quit();
+        Managers.GameManager.SaveAndQuit();
     }
     public void OnClickOptionButton()
     {
-        Debug.Log("Option Button Pressed");
+        Managers.UIManager.TogglePopup(POPUP.OptionPopup);
     }
     #endregion
 }

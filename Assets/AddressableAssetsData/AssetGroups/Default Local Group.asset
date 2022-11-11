@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: Material_Lancer_Outline
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 913d4c09b88541d4eaa251f425968eed
+    m_Address: Prefab_Lancer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 985155d037619ca4ca86e1e414f07244, type: 2}
   m_SchemaSet:

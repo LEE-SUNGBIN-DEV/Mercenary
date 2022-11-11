@@ -43,8 +43,9 @@ public abstract class Enemy : MonoBehaviour, IMonster
     {
         Managers.GameSceneManager.OnSceneExit -= ReturnObject;
         Managers.GameSceneManager.OnSceneExit += ReturnObject;
-        CharacterStats.OnDie -= InitializeTarget;
-        CharacterStats.OnDie += InitializeTarget;
+
+        Managers.DataManager.CurrentCharacter.CharacterStats.OnDie -= InitializeTarget;
+        Managers.DataManager.CurrentCharacter.CharacterStats.OnDie += InitializeTarget;
 
         gameObject.tag = GameConstants.TAG_INVINCIBILITY;
         gameObject.layer = 8;

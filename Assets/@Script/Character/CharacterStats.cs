@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class CharacterStats
 {
     public static event UnityAction<CharacterStats> OnCharacterStatsChanged;
-    public static event UnityAction<CharacterStats> OnDie;
+    public event UnityAction<CharacterStats> OnDie;
 
     private Character character;
     private float attackPower;
