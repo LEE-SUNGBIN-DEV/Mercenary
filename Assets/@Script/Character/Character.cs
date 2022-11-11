@@ -17,17 +17,20 @@ public abstract class Character : MonoBehaviour
     
     protected virtual void Awake()
     {
-        characterData = GetComponent<CharacterData>();
         characterAnimator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
 
         playerInput = new UserInput();
+        characterData = Managers.DataManager.CurrentCharacterData;
         characterStats = new CharacterStats(this);
         characterState = new CharacterState(this);
 
         characterInventory = GetComponent<Inventory>();
 
+        CharacterStats.OnDie -= Die;
         CharacterStats.OnDie += Die;
+
+        Managers.DataManager.CurrentCharacter = this;
     }
 
     protected virtual void OnEnable()

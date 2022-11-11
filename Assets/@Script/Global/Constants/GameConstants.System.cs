@@ -13,8 +13,8 @@ public static partial class GameConstants
     public static readonly Vector3[] SELECTION_CHARACTER_POINT
         = new Vector3[MAX_CHARACTER_SLOT_NUMBER]
         {
-            new Vector3(-5, 5.09f, 17),
-            new Vector3(-2.5f, 5.09f, 17),
-            new Vector3(0, 5.09f, 17)
+            new Vector3(34.552f, 0.9f, 8),
+            new Vector3(29.552f, 0.9f, 8),
+            new Vector3(24.552f, 0.9f, 8)
         };
 }

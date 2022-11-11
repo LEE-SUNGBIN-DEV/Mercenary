@@ -21,6 +21,12 @@ public class GameManager
         SetCursorMode(CURSOR_MODE.UNLOCK);
     }
 
+    public void SaveAndQuit()
+    {
+        Managers.DataManager.SavePlayerData();
+        Application.Quit();
+    }
+
     #region Cursor Function
     public void SetCursorTexture(Texture2D texture)
     {
