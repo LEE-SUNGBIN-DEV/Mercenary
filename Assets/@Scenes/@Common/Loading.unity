@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 522721378}
   - component: {fileID: 522721382}
   m_Layer: 5
-  m_Name: Loading Canvas
+  m_Name: '@Loading Scene'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,6 +432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01542ff69dd10514098543db8aeadf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapName: 
+  sceneType: 5
+  scene: 2
   loadingBar: {fileID: 1061469238}
 --- !u!1 &1061469236
 GameObject:

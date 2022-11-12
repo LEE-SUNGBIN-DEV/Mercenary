@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Prefab_Lancer
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c7f29f42bd7609c48872426d0ca35f6a
+    m_Address: Prefab_Player_Camera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 985155d037619ca4ca86e1e414f07244, type: 2}
   m_SchemaSet:

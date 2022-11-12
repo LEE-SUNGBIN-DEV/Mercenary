@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager
 {
     [Header("Camera")]
-    [SerializeField] private PlayerCamera playerCamera;
-    [SerializeField] private BaseCamera directingCamera;
+    private PlayerCamera playerCamera;
+    private BaseCamera directingCamera;
 
     [Header("Cursor")]
     private CURSOR_MODE cursorMode;

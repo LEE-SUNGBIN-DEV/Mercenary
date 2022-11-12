@@ -19,8 +19,9 @@ public class Lancer : Character
         CharacterState.SwitchCharacterStateByWeight(CHARACTER_STATE.MOVE);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         PlayerInput?.GetUserInput();
         CharacterState?.SwitchCharacterStateByWeight(DetermineCharacterState());
         CharacterState?.CurrentState?.Update(this);
@@ -122,13 +123,7 @@ public class Lancer : Character
     #endregion
 
     #region Property
-    public LancerSpear Spear
-    {
-        get => spear;
-    }
-    public LancerShield Shield
-    {
-        get => shield;
-    }
+    public LancerSpear Spear { get { return spear; } }
+    public LancerShield Shield { get { return shield; } }
     #endregion
 }

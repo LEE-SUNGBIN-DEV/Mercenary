@@ -16,14 +16,26 @@ public class ViliageScene : BaseScene
     {
         base.Initialize();
 
-        if(Managers.DataManager.CurrentCharacter != null)
+        if(Managers.DataManager.CurrentCharacterData != null)
         {
-            Managers.ResourceManager.InstantiatePrefab("Prefab_" + Managers.DataManager.CurrentCharacterData.CharacterClass, null,
-                (GameObject targetObject) =>
+            Managers.ResourceManager.InstantiatePrefab("Prefab_Player_Camera", null,
+                (GameObject cameraObject) =>
                 {
-                    gameObject.transform.position = spawnPosition;
-                    Managers.UIManager.OpenPanel(PANEL.UserPanel);
+                    Managers.ResourceManager.InstantiatePrefab("Prefab_" + Managers.DataManager.CurrentCharacterData.CharacterClass, null,
+                    (GameObject characterObject) =>
+                    {
+                        Character character = characterObject.GetComponent<Character>();
+                        GameFunction.SetCharacterPosition(character, spawnPosition);
+                        cameraObject.transform.position = spawnPosition;
+                        Managers.UIManager.OpenPanel(PANEL.UserPanel);
+                    });
                 });
         }
+    }
+
+    public override void ExitScene()
+    {
+        base.ExitScene();
+        Managers.UIManager.ClosePanel(PANEL.UserPanel);
     }
 }

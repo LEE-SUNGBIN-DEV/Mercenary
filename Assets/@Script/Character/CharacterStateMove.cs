@@ -20,8 +20,8 @@ public class CharacterStateMove : ICharacterState
     public void Enter(Character character)
     {
         isMove = false;
-        verticalDirection = new Vector3(Managers.GameManager.PlayerCamera.transform.forward.x, 0, Managers.GameManager.PlayerCamera.transform.forward.z);
-        horizontalDirection = new Vector3(Managers.GameManager.PlayerCamera.transform.right.x, 0, Managers.GameManager.PlayerCamera.transform.right.z);
+        verticalDirection = new Vector3(character.PlayerCamera.transform.forward.x, 0, character.PlayerCamera.transform.forward.z);
+        horizontalDirection = new Vector3(character.PlayerCamera.transform.right.x, 0, character.PlayerCamera.transform.right.z);
         moveDirection = (verticalDirection * character.PlayerInput.MoveInput.z + horizontalDirection * character.PlayerInput.MoveInput.x).normalized;
         moveBlendTreeFloat = 0;
 
@@ -29,11 +29,11 @@ public class CharacterStateMove : ICharacterState
     }
     public void Update(Character character)
     {
-        verticalDirection.x = Managers.GameManager.PlayerCamera.transform.forward.x;
-        verticalDirection.z = Managers.GameManager.PlayerCamera.transform.forward.z;
+        verticalDirection.x = character.PlayerCamera.transform.forward.x;
+        verticalDirection.z = character.PlayerCamera.transform.forward.z;
 
-        horizontalDirection.x = Managers.GameManager.PlayerCamera.transform.right.x;
-        horizontalDirection.z = Managers.GameManager.PlayerCamera.transform.right.z;
+        horizontalDirection.x = character.PlayerCamera.transform.right.x;
+        horizontalDirection.z = character.PlayerCamera.transform.right.z;
 
         moveDirection = (verticalDirection * character.PlayerInput.MoveInput.z + horizontalDirection * character.PlayerInput.MoveInput.x).normalized;
 
