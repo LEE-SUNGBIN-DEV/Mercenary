@@ -48,7 +48,10 @@ public class GameSceneManager
     // Load Scene Async 
     public void LoadSceneAsync(string sceneName)
     {
-        fadeEffect.FadeOut(2f, () => { LoadingScene.LoadScene(sceneName); });
+        fadeEffect.FadeOut(1.5f, () =>
+        {
+            LoadingScene.LoadScene(sceneName);
+        });
     }
     public void LoadSceneAsync(SCENE_LIST requestScene)
     {
@@ -56,10 +59,7 @@ public class GameSceneManager
     }
 
     #region Property
-    public BaseScene CurrentScene
-    {
-        get { return currentScene; }
-        set { currentScene = value; }
-    }
+    public BaseScene CurrentScene { get { return currentScene; } set { currentScene = value; } }
+    public FadeEffect FadeEffect { get { return fadeEffect; } }
     #endregion
 }

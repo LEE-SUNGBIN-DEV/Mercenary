@@ -5,27 +5,33 @@ using UnityEngine.Events;
 
 public abstract class Character : MonoBehaviour
 {
-    [SerializeField] private CharacterData characterData;
+    [SerializeField] private Vector3 cameraOffset;
 
-    private UserInput playerInput;
-    private CharacterStats characterStats;
-    private CharacterState characterState;
+    private PlayerCamera playerCamera;
+    private CharacterController characterController;
+    private Animator characterAnimator;
     private Inventory characterInventory;
 
-    private Animator characterAnimator;
-    private CharacterController characterController;
-    
+    private UserInput playerInput;
+    [SerializeField] private CharacterData characterData;
+    private CharacterStats characterStats;
+    private CharacterState characterState;
+
+
     protected virtual void Awake()
     {
-        characterAnimator = GetComponent<Animator>();
+        playerCamera = Managers.GameManager.PlayerCamera;
+        playerCamera.TargetTransform = transform;
+        playerCamera.TargetOffset = cameraOffset;
+
         characterController = GetComponent<CharacterController>();
+        characterAnimator = GetComponent<Animator>();
+        characterInventory = GetComponent<Inventory>();
 
         playerInput = new UserInput();
         characterData = Managers.DataManager.CurrentCharacterData;
         characterStats = new CharacterStats(this);
         characterState = new CharacterState(this);
-
-        characterInventory = GetComponent<Inventory>();
 
         CharacterStats.OnDie -= Die;
         CharacterStats.OnDie += Die;
@@ -44,12 +50,17 @@ public abstract class Character : MonoBehaviour
         Rebirth();
     }
 
-    public abstract CHARACTER_STATE DetermineCharacterState();
-
-    public void SetCharacterTransform(Transform targetTransform)
+    protected virtual void Update()
     {
-        gameObject.SetTransform(targetTransform);
+        AutoRecoverStamina();
     }
+
+    private void OnDestroy()
+    {
+        Managers.DataManager.CurrentCharacter = null;
+    }
+
+    public abstract CHARACTER_STATE DetermineCharacterState();
     
     public void Die(CharacterStats characterStats)
     {
@@ -92,34 +103,14 @@ public abstract class Character : MonoBehaviour
     #endregion
 
     #region Property
-    public UserInput PlayerInput
-    {
-        get => playerInput;
-    }
-    public CharacterStats CharacterStats
-    {
-        get => characterStats;
-    }
-    public CharacterState CharacterState
-    {
-        get => characterState;
-    }
+    public UserInput PlayerInput { get { return playerInput; } }
+    public CharacterData CharacterData { get { return characterData; } }
+    public CharacterStats CharacterStats { get { return characterStats; } }
+    public CharacterState CharacterState { get { return characterState; } }
     
-    public CharacterData CharacterData
-    {
-        get => characterData;
-    }
-    public Animator CharacterAnimator
-    {
-        get => characterAnimator;
-    }
-    public CharacterController CharacterController
-    {
-        get => characterController;
-    }
-    public Inventory CharacterInventory
-    {
-        get => characterInventory;
-    }
+    public PlayerCamera PlayerCamera { get { return playerCamera; } set { playerCamera = value; } }
+    public CharacterController CharacterController { get { return characterController; } }
+    public Animator CharacterAnimator { get { return characterAnimator; } }
+    public Inventory CharacterInventory { get { return characterInventory; } }
     #endregion
 }

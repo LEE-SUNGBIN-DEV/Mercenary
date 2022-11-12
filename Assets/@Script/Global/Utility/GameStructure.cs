@@ -50,6 +50,7 @@ public enum SCENE_LIST
     // Common
     Title,
     Selection,
+    Loading,
 
     // Chapter 01
     Forestia,

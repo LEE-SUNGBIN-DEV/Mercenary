@@ -5,6 +5,25 @@ using UnityEngine.Events;
 
 public static class GameFunction
 {
+    public static void SetCharacterPosition(Character character, Vector3 targetPosition)
+    {
+        character.CharacterController.enabled = false;
+        character.transform.position = targetPosition;
+        character.CharacterController.enabled = true;
+    }
+    public static void SetCharacterTransform(Character character, Transform targetTransform)
+    {
+        character.CharacterController.enabled = false;
+        character.gameObject.SetTransform(targetTransform);
+        character.CharacterController.enabled = true;
+    }
+    public static Color SetColor(Color color, float alpha = 1f)
+    {
+        Color targetColor = color;
+        targetColor.a = alpha;
+
+        return targetColor;
+    }
     #region Async Operation
     public static IEnumerator WaitAsyncOperation(System.Func<bool> isLoaded, UnityAction callback = null)
     {
@@ -68,10 +87,10 @@ public static class GameFunction
     }
 
     // 플레이어 대미지 프로세스
-    public static void PlayerAttackProcess(Character character, Enemy monster, float ratio)
+    public static void PlayerAttackProcess(Character character, Enemy enemy, float ratio)
     {
         // Damage Func
-        float damage = (character.CharacterStats.AttackPower - monster.DefensivePower * 0.5f) * 0.5f;
+        float damage = (character.CharacterStats.AttackPower - enemy.DefensivePower * 0.5f) * 0.5f;
 
         if (damage < 0)
         {
@@ -104,10 +123,10 @@ public static class GameFunction
         float damageRange = Random.Range(0.9f, 1.1f);
         damage *= damageRange;
 
-        monster.CurrentHitPoint -= damage;
+        enemy.CurrentHitPoint -= damage;
 
         FloatingDamageText floatingDamageText = Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_PREFAB_FLOATING_DAMAGE_TEXT).GetComponent<FloatingDamageText>();
-        floatingDamageText.SetDamageText(isCritical, damage, monster.transform.position);
+        floatingDamageText.SetDamageText(isCritical, damage, enemy.transform.position);
     }
 
     // 적 대미지 프로세스

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LoadingScene : MonoBehaviour
+public class LoadingScene : BaseScene
 {
     static private string nextSceneName;    // 전환 요청이 들어온 씬
     [SerializeField] private Slider loadingBar;
@@ -14,10 +14,19 @@ public class LoadingScene : MonoBehaviour
         StartCoroutine(LoadSceneProgress());
     }
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        sceneType = SCENE_TYPE.LOADING;
+        scene = SCENE_LIST.Loading;
+    }
+
     private IEnumerator LoadSceneProgress()
     {
         AsyncOperation loadingProgress = SceneManager.LoadSceneAsync(nextSceneName);
         loadingProgress.allowSceneActivation = false;
+
+        Managers.GameSceneManager.FadeEffect.SetAlpha(0f);
 
         float timer = 0.0f;
         while (loadingProgress.isDone == false)

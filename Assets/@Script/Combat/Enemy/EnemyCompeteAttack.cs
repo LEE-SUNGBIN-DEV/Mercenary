@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class EnemyCompeteAttack : EnemyCombatController
 {
     [SerializeField] private Transform playerCompetePoint;
-    [SerializeField] private Transform playerSubCameraPoint;
+    [SerializeField] private Transform directingCameraPoint;
     [SerializeField] private float cooldown;
     private bool isReady;
     private ICompetable competableEnemy;
@@ -67,11 +67,11 @@ public class EnemyCompeteAttack : EnemyCombatController
         competableCharacter?.Compete();
         competableEnemy?.Compete();
 
-        combatController.Owner.SetCharacterTransform(playerCompetePoint);
+        GameFunction.SetCharacterTransform(combatController.Owner, playerCompetePoint);
         Managers.GameManager.PlayerCamera.SetCameraTransform(playerCompetePoint);
-        Managers.GameManager.DirectingCamera.SetCameraTransform(playerSubCameraPoint);
+        Managers.GameManager.DirectingCamera.SetCameraTransform(directingCameraPoint);
 
-        Managers.GameManager.DirectingCamera.OriginalPosition = playerSubCameraPoint.position;
+        Managers.GameManager.DirectingCamera.OriginalPosition = directingCameraPoint.position;
         Managers.GameManager.PlayerCamera.gameObject.SetActive(false);
         Managers.GameManager.DirectingCamera.gameObject.SetActive(true);
 

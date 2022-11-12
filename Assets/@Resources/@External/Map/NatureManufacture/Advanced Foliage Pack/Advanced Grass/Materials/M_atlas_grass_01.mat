@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_atlas_grass_01
   m_Shader: {fileID: 4800000, guid: adce0b63bca75a84e9f786201b7d7b0b, type: 3}
-  m_ShaderKeywords: _DISTANCEBLEND_ON
+  m_ValidKeywords:
+  - _DISTANCEBLEND_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -86,6 +88,7 @@ Material:
     m_Ints: []
     m_Floats:
     - <noninit>: 1
+    - _AO: 2.4
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _AlphaCutOut: 0.5
@@ -93,6 +96,7 @@ Material:
     - _AlphaDrag: 0
     - _AmbientOcclusionPower: 1
     - _BackFaceMirrorNormal: 0
+    - _BaseLight: 0.35
     - _BumpScale: 1
     - _ColorNoiseSpread: 2
     - _CullFarDistance: 10
@@ -109,6 +113,7 @@ Material:
     - _MirrorNormal: 0
     - _NoiseWindSpeed: 0.85
     - _NormalScale: 1
+    - _Occlusion: 7.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ShiverDirectionality: 0.7
@@ -132,6 +137,7 @@ Material:
     - _Snow_Min_Height: -1000
     - _Snow_Min_Height_Blending: 1
     - _Specular: 0.2
+    - _SquashAmount: 1
     - _Stiffness: 0.7
     - _TransAmbient: 0.2
     - _TransDirect: 1
@@ -160,6 +166,8 @@ Material:
     - _SnowTilingOffset: {r: 1, g: 1, b: 0, a: 0}
     - _TilingOffset: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling_and_Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
     - _Vector0: {r: 1, g: 1, b: 1, a: 0}
     - _VertexNormalMultiply: {r: 0.1, g: 0.5, b: 0.5, a: 0}
     - _WindColorInfluence: {r: 0.5, g: 0.5, b: 0.5, a: 0}

@@ -25,7 +25,7 @@ public class CharacterStateAttack : ICharacterState
         if (character.PlayerInput.IsMouseLeftDown || character.PlayerInput.IsMouseLeftUp)
         {
             // 방향 전환
-            lookDirection = Managers.GameManager.PlayerCamera.transform.forward;
+            lookDirection = character.PlayerCamera.transform.forward;
             lookDirection.y = 0f;
             character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(lookDirection), 10f * Time.deltaTime);
 

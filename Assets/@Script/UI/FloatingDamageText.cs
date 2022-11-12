@@ -34,7 +34,7 @@ public class FloatingDamageText : MonoBehaviour
 
     public void SetDamageText(bool isCritical, float damage, Vector3 worldPosition)
     {
-        transform.position = Managers.GameManager.PlayerCamera.transform.GetComponentInChildren<Camera>().WorldToScreenPoint(worldPosition) + offset;
+        transform.position = Managers.GameManager.PlayerCamera.ThisCamera.WorldToScreenPoint(worldPosition) + offset;
 
         if(isCritical == true)
         {

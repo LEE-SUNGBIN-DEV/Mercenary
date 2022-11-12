@@ -6,6 +6,7 @@ public class BaseCamera : MonoBehaviour
 {
     [SerializeField] private Camera thisCamera;
     [SerializeField] private Transform targetTransform;
+    private Vector3 targetOffset;
     private Vector3 originalPosition;
     private IEnumerator shakeCoroutine;
     
@@ -45,18 +46,9 @@ public class BaseCamera : MonoBehaviour
     }
 
     #region Property
-    public Camera ThisCamera
-    {
-        get { return thisCamera; }
-    }
-    public Transform TargetTransform
-    {
-        get { return targetTransform; }
-    }
-    public Vector3 OriginalPosition
-    {
-        get { return originalPosition; }
-        set { originalPosition = value; }
-    }
+    public Camera ThisCamera { get { return thisCamera; } }
+    public Transform TargetTransform { get { return targetTransform; } set { targetTransform = value; } }
+    public Vector3 TargetOffset { get { return targetOffset; } set { targetOffset = value; } }
+    public Vector3 OriginalPosition { get { return originalPosition; } set { originalPosition = value; } }
     #endregion
 }

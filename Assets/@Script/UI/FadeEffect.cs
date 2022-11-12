@@ -13,6 +13,11 @@ public class FadeEffect : MonoBehaviour
         fadeImage = GetComponent<Image>();
     }
 
+    public void SetAlpha(float alpha)
+    {
+        fadeImage.color = GameFunction.SetColor(fadeImage.color, alpha);
+    }
+
     public void FadeIn(float fadeTime = 1f, UnityAction callback = null)
     {
         StartCoroutine(CoFadeIn(fadeTime, callback));
