@@ -7,6 +7,7 @@ public class BaseScene : MonoBehaviour
     [SerializeField] protected string mapName;
     [SerializeField] protected SCENE_TYPE sceneType;
     [SerializeField] protected SCENE_LIST scene;
+    [SerializeField] protected Vector3 spawnPosition;
 
     protected virtual void Awake()
     {
@@ -16,12 +17,12 @@ public class BaseScene : MonoBehaviour
         GameObject eventSystem = GameObject.Find("EventSystem");
         if (eventSystem == null)
         {
-            Managers.ResourceManager.InstantiatePrefab("EventSystem");
+            Managers.ResourceManager.InstantiatePrefabSync("Prefab_EventSystem");
         }
 
         sceneType = SCENE_TYPE.UNKNOWN;
 
-        StartCoroutine(GameFunction.WaitAsyncOperation(Managers.Instance.IsLoaded, Initialize));
+        Initialize();
     }
 
     public virtual void Initialize()
@@ -35,17 +36,9 @@ public class BaseScene : MonoBehaviour
     }
 
     #region Property
-    public string MapName
-    {
-        get { return mapName; }
-    }
-    public SCENE_TYPE SceneType
-    {
-        get { return sceneType; }
-    }
-    public SCENE_LIST Scene
-    {
-        get { return scene; }
-    }
+    public string MapName { get { return mapName; } }
+    public SCENE_TYPE SceneType { get { return sceneType; } }
+    public SCENE_LIST Scene { get { return scene; } }
+    public Vector3 SpawnPosition { get {  return spawnPosition; } }
     #endregion
 }

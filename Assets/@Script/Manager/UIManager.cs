@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public enum PANEL
 {
     TitleScenePanel,
-    SelectionScenePanel,
+    SelectCharacterScenePanel,
     UserPanel,
     DialoguePanel,
     MonsterInformationPanel,
@@ -87,7 +87,7 @@ public class UIManager
 
         for (int i = 0; i < uiArray.Length; i++)
         {
-            uiArray[i] = GameFunction.FindChild<T>(canvas.gameObject, uiNameArray[i], true);
+            uiArray[i] = Functions.FindChild<T>(canvas.gameObject, uiNameArray[i], true);
             if (uiArray[i] == null)
             {
                 Debug.Log($"Failed to bind({uiNameArray[i]})");

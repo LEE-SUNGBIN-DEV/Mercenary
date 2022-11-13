@@ -22,27 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 367cadfad55f5fe438223d43529190e1
-    m_Address: EventSystem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2caae8ca8451fa243848d9aac70d7793
-    m_Address: Prefab_Lancer_Slot
+    m_Address: Prefab_EventSystem
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 92e9cc4305ce2ff4a8ebeda724e53417
     m_Address: '@UI Canvas'
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fc70f797c04f68648862574708b87f41
-    m_Address: Material_Lancer_Outline
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 913d4c09b88541d4eaa251f425968eed
-    m_Address: Prefab_Lancer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c7f29f42bd7609c48872426d0ca35f6a
-    m_Address: Prefab_Player_Camera
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

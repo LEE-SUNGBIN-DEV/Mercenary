@@ -99,7 +99,7 @@ public class SkeletonKnight : Enemy, ICompetable
         IsDie = true;
         MonsterAnimator.SetTrigger("doDie");
 
-        StartCoroutine(WaitForDisapear(GameConstants.TIME_NORMAL_MONSTER_DISAPEAR));
+        StartCoroutine(WaitForDisapear(Constants.TIME_NORMAL_MONSTER_DISAPEAR));
     }
     public override void InitializeAllState()
     {
@@ -142,10 +142,10 @@ public class SkeletonKnight : Enemy, ICompetable
     }
     public IEnumerator CompeteTime()
     {
-        yield return new WaitForSeconds(GameConstants.TIME_COMPETE);
+        yield return new WaitForSeconds(Constants.TIME_COMPETE);
         MonsterAnimator.SetTrigger("doCompeteAttack");
 
-        yield return new WaitForSeconds(GameConstants.TIME_COMPETE_ATTACK);
+        yield return new WaitForSeconds(Constants.TIME_COMPETE_ATTACK);
         CurrentHitPoint -= (MaxHitPoint * 0.1f);
         IsCompete = false;
         Stagger();
@@ -166,7 +166,7 @@ public class SkeletonKnight : Enemy, ICompetable
         IsStun = true;
         MonsterAnimator.SetBool("isStun", true);
 
-        StartCoroutine(StunTime(GameConstants.TIME_STAGGER));
+        StartCoroutine(StunTime(Constants.TIME_STAGGER));
     }
     #region Animation Event Function
     public void OutCompete()

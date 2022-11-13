@@ -18,7 +18,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
                     root = new GameObject(typeof(T).Name);
                 }
 
-                instance = GameFunction.GetOrAddComponent<T>(root);
+                instance = Functions.GetOrAddComponent<T>(root);
                 DontDestroyOnLoad(instance.gameObject);
             }
 
@@ -36,7 +36,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
                 root = new GameObject(typeof(T).Name);
             }
 
-            instance = GameFunction.GetOrAddComponent<T>(root);
+            instance = Functions.GetOrAddComponent<T>(root);
             DontDestroyOnLoad(instance.gameObject);
         }
 

@@ -14,7 +14,7 @@ public class GameManager
     public void Initialize()
     {
         // 해상도
-        Screen.SetResolution(GameConstants.RESOLUTION_DEFAULT_WIDTH, GameConstants.RESOLUTION_DEFAULT_HEIGHT, true);
+        Screen.SetResolution(Constants.RESOLUTION_DEFAULT_WIDTH, Constants.RESOLUTION_DEFAULT_HEIGHT, true);
 
         // 커서
         Managers.ResourceManager.LoadResourceAsync<Texture2D>("Sprite_Cursor", SetCursorTexture);

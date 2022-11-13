@@ -44,9 +44,9 @@ public class CharacterStats
         CurrentStamina = characterData.Vitality * 10;
 
         CriticalChance = characterData.Luck;
-        CriticalDamage = GameConstants.CHARACTER_STAT_CRITICAL_DAMAGE_DEFAULT + characterData.Luck;
-        AttackSpeed = GameConstants.CHARACTER_STAT_ATTACK_SPEED_DEFAULT + characterData.Dexterity * 0.01f;
-        MoveSpeed = GameConstants.CHARACTER_STAT_MOVE_SPEED_DEFAULT + characterData.Dexterity * 0.02f;
+        CriticalDamage = Constants.CHARACTER_STAT_CRITICAL_DAMAGE_DEFAULT + characterData.Luck;
+        AttackSpeed = Constants.CHARACTER_STAT_ATTACK_SPEED_DEFAULT + characterData.Dexterity * 0.01f;
+        MoveSpeed = Constants.CHARACTER_STAT_MOVE_SPEED_DEFAULT + characterData.Dexterity * 0.02f;
     }
 
     #region Property
@@ -147,14 +147,14 @@ public class CharacterStats
         {
             attackSpeed = value;
 
-            if (attackSpeed < GameConstants.CHARACTER_STAT_ATTACK_SPEED_MIN)
+            if (attackSpeed < Constants.CHARACTER_STAT_ATTACK_SPEED_MIN)
             {
-                attackSpeed = GameConstants.CHARACTER_STAT_ATTACK_SPEED_MIN;
+                attackSpeed = Constants.CHARACTER_STAT_ATTACK_SPEED_MIN;
             }
 
-            if (attackSpeed > GameConstants.CHARACTER_STAT_ATTACK_SPEED_MAX)
+            if (attackSpeed > Constants.CHARACTER_STAT_ATTACK_SPEED_MAX)
             {
-                attackSpeed = GameConstants.CHARACTER_STAT_ATTACK_SPEED_MAX;
+                attackSpeed = Constants.CHARACTER_STAT_ATTACK_SPEED_MAX;
             }
 
             character.CharacterAnimator.SetFloat("attackSpeed", attackSpeed);
@@ -168,14 +168,14 @@ public class CharacterStats
         {
             moveSpeed = value;
 
-            if (moveSpeed < GameConstants.CHARACTER_STAT_MOVE_SPEED_MIN)
+            if (moveSpeed < Constants.CHARACTER_STAT_MOVE_SPEED_MIN)
             {
-                moveSpeed = GameConstants.CHARACTER_STAT_MOVE_SPEED_MIN;
+                moveSpeed = Constants.CHARACTER_STAT_MOVE_SPEED_MIN;
             }
 
-            if (moveSpeed > GameConstants.CHARACTER_STAT_MOVE_SPEED_MAX)
+            if (moveSpeed > Constants.CHARACTER_STAT_MOVE_SPEED_MAX)
             {
-                moveSpeed = GameConstants.CHARACTER_STAT_MOVE_SPEED_MAX;
+                moveSpeed = Constants.CHARACTER_STAT_MOVE_SPEED_MAX;
             }
 
             OnCharacterStatsChanged?.Invoke(this);
@@ -187,14 +187,14 @@ public class CharacterStats
         set
         {
             criticalChance = value;
-            if (criticalChance < GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MIN)
+            if (criticalChance < Constants.CHARACTER_STAT_CRITICAL_CHANCE_MIN)
             {
-                criticalChance = GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MIN;
+                criticalChance = Constants.CHARACTER_STAT_CRITICAL_CHANCE_MIN;
             }
 
-            if (criticalChance > GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MAX)
+            if (criticalChance > Constants.CHARACTER_STAT_CRITICAL_CHANCE_MAX)
             {
-                criticalChance = GameConstants.CHARACTER_STAT_CRITICAL_CHANCE_MAX;
+                criticalChance = Constants.CHARACTER_STAT_CRITICAL_CHANCE_MAX;
             }
 
             OnCharacterStatsChanged?.Invoke(this);
@@ -206,9 +206,9 @@ public class CharacterStats
         set
         {
             criticalDamage = value;
-            if (criticalDamage < GameConstants.CHARACTER_STAT_CRITICAL_DAMAGE_MIN)
+            if (criticalDamage < Constants.CHARACTER_STAT_CRITICAL_DAMAGE_MIN)
             {
-                criticalDamage = GameConstants.CHARACTER_STAT_CRITICAL_DAMAGE_MIN;
+                criticalDamage = Constants.CHARACTER_STAT_CRITICAL_DAMAGE_MIN;
             }
             OnCharacterStatsChanged?.Invoke(this);
         }

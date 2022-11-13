@@ -12,7 +12,7 @@ public class EnemyCombatController : BaseCombatController
         Character character = target.GetComponent<Character>();
         if (character != null)
         {
-            GameFunction.EnemyAttackProcess(Owner, character, DamageRatio);
+            Functions.EnemyDamageProcess(Owner, character, DamageRatio);
 
             switch (CombatType)
             {

@@ -21,15 +21,15 @@ public class LancerShield : CharacterCombatController
             {
                 case COMBAT_TYPE.DEFENSE:
                     {
-                        Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_LANCER_DEFENSE, triggerPoint);
+                        Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_LANCER_DEFENSE, triggerPoint);
                         Owner.CharacterAnimator.SetBool("isBreakShield", true);
                         break;
                     }
 
                 case COMBAT_TYPE.PARRYING:
                     {
-                        Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_LANCER_DEFENSE, triggerPoint);
-                        Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_LANCER_PERFECT_DEFENSE, triggerPoint);
+                        Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_LANCER_DEFENSE, triggerPoint);
+                        Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_LANCER_PERFECT_DEFENSE, triggerPoint);
 
                         Owner.CharacterAnimator.SetBool("isPerfectShield", true);
                         Owner.CharacterAnimator.SetBool("isBreakShield", false);
@@ -45,13 +45,13 @@ public class LancerShield : CharacterCombatController
             Vector3 triggerPoint = other.bounds.ClosestPoint(transform.position);
             if (CombatType == COMBAT_TYPE.COUNTER)
             {
-                Enemy monster = other.GetComponentInParent<Enemy>();
-                GameFunction.PlayerAttackProcess(Owner, monster, DamageRatio);
+                Enemy enemy = other.GetComponentInParent<Enemy>();
+                Functions.PlayerDamageProcess(Owner, enemy, DamageRatio);
 
-                IStunable stunableObject = monster.GetComponent<IStunable>();
+                IStunable stunableObject = enemy.GetComponent<IStunable>();
                 if (stunableObject != null)
                 {
-                    Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_PLAYER_COUNTER, triggerPoint);
+                    Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_PLAYER_COUNTER, triggerPoint);
 
                     stunableObject.Stun();
                     CallSlowMotion(0.2f, 0.5f);

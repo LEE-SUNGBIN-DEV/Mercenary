@@ -16,7 +16,7 @@ public class PlayerData
     {
         if(isFirst)
         {
-            characterDatas = new CharacterData[GameConstants.MAX_CHARACTER_SLOT_NUMBER];
+            characterDatas = new CharacterData[Constants.MAX_CHARACTER_SLOT_NUMBER];
             /*
             for (int i = 0; i < characterDatas.Length; i++)
             {

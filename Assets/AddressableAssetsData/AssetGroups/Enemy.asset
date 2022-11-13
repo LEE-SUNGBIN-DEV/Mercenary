@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Enemy
+  m_EditorClassIdentifier: 
+  m_GroupName: Enemy
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 80f88c75c6bcd10408f6da7ff1120e72
+  m_SerializeEntries:
+  - m_GUID: 629bde1dbcee32e4f83e92185554f403
+    m_Address: Assets/MyAssets/Animation/Skeleton Knight/Skeleton Knight.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 92efd3806ae27374bbb77d2c9851bb06
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Skeleton/Materials&&Texture/ch_h_SkullSaber_N.tga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22a0bc26e1aa62746aa0fc341d24ca35
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Skeleton/Materials&&Texture/ch_h_SkullSaber_D.tga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 91001a2b97357c9439d952c7ceda863a
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Skeleton/Materials&&Texture/ch_h_SkullSaber_D.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 985155d037619ca4ca86e1e414f07244, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c5d60f72e6c1dde449a51e775f4b0685, type: 2}
+    - {fileID: 11400000, guid: 8764944bad4ab6248b888e8b9e998d78, type: 2}

@@ -15,7 +15,7 @@ public class CharacterStateCompete : ICharacterState
     public void Enter(Character character)
     {
         // Effect
-        Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_PLAYER_COMPETE_START, character.transform.position);
+        Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_PLAYER_COMPETE_START, character.transform.position);
 
         // Set Compete State
         character.CharacterAnimator.SetTrigger("doCompete");
@@ -24,7 +24,7 @@ public class CharacterStateCompete : ICharacterState
 
     public void Update(Character character)
     {
-        if(competeTime < GameConstants.TIME_COMPETE)
+        if(competeTime < Constants.TIME_COMPETE)
         {
             competeTime += Time.deltaTime;
         }

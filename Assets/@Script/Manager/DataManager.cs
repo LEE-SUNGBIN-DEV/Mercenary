@@ -1,13 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using System.IO;
 using Newtonsoft.Json;
-
-// =================== DATA MANAGER CLASS =================================
-// 데이터 경로, 세이브, 로드를 관리해주는 클래스
-// ========================================================================
 
 [System.Serializable]
 public class DataManager
@@ -72,27 +67,10 @@ public class DataManager
     }
 
     #region Property
-    public LevelTable LevelTable
-    {
-        get { return levelTable; }
-    }
-    public Dictionary<int, float> LevelDataDictionary
-    {
-        get { return levelTableDictionary; }
-    }
-    public PlayerData PlayerData
-    {
-        get { return playerData; }
-    }
-    public Character CurrentCharacter
-    {
-        get { return currentCharacter; }
-        set { currentCharacter = value; }
-    }
-    public CharacterData CurrentCharacterData
-    {
-        get { return currentCharacterData; }
-        set { currentCharacterData = value; }
-    }
+    public LevelTable LevelTable { get { return levelTable; } }
+    public Dictionary<int, float> LevelDataDictionary { get { return levelTableDictionary; } }
+    public PlayerData PlayerData { get { return playerData; } }
+    public Character CurrentCharacter { get { return currentCharacter; } set { currentCharacter = value; } }
+    public CharacterData CurrentCharacterData { get { return currentCharacterData; } set { currentCharacterData = value; } }
     #endregion
 }

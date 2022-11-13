@@ -21,11 +21,11 @@ public class GameSceneManager
 
     public void SceneEnter(Scene scene, LoadSceneMode loadMode)
     {
+        fadeEffect.FadeIn(1.5f);
         OnSceneEnter?.Invoke();
     }
     public void SceneExit(Scene scene)
     {
-        fadeEffect.FadeIn(1.5f);
         OnSceneExit?.Invoke();
         currentScene.ExitScene();
     }

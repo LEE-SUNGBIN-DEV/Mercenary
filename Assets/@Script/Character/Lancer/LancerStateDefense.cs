@@ -29,7 +29,7 @@ public class LancerStateDefense : ICharacterState
                 lancer.Shield?.gameObject.SetActive(true);
             }
 
-            character.gameObject.tag = GameConstants.TAG_INVINCIBILITY;
+            character.gameObject.tag = Constants.TAG_INVINCIBILITY;
             isDefense = true;
             character.CharacterAnimator.SetBool("isDefense", true);
         }

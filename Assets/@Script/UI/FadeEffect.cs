@@ -15,7 +15,7 @@ public class FadeEffect : MonoBehaviour
 
     public void SetAlpha(float alpha)
     {
-        fadeImage.color = GameFunction.SetColor(fadeImage.color, alpha);
+        fadeImage.color = Functions.SetColor(fadeImage.color, alpha);
     }
 
     public void FadeIn(float fadeTime = 1f, UnityAction callback = null)

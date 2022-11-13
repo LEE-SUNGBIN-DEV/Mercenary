@@ -71,7 +71,7 @@ public abstract class Character : MonoBehaviour
     }
     public void AutoRecoverStamina()
     {
-        characterStats.CurrentStamina += (characterStats.MaxStamina * GameConstants.CHARACTER_STAMINA_RECOVERY_PERCENTAGE * 0.01f * Time.deltaTime);
+        characterStats.CurrentStamina += (characterStats.MaxStamina * Constants.CHARACTER_STAMINA_AUTO_RECOVERY * 0.01f * Time.deltaTime);
     }
     public void SetInteract(bool isInteract)
     {

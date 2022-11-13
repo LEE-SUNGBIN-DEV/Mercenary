@@ -30806,7 +30806,7 @@ AnimationClip:
   m_Events:
   - time: 0.33333334
     functionName: PlaySFX
-    data: Lancer Defence Start
+    data: Audio_Lancer_Defense_Start
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

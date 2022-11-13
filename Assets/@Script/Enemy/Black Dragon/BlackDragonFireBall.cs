@@ -28,7 +28,7 @@ public class BlackDragonFireBall : EnemySkill
     #region Animation Event Function
     public void OnFireBall()
     {
-        GameObject fireBall = Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_BLACK_DRAGON_FIRE_BALL, Muzzle.transform.position);
+        GameObject fireBall = Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_BLACK_DRAGON_FIRE_BALL, Muzzle.transform.position);
 
         EnemyProjectile projectile = fireBall.GetComponent<EnemyProjectile>();
         projectile.Owner = GetComponent<Enemy>();

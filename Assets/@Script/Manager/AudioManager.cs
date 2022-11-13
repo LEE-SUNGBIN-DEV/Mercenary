@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-// =================== AUDIO MANAGER CLASS =================================
-// 배경음, 효과음 리소스를 관리하고 출력 해주는 클래스
-// =========================================================================
 
 public class AudioManager
 {
-    [SerializeField] private GameObject sfxPlayerObject;
-    [SerializeField] private AudioSource bgmPlayer;        
-    [SerializeField] private AudioSource[] sfxPlayers;      
-    [SerializeField] private AudioContainer[] bgmContainer;
-    [SerializeField] private AudioContainer[] sfxContainer;
-    [SerializeField] private Slider bgmSlider;             
-    [SerializeField] private Slider sfxSlider;
+    private AudioSource bgmPlayer;        
+    private AudioSource[] sfxPlayers;
+    private Slider bgmSlider;             
+    private Slider sfxSlider;
 
-    public void Initialize()
+    public void Initialize(Transform rootTransform)
     {
+        // BGM Player
+        GameObject bgmPlayerObject = GameObject.Find("BGM Player");
+        if(bgmPlayerObject == null)
+        {
+            bgmPlayerObject = new GameObject("BGM Player");
+        }
+        bgmPlayerObject.transform.SetParent(rootTransform);
+        bgmPlayer = bgmPlayerObject.AddComponent<AudioSource>();
+
+        // SFX Player
+        GameObject sfxPlayerObject = GameObject.Find("SFX Player");
+        if (sfxPlayerObject == null)
+        {
+            sfxPlayerObject = new GameObject("SFX Player");
+        }
+        sfxPlayerObject.transform.SetParent(rootTransform);
+        for (int i = 0; i < Constants.NUMBER_SFX_PLAYER; ++i)
+        {
+            sfxPlayerObject.gameObject.AddComponent<AudioSource>();
+        }
         sfxPlayers = sfxPlayerObject.GetComponents<AudioSource>();
     }
 
@@ -36,67 +48,38 @@ public class AudioManager
         }
     }
 
+    public void PlaySFX(AudioSource[] audioPlayers, string sfxName)
+    {
+        AudioClip targetClip = Managers.ResourceManager.LoadResourceSync<AudioClip>(sfxName);
+
+        for (int i = 0; i < audioPlayers.Length; ++i)
+        {
+            if (!audioPlayers[i].isPlaying)
+            {
+                //audioPlayers[i].volume = sfxSlider.value; // 볼륨 설정
+                audioPlayers[i].clip = targetClip;
+                audioPlayers[i].Play();
+                return;
+            }
+        }
+        Debug.Log("알림: 모든 오디오 플레이어가 동작중입니다.");
+    }
     public void PlaySFX(string sfxName)
     {
-        foreach (AudioContainer audioContainer in sfxContainer)
-        {
-            if(audioContainer.name == sfxName)
-            {
-                for (int i = 0; i < sfxPlayers.Length; ++i)
-                {
-                    // 재생 중이지 않은 sfx 플레이어가 있다면
-                    if(!sfxPlayers[i].isPlaying)
-                    {
-                        sfxPlayers[i].volume = sfxSlider.value; // 볼륨 설정
-                        sfxPlayers[i].clip = audioContainer.audioClip;
-                        sfxPlayers[i].Play();
-                        return;
-                    }
-                }
-                Debug.Log("알림: 모든 오디오 플레이어가 동작중입니다.");
-            }
-        }
-    }
-
-    public void PlaySFX(AudioComponent audioComponent, string sfxName)
-    {
-        foreach (AudioContainer audioContainer in audioComponent.SfxContainer)
-        {
-            if (audioContainer.name == sfxName)
-            {
-                for (int i = 0; i < audioComponent.SfxPlayers.Length; ++i)
-                {
-                    // 재생 중이지 않은 sfx 플레이어가 있다면
-                    if (!audioComponent.SfxPlayers[i].isPlaying)
-                    {
-                        audioComponent.SfxPlayers[i].volume = sfxSlider.value; // 볼륨 설정
-                        audioComponent.SfxPlayers[i].clip = audioContainer.audioClip;
-                        audioComponent.SfxPlayers[i].Play();
-                        return;
-                    }
-                }
-                Debug.Log("알림: 모든 오디오 플레이어가 동작중입니다.");
-            }
-        }
+        PlaySFX(sfxPlayers, sfxName);
     }
 
     public void PlayBGM(string sceneName)
     {
+        AudioClip targetClip = Managers.ResourceManager.LoadResourceSync<AudioClip>(sceneName);
+
         bgmPlayer.Stop();
         bgmPlayer.loop = true;
         bgmPlayer.volume = bgmSlider.value;
-
-        for(int i=0; i<bgmContainer.Length; ++i)
-        {
-            if(bgmContainer[i].name == sceneName)
-            {
-                bgmPlayer.clip = bgmContainer[i].audioClip;
-                bgmPlayer.Play();
-
-                return;
-            }
-        }
+        bgmPlayer.clip = targetClip;
+        bgmPlayer.Play();
     }
+
     public void StopBGM()
     {
         bgmPlayer.Stop();

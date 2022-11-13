@@ -68,39 +68,39 @@ public class CharacterData
         characterLocation = Vector3.zero;
 
         // Level
-        level = GameConstants.CHARACTER_DATA_DEFALUT_LEVEL;
-        currentExperience = GameConstants.CHARACTER_DATA_DEFALUT_EXPERIENCE;
+        level = Constants.CHARACTER_DATA_DEFALUT_LEVEL;
+        currentExperience = Constants.CHARACTER_DATA_DEFALUT_EXPERIENCE;
         maxExperience = Managers.DataManager.LevelDataDictionary[level];
 
         // Stats
-        statPoint = GameConstants.CHARACTER_DATA_DEFALUT_STATPOINT;
-        strength = GameConstants.CHARACTER_DATA_DEFALUT_STRENGTH;
-        vitality = GameConstants.CHARACTER_DATA_DEFALUT_VITALITY;
-        dexterity = GameConstants.CHARACTER_DATA_DEFALUT_DEXTERITY;
-        luck = GameConstants.CHARACTER_DATA_DEFALUT_LUCK;
+        statPoint = Constants.CHARACTER_DATA_DEFALUT_STATPOINT;
+        strength = Constants.CHARACTER_DATA_DEFALUT_STRENGTH;
+        vitality = Constants.CHARACTER_DATA_DEFALUT_VITALITY;
+        dexterity = Constants.CHARACTER_DATA_DEFALUT_DEXTERITY;
+        luck = Constants.CHARACTER_DATA_DEFALUT_LUCK;
 
-        InventoryItemNames = new string[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
-        InventoryItemCounts = new int[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
+        InventoryItemNames = new string[Constants.MAX_INVENTORY_SLOT_NUMBER];
+        InventoryItemCounts = new int[Constants.MAX_INVENTORY_SLOT_NUMBER];
 
-        QuickSlotItemNames = new string[GameConstants.MAX_QUICK_SLOT_NUMBER];
-        QuickSlotItemCounts = new int[GameConstants.MAX_QUICK_SLOT_NUMBER];
+        QuickSlotItemNames = new string[Constants.MAX_QUICK_SLOT_NUMBER];
+        QuickSlotItemCounts = new int[Constants.MAX_QUICK_SLOT_NUMBER];
 
-        EquipmentSlotItemNames = new string[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
-        EquipmentSlotItemCounts = new int[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
+        EquipmentSlotItemNames = new string[Constants.MAX_EQUIPMENT_SLOT_NUMBER];
+        EquipmentSlotItemCounts = new int[Constants.MAX_EQUIPMENT_SLOT_NUMBER];
 
-        for (int i = 0; i < GameConstants.MAX_INVENTORY_SLOT_NUMBER; ++i)
+        for (int i = 0; i < Constants.MAX_INVENTORY_SLOT_NUMBER; ++i)
         {
             InventoryItemNames[i] = null;
             InventoryItemCounts[i] = 0;
         }
 
-        for (int i = 0; i < GameConstants.MAX_QUICK_SLOT_NUMBER; ++i)
+        for (int i = 0; i < Constants.MAX_QUICK_SLOT_NUMBER; ++i)
         {
             QuickSlotItemNames[i] = null;
             QuickSlotItemCounts[i] = 0;
         }
 
-        for (int i = 0; i < GameConstants.MAX_EQUIPMENT_SLOT_NUMBER; ++i)
+        for (int i = 0; i < Constants.MAX_EQUIPMENT_SLOT_NUMBER; ++i)
         {
             EquipmentSlotItemNames[i] = null;
             EquipmentSlotItemCounts[i] = 0;
@@ -171,12 +171,12 @@ public class CharacterData
         characterData.luck = luck;
         characterData.mainQuestProcedure = mainQuestProcedure;
         characterData.money = money;
-        characterData.inventoryItemNames = new string[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
-        characterData.inventoryItemCounts = new int[GameConstants.MAX_INVENTORY_SLOT_NUMBER];
-        characterData.quickSlotItemNames = new string[GameConstants.MAX_QUICK_SLOT_NUMBER];
-        characterData.quickSlotItemCounts = new int[GameConstants.MAX_QUICK_SLOT_NUMBER];
-        characterData.equipmentSlotItemNames = new string[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
-        characterData.equipmentSlotItemCounts = new int[GameConstants.MAX_EQUIPMENT_SLOT_NUMBER];
+        characterData.inventoryItemNames = new string[Constants.MAX_INVENTORY_SLOT_NUMBER];
+        characterData.inventoryItemCounts = new int[Constants.MAX_INVENTORY_SLOT_NUMBER];
+        characterData.quickSlotItemNames = new string[Constants.MAX_QUICK_SLOT_NUMBER];
+        characterData.quickSlotItemCounts = new int[Constants.MAX_QUICK_SLOT_NUMBER];
+        characterData.equipmentSlotItemNames = new string[Constants.MAX_EQUIPMENT_SLOT_NUMBER];
+        characterData.equipmentSlotItemCounts = new int[Constants.MAX_EQUIPMENT_SLOT_NUMBER];
         characterData.questSaveList = new List<QuestSaveData>();
 
         OnSavePlayerData(characterData);
