@@ -38,7 +38,7 @@ public class CreateAtRayPoint : MonoBehaviour
         {
             if(isGeneratable)
             {
-                EnemyAreaAttack effect = Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_BLACK_DRAGON_BREATH_AFTER).GetComponent<EnemyAreaAttack>();
+                EnemyAreaAttack effect = Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_BLACK_DRAGON_BREATH_AFTER).GetComponent<EnemyAreaAttack>();
                 effect.Owner = GetComponent<EnemyAttack>().Owner;
                 effect.transform.position = hit.point;
                 effect.transform.rotation = Quaternion.Euler(rotationOffset);

@@ -7,21 +7,44 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ResourceManager
 {
-    private Dictionary<string, Object> resourceDictionary;
-    private Dictionary<string, AsyncOperationHandle> asyncHandleDictionary;
-
-    public ResourceManager()
-    {
-        resourceDictionary = new Dictionary<string, Object>();
-        asyncHandleDictionary = new Dictionary<string, AsyncOperationHandle>();
-    }
+    private Dictionary<string, Object> resourceDictionary = new Dictionary<string, Object>();
+    private Dictionary<string, AsyncOperationHandle> asyncHandleDictionary = new Dictionary<string, AsyncOperationHandle>();
 
     public void Initialize()
     {
         
     }
+    
+    #region Load Sync
+    public GameObject InstantiatePrefabSync(string key, Transform parent = null)
+    {
+        GameObject targetPrefab = LoadResourceSync<GameObject>(key);
+        GameObject newPrefab = GameObject.Instantiate(targetPrefab, parent);
+        newPrefab.name = targetPrefab.name;
+        newPrefab.transform.localPosition = targetPrefab.transform.position;
 
-    public void InstantiatePrefab(string key, Transform parent = null, UnityAction <GameObject> callback = null)
+        return newPrefab;
+    }
+    public T LoadResourceSync<T>(string key) where T : Object
+    {
+        if (resourceDictionary.TryGetValue(key, out Object resource))
+        {
+            return resource as T;
+        }
+        else
+        {
+            var handler = Addressables.LoadAssetAsync<T>(key);
+            resource = handler.WaitForCompletion();
+            resourceDictionary.Add(key, resource);
+
+            return resource as T;
+        }
+        
+    }
+    #endregion
+
+    #region Load Async
+    public void InstantiatePrefabAsync(string key, Transform parent = null, UnityAction<GameObject> callback = null)
     {
         LoadResourceAsync<GameObject>(key, (GameObject targetPrefab) =>
         {
@@ -33,7 +56,7 @@ public class ResourceManager
     }
     public void LoadResourceAsync<T>(string key, UnityAction<T> callback = null) where T : Object
     {
-        if(resourceDictionary.TryGetValue(key, out Object resource) == true)
+        if (resourceDictionary.TryGetValue(key, out Object resource) == true)
         {
             callback?.Invoke(resource as T);
             return;
@@ -47,7 +70,7 @@ public class ResourceManager
             };
             return;
         }
-        
+
         else
         {
             asyncHandleDictionary.Add(key, Addressables.LoadAssetAsync<T>(key));
@@ -58,7 +81,9 @@ public class ResourceManager
             };
         }
     }
-    
+    #endregion
+
+
     public void ReleaseResource(string key)
     {
         if (resourceDictionary.TryGetValue(key, out Object value) == true)

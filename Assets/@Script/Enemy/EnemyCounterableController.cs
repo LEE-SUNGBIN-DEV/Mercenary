@@ -13,7 +13,7 @@ public class EnemyCounterableController : MonoBehaviour
             LancerSpear playerAttack = other.GetComponent<LancerSpear>();
             if (playerAttack != null && playerAttack.CombatType == COMBAT_TYPE.COUNTER_SKILL)
             {
-                Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_COMPETE_START, other.bounds.ClosestPoint(transform.position));
+                Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_COMPETE_START, other.bounds.ClosestPoint(transform.position));
                 Owner.Stun();
                 Owner.MonsterMeshRenderer.material.color = Color.white;
                 gameObject.SetActive(false);

@@ -41,8 +41,8 @@ public class EnemyCompeteAttack : EnemyCombatController
             if (isReady == true && combatController.CombatType == COMBAT_TYPE.PARRYING)
             {
                 Vector3 triggerPoint = other.bounds.ClosestPoint(transform.position);
-                Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_COMPETE_START, triggerPoint);
-                Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_COMPETE_PROGRESS, triggerPoint);
+                Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_COMPETE_START, triggerPoint);
+                Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_COMPETE_PROGRESS, triggerPoint);
 
                 Compete(combatController);
             }
@@ -67,7 +67,7 @@ public class EnemyCompeteAttack : EnemyCombatController
         competableCharacter?.Compete();
         competableEnemy?.Compete();
 
-        GameFunction.SetCharacterTransform(combatController.Owner, playerCompetePoint);
+        Functions.SetCharacterTransform(combatController.Owner, playerCompetePoint);
         Managers.GameManager.PlayerCamera.SetCameraTransform(playerCompetePoint);
         Managers.GameManager.DirectingCamera.SetCameraTransform(directingCameraPoint);
 
@@ -75,7 +75,7 @@ public class EnemyCompeteAttack : EnemyCombatController
         Managers.GameManager.PlayerCamera.gameObject.SetActive(false);
         Managers.GameManager.DirectingCamera.gameObject.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(GameConstants.TIME_COMPETE);
+        yield return new WaitForSecondsRealtime(Constants.TIME_COMPETE);
         Managers.GameManager.DirectingCamera.gameObject.SetActive(false);
         Managers.GameManager.PlayerCamera.gameObject.SetActive(true);
     }

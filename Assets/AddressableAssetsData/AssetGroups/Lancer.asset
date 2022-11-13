@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Lancer
+  m_EditorClassIdentifier: 
+  m_GroupName: Lancer
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 5248d9d7509c13a45849e2b69bb475aa
+  m_SerializeEntries:
+  - m_GUID: 3d170c97ad40fc448ae58187988a943c
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Lancer/FBX/Model.FBX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8d51e8855dec4fe48b7b63a71d09e2b6
+    m_Address: Audio_Lancer_Smash_Attack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 63204070a0d0a6b4684e371db4120112
+    m_Address: Audio_Lancer_Perfect_Defense
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 109ba2c32f080a44a820dc10878e658c
+    m_Address: Audio_Lancer_Defense_Start
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8796eb7c1a4a93459150c925ba37f02
+    m_Address: Audio_Lancer_Defense_Breaked
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab63ad6221d513e4fb663c1165c56313
+    m_Address: Audio_Lancer_Default_Attack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a16bb1c78c43f049948e370645db9c7
+    m_Address: Audio_Lancer_Critical_Attack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b6ed73c5cb18d94192dff0107553833
+    m_Address: Audio_Lancer_Counter_Skill
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 13affabff422d874a9c2fbd253c794d4
+    m_Address: Audio_Lancer_Attack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a459c3423e3cd9a4c9c09cf8d096ea5b
+    m_Address: Material_Lancer_Default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3aedabff098b4348b330d254424a4d3
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Lancer/Materials&&Texture/ch_h_Lancer_weapon_D.tga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7ee55aeae1d25c4aa3e8faefd82fe83
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Lancer/Materials&&Texture/ch_h_Lancer_weapon_D.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33d475cc2206ecb489f56cab15bf9780
+    m_Address: Assets/Download/FANTASY MONSTER PACK01/LowPoly_Lancer/Materials&&Texture/ch_h_Lancer_D.tga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc70f797c04f68648862574708b87f41
+    m_Address: Material_Lancer_Outline
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2caae8ca8451fa243848d9aac70d7793
+    m_Address: Prefab_Lancer_Slot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 913d4c09b88541d4eaa251f425968eed
+    m_Address: Prefab_Lancer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 985155d037619ca4ca86e1e414f07244, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e095a1276cf433a4c81795f543de3108, type: 2}
+    - {fileID: 11400000, guid: c1c450b8e5a9b2345ae108970f6876ce, type: 2}

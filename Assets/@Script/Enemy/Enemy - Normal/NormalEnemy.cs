@@ -72,7 +72,7 @@ public class NormalEnemy : Enemy
         IsDie = true;
         MonsterAnimator.SetTrigger("doDie");
 
-        StartCoroutine(WaitForDisapear(GameConstants.TIME_NORMAL_MONSTER_DISAPEAR));
+        StartCoroutine(WaitForDisapear(Constants.TIME_NORMAL_MONSTER_DISAPEAR));
     }
     public override void InitializeAllState()
     {

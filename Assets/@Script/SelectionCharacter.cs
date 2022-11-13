@@ -16,7 +16,18 @@ public class SelectionCharacter : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        skinnedMeshRenderer = GameFunction.FindChild<SkinnedMeshRenderer>(gameObject, null, true);
+        skinnedMeshRenderer = Functions.FindChild<SkinnedMeshRenderer>(gameObject, null, true);
+    }
+
+    public void SelectCharacter()
+    {
+        SetAnimation(true);
+        SetMaterial(MATERIAL.Material_Lancer_Outline);
+    }
+    public void ReleaseCharacter()
+    {
+        SetAnimation(false);
+        SetMaterial(MATERIAL.Material_Lancer_Default);
     }
 
     public void SetAnimation(bool isSelect)

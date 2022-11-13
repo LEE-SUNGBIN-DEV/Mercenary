@@ -23660,7 +23660,7 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: PlaySFX
-    data: Lancer Perfect Defense
+    data: Audio_Lancer_Perfect_Defense
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

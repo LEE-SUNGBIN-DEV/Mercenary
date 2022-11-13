@@ -17,7 +17,7 @@ public class LancerSpear : CharacterCombatController
             Vector3 triggerPoint = other.bounds.ClosestPoint(transform.position);
 
             Enemy monster = other.GetComponentInParent<Enemy>();
-            GameFunction.PlayerAttackProcess(Owner, monster, DamageRatio);
+            Functions.PlayerDamageProcess(Owner, monster, DamageRatio);
 
             switch (CombatType)
             {
@@ -27,7 +27,7 @@ public class LancerSpear : CharacterCombatController
                         IHitable hitableObject = other.GetComponentInParent<IHitable>();
                         if (hitableObject != null)
                         {
-                            Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_PLAYER_ATTACK, triggerPoint);
+                            Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_PLAYER_ATTACK, triggerPoint);
 
                             hitableObject.Hit();
                         }
@@ -39,7 +39,7 @@ public class LancerSpear : CharacterCombatController
                         IHeavyHitable heavyHitableObject = other.GetComponentInParent<IHeavyHitable>();
                         if (heavyHitableObject != null)
                         {
-                            Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_PLAYER_SMASH, triggerPoint);
+                            Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_PLAYER_SMASH, triggerPoint);
 
                             heavyHitableObject.HeavyHit();
                             CallSlowMotion(0.5f, 0.5f);
@@ -53,7 +53,7 @@ public class LancerSpear : CharacterCombatController
                         IStunable stunableObject = other.GetComponentInParent<IStunable>();
                         if (stunableObject != null)
                         {
-                            Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_PLAYER_SMASH, triggerPoint);
+                            Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_PLAYER_SMASH, triggerPoint);
 
                             stunableObject.Stun();
                             CallSlowMotion(0.5f, 0.5f);
@@ -66,7 +66,7 @@ public class LancerSpear : CharacterCombatController
                         IStunable stunableObject = other.GetComponentInParent<IStunable>();
                         if (stunableObject != null)
                         {
-                            Managers.ObjectPoolManager.RequestObject(GameConstants.RESOURCE_NAME_EFFECT_PLAYER_COUNTER, triggerPoint);
+                            Managers.ObjectPoolManager.RequestObject(Constants.RESOURCE_NAME_EFFECT_PLAYER_COUNTER, triggerPoint);
 
                             stunableObject.Stun();
                             CallSlowMotion(0.2f, 0.5f);

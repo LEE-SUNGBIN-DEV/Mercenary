@@ -20,13 +20,6 @@ public class CharacterSlot
 }
 
 [System.Serializable]
-public class AudioContainer
-{
-    public string name;
-    public AudioClip audioClip;
-}
-
-[System.Serializable]
 public class ObjectPool
 {
     public string key;

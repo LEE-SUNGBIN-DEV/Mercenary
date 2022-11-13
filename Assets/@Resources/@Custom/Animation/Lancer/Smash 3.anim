@@ -60999,7 +60999,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.4
     functionName: PlaySFX
-    data: Lancer Smash Attack
+    data: Audio_Lancer_Smash_Attack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

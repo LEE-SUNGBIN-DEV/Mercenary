@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DungeonScene : BaseScene
 {
-    [SerializeField] private Vector3 spawnPosition;
     [SerializeField] private MonsterSpawnController[] normalMonsterSpawnPoint;
     [SerializeField] private BossRoomController bossRoomController;
 
@@ -23,18 +22,8 @@ public class DungeonScene : BaseScene
 
         if (Managers.DataManager.CurrentCharacterData != null)
         {
-            Managers.ResourceManager.InstantiatePrefab("Prefab_Player_Camera", null,
-                (GameObject cameraObject) =>
-                {
-                    Managers.ResourceManager.InstantiatePrefab("Prefab_" + Managers.DataManager.CurrentCharacterData.CharacterClass, null,
-                    (GameObject characterObject) =>
-                    {
-                        Character character = characterObject.GetComponent<Character>();
-                        GameFunction.SetCharacterPosition(character, spawnPosition);
-                        cameraObject.transform.position = spawnPosition;
-                        Managers.UIManager.OpenPanel(PANEL.UserPanel);
-                    });
-                });
+            Functions.CreateCharacterWithCamera(spawnPosition);
+            Managers.UIManager.OpenPanel(PANEL.UserPanel);
         }
 
         //Managers.UIManager.EntrancePanel.EntranceText.text = sceneName;

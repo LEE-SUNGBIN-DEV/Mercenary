@@ -148,7 +148,7 @@ public class BlackDragon : Enemy, IStaggerable, ICompetable
     }
     private IEnumerator StaggerTime()
     {
-        yield return new WaitForSeconds(GameConstants.TIME_STAGGER);
+        yield return new WaitForSeconds(Constants.TIME_STAGGER);
 
         IsStagger = false;
         MonsterAnimator.SetBool("isDown", false);
@@ -177,10 +177,10 @@ public class BlackDragon : Enemy, IStaggerable, ICompetable
     
     private IEnumerator CompeteTime()
     {
-        yield return new WaitForSeconds(GameConstants.TIME_COMPETE);
+        yield return new WaitForSeconds(Constants.TIME_COMPETE);
         MonsterAnimator.SetTrigger("doCompeteAttack");
 
-        yield return new WaitForSeconds(GameConstants.TIME_COMPETE_ATTACK);
+        yield return new WaitForSeconds(Constants.TIME_COMPETE_ATTACK);
         CurrentHitPoint -= (MaxHitPoint * 0.1f);
         IsCompete = false;
         Stagger();
