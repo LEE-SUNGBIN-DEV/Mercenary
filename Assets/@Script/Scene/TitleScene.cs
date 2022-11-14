@@ -13,13 +13,13 @@ public class TitleScene : BaseScene
     public override void Initialize()
     {
         base.Initialize();
-        Managers.UIManager.OpenPanel(PANEL.TitleScenePanel);
+        Managers.UIManager.OpenUI(UI.UI_TitleScene);
     }
 
     public override void ExitScene()
     {
         base.ExitScene();
-        Managers.UIManager.ClosePanel(PANEL.TitleScenePanel);
+        Managers.UIManager.CloseUI(UI.UI_TitleScene);
     }
 
     public void PlayButtonClickSound()

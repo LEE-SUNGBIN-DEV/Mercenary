@@ -55,11 +55,11 @@ public class BossRoomController : MonoBehaviour
             monster.Target = Managers.DataManager.CurrentCharacter.transform;
 
             //Managers.UIManager.EntrancePanel.EntranceText.text = monster.GetComponent<Enemy>().MonsterName;
-            Managers.UIManager.OpenPanel(PANEL.MapInformationPanel);
+            Managers.UIManager.UIGameScene.OpenPanel(Managers.UIManager.UIGameScene.MapPanel);
         }
 
         //Managers.UIManager.BossPanel.SetBossHPBar(1f);
-        Managers.UIManager.OpenPanel(PANEL.MonsterInformationPanel);
+        Managers.UIManager.UIGameScene.OpenPanel(Managers.UIManager.UIGameScene.MonsterPanel);
     }
 
     public void UpdateBossHPBar(Enemy enemy)
@@ -92,7 +92,7 @@ public class BossRoomController : MonoBehaviour
         Enemy.onDie -= CheckDungeonClear;
 
         //Managers.UIManager.BossPanel.SetBossHPBar(1f);
-        Managers.UIManager.ClosePanel(PANEL.MonsterInformationPanel);
+        Managers.UIManager.UIGameScene.ClosePanel(Managers.UIManager.UIGameScene.MonsterPanel);
         Managers.UIManager.RequestNotice("던전 클리어");
 
         portal.gameObject.SetActive(true);

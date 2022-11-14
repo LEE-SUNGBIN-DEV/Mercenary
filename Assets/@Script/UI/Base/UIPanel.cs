@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPanel : UIBase
+public abstract class UIPanel : UIBase
 {
+    protected bool isInitialized = false;
+
+    private void Awake()
+    {
+        Initialize();
+    }
+    public abstract void Initialize();
 }

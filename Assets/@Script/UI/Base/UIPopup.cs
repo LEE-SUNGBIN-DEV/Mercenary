@@ -5,17 +5,24 @@ using UnityEngine.EventSystems;
 public class UIPopup : UIBase, IPointerDownHandler
 {
     public event UnityAction<UIPopup> OnFocus;
+    
+    protected bool isInitialized = false;
 
-    [SerializeField] private POPUP popupType;
+    public virtual void Initialize(UnityAction<UIPopup> action = null)
+    {
+        if(action != null)
+        {
+            OnFocus -= action;
+            OnFocus += action;
+        }
+
+        isInitialized = true;
+    }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         OnFocus(this);
     }
 
-    public POPUP PopupType
-    {
-        get { return popupType; }
-        private set { popupType = value; }
-    }
+    public bool IsInitialized { get { return isInitialized; } }
 }

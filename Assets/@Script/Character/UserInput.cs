@@ -66,21 +66,6 @@ public class UserInput
         isTKeyDown = Input.GetKeyDown(KeyCode.T);
         isQKeyDown = Input.GetKeyDown(KeyCode.Q);
         isHKeyDown = Input.GetKeyDown(KeyCode.H);
-
-        if (isOKeyDown)
-            Managers.UIManager.TogglePopup(POPUP.OptionPopup);
-
-        if (isIKeyDown)
-            Managers.UIManager.TogglePopup(POPUP.InventoryPopup);
-
-        if (isTKeyDown)
-            Managers.UIManager.TogglePopup(POPUP.StatusPopup);
-
-        if (isQKeyDown)
-            Managers.UIManager.TogglePopup(POPUP.QuestPopup);
-
-        if (isHKeyDown)
-            Managers.UIManager.TogglePopup(POPUP.HelpPopup);
     }
 
     #region Property

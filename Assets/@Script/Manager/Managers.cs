@@ -34,7 +34,7 @@ public class Managers : Singleton<Managers>
     {
         if(isInitialized == true)
         {
-            Debug.Log("[Managers] Already Initialized.");
+            Debug.Log($"{this} Already Initialized.");
             return;
         }
 
@@ -62,7 +62,7 @@ public class Managers : Singleton<Managers>
         */
 
         isInitialized = true;
-        Debug.Log("[Managers] Initialization Complete!");
+        Debug.Log($"{this} Initialization Complete!");
     }    
 
     #region Property

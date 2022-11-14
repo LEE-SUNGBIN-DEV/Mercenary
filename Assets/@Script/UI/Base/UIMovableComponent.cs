@@ -13,7 +13,7 @@ public class UIMovableComponent : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void Awake()
     {
-        targetRectTransform = GetComponentInParent<RectTransform>();
+        targetRectTransform = transform.parent.GetComponent<RectTransform>();
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)

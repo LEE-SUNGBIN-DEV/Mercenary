@@ -41,8 +41,8 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        UIManager.InteractPlayer -= SetInteract;
-        UIManager.InteractPlayer += SetInteract;
+        Managers.UIManager.InteractPlayer -= SetInteract;
+        Managers.UIManager.InteractPlayer += SetInteract;
 
         Potion.onConsumePotion -= UsePotion;
         Potion.onConsumePotion += UsePotion;

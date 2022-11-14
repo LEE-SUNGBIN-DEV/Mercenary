@@ -6,14 +6,14 @@ public class StoreNPC : FunctionNPC
 {
     public override void OpenNPCUI()
     {
-        Managers.UIManager.OpenPopup(POPUP.InventoryPopup);
-        Managers.UIManager.OpenPopup(POPUP.StorePopup);
+        Managers.UIManager.UIGameScene.OpenPopup(Managers.UIManager.UIGameScene.InventoryPopup);
+        Managers.UIManager.UIGameScene.OpenPopup(Managers.UIManager.UIGameScene.StorePopup);
     }
 
     public override void CloseNPCUI()
     {
-        Managers.UIManager.ClosePopup(POPUP.InventoryPopup);
-        Managers.UIManager.ClosePopup(POPUP.StorePopup);
+        Managers.UIManager.UIGameScene.ClosePopup(Managers.UIManager.UIGameScene.InventoryPopup);
+        Managers.UIManager.UIGameScene.ClosePopup(Managers.UIManager.UIGameScene.StorePopup);
     }
 
     public override void ActiveNPCFunctionButton()
