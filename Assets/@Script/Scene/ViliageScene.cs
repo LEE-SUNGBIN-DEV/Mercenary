@@ -16,13 +16,13 @@ public class ViliageScene : BaseScene
         if (Managers.DataManager.CurrentCharacterData != null)
         {
             Functions.CreateCharacterWithCamera(spawnPosition);
-            Managers.UIManager.OpenPanel(PANEL.UserPanel);
+            Managers.UIManager.OpenUI(UI.UI_GameScene);
         }
     }
 
     public override void ExitScene()
     {
         base.ExitScene();
-        Managers.UIManager.ClosePanel(PANEL.UserPanel);
+        Managers.UIManager.CloseUI(UI.UI_GameScene);
     }
 }

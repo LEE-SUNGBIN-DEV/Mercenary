@@ -14,12 +14,12 @@ public class SelectionScene : BaseScene
     public override void Initialize()
     {
         base.Initialize();
-        Managers.UIManager.OpenPanel(PANEL.SelectCharacterScenePanel);
+        Managers.UIManager.OpenUI(UI.UI_SelectCharacterScene);
     }
 
     public override void ExitScene()
     {
         base.ExitScene();
-        Managers.UIManager.ClosePanel(PANEL.SelectCharacterScenePanel);
+        Managers.UIManager.CloseUI(UI.UI_SelectCharacterScene);
     }
 }

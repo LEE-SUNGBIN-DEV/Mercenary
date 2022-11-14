@@ -139,8 +139,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         ClearSlot();
         DragSlot.Instance.ClearDragSlot();
-        ConfirmPopup.OnConfirm -= DestroyItem;
-        Managers.UIManager.ClosePopup(POPUP.ConfirmPopup);
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
@@ -162,7 +160,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                             case SLOT_TYPE.ARMOR:
                             case SLOT_TYPE.BOOTS:
                                 {
-                                    Managers.UIManager.OpenPopup(POPUP.StatusPopup);
+                                    Managers.UIManager.UIGameScene.OpenPopup(Managers.UIManager.UIGameScene.StatusPopup);
 
                                     EquipmentItem clickedItem = Item as EquipmentItem;
                                     clickedItem.Toggle();

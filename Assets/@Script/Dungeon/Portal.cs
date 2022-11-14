@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour
 {
     public void ReturnViliage()
     {
-        ConfirmPopup.OnConfirm -= ReturnViliage;
+        Managers.UIManager.UICommonScene.ConfirmPanel.OnConfirm -= ReturnViliage;
         Managers.GameSceneManager.LoadSceneAsync(SCENE_LIST.Forestia);
     }
 

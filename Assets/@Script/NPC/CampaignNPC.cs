@@ -6,11 +6,11 @@ public class CampaignNPC : FunctionNPC
 {
     public override void OpenNPCUI()
     {
-        Managers.UIManager.OpenPopup(POPUP.CampaignPopup);
+        Managers.UIManager.UIGameScene.OpenPopup(Managers.UIManager.UIGameScene.CampaignPopup);
     }
     public override void CloseNPCUI()
     {
-        Managers.UIManager.ClosePopup(POPUP.CampaignPopup);
+        Managers.UIManager.UIGameScene.ClosePopup(Managers.UIManager.UIGameScene.CampaignPopup);
     }
 
     public override void ActiveNPCFunctionButton()

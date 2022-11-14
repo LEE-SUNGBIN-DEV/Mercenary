@@ -23,7 +23,7 @@ public class DungeonScene : BaseScene
         if (Managers.DataManager.CurrentCharacterData != null)
         {
             Functions.CreateCharacterWithCamera(spawnPosition);
-            Managers.UIManager.OpenPanel(PANEL.UserPanel);
+            Managers.UIManager.OpenUI(UI.UI_GameScene);
         }
 
         //Managers.UIManager.EntrancePanel.EntranceText.text = sceneName;
