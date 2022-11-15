@@ -18,6 +18,7 @@ public class Managers : Singleton<Managers>
     private DialogueManager dialogueManager = new DialogueManager();
     private QuestManager questManager = new QuestManager();
     private ItemManager itemManager = new ItemManager();
+    private SlotManager slotManager = new SlotManager();
     private ObjectPoolManager objectPoolManager = new ObjectPoolManager();
 
     private void Awake()
@@ -52,6 +53,7 @@ public class Managers : Singleton<Managers>
         resourceManager.Initialize();
         dataManager.Initialize();
         audioManager.Initialize(transform);
+        slotManager.Initialize();
 
         /*
         npcManager.Initialize();
@@ -76,6 +78,7 @@ public class Managers : Singleton<Managers>
     public static DialogueManager DialogueManager { get { return Instance?.dialogueManager; } }
     public static QuestManager QuestManager { get { return Instance?.questManager; } }
     public static ItemManager ItemManager { get { return Instance?.itemManager; } }
+    public static SlotManager SlotManager { get { return Instance?.slotManager; } }
     public static ObjectPoolManager ObjectPoolManager { get { return Instance?.objectPoolManager; } }
     #endregion
 }

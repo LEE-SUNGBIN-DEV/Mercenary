@@ -73,7 +73,6 @@ public class CreateCharacterPanel : UIBase
     #region Event Function
     public void OnClickCreateButton()
     {
-        Debug.Log(selectSlot.slotIndex);
         Managers.DataManager.PlayerData.CharacterDatas[selectSlot.slotIndex] = new CharacterData(selectClass);
         Managers.DataManager.SavePlayerData();
 

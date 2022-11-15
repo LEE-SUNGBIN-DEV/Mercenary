@@ -29,7 +29,7 @@ public class UIBase : MonoBehaviour
     }
     public void BindText(System.Type type) { BindObject<TextMeshProUGUI>(type); }
     public void BindButton(System.Type type) { BindObject<Button>(type); }
-    public void BindImge(System.Type type) { BindObject<Image>(type); }
+    public void BindImage(System.Type type) { BindObject<Image>(type); }
     public void BindSlider(System.Type type) { BindObject<Slider>(type); }
 
     // Getting Function

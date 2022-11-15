@@ -46,7 +46,7 @@ public class EquipmentItem : Item, IEquipmentItem
                     break;
                 }
         }
-        Managers.AudioManager.PlaySFX("Equipment Mount");
+        Managers.AudioManager.PlaySFX("Audio_Equipment_Mount");
     }
 
     public void Disarm()
@@ -75,7 +75,7 @@ public class EquipmentItem : Item, IEquipmentItem
                     break;
                 }
         }
-        Managers.AudioManager.PlaySFX("Equipment Dismount");
+        Managers.AudioManager.PlaySFX("Audio_Equipment_Dismount");
     }
 
     #region Property
