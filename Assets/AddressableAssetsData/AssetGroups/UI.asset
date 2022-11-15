@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  m_GroupName: UI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 61768891e8ed90d439535d36d8116e3a
+  m_SerializeEntries:
+  - m_GUID: ae9c5f83c5595b44784d4eb2d2a94817
+    m_Address: Audio_Popup_Close
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d818b4f463b590745a0e3945fb291052
+    m_Address: Audio_Popup_Open
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 367cadfad55f5fe438223d43529190e1
+    m_Address: Prefab_EventSystem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 92e9cc4305ce2ff4a8ebeda724e53417
+    m_Address: '@UI Canvas'
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 35a2773f513d3dc4eb69d9521c9b30d0
+    m_Address: Sprite_Cursor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a1a17f1b2b3ec048953d2e54078f592
+    m_Address: Audio_Equipment_Mount
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2006e478f8e3993499aa416ef82b5d1e
+    m_Address: Audio_Equipment_Dismount
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab87598e43a4f8245968e6c6f98ea458
+    m_Address: Audio_Button_Click
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f7def984d97a75f46b93c2e5ac39fd6a
+    m_Address: Audio_Quest_Complete
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83c0385ef2e64634fbbbaf9608a81eab
+    m_Address: Audio_Quest_Accept
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 985155d037619ca4ca86e1e414f07244, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 84ff6bc8dc8574e44ab1ba6273667790, type: 2}
+    - {fileID: 11400000, guid: aa0eed9676ebeac4a8be6bb58af83474, type: 2}

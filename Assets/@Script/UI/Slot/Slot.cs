@@ -6,23 +6,6 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public enum SLOT_TYPE
-{
-    NONE = 0,
-    
-    WEAPON = 1,
-    HELMET = 2,
-    ARMOR = 3,
-    BOOTS = 4,
-
-    EQUIPMENT = 100,
-    CONSUMPTION = 200,
-    OTHER = 300,
-    QUEST = 400,
-
-    ALL = 1000,
-    QUICK = 2000
-}
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     [SerializeField] private SLOT_TYPE slotType;
@@ -242,23 +225,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if(endDragStrategy == null)
         {
             Managers.UIManager.RequestConfirm("아이템을 파괴하시겠습니까?", DestroyItem);
-
             DragSlot.Instance.EnableSlotImage(false);
-
-            /*
-            // Check Drag Outside
-            if (dragPosition.x < WindowRectTransform.localPosition.x
-                || dragPosition.x > WindowRectTransform.localPosition.x + WindowRectTransform.rect.width
-                || dragPosition.y < WindowRectTransform.localPosition.y
-                || dragPosition.y > WindowRectTransform.localPosition.y + WindowRectTransform.rect.height)
-            {
-                ConfirmPanel.onConfirm -= OnConfirm;
-                ConfirmPanel.onConfirm += OnConfirm;
-                onItemDestroy();
-
-                DragSlot.Instance.EnableSlotImage(false);
-            }
-            */
         }
         
         else
@@ -426,111 +393,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             DragSlot.Instance.CancelItem();
             return;
         }
-
-        /*
-        // Check Level: Slot Type > Item Type > Item
-        // ★ Same Slot Type
-        if (dragSlotType == targetSlot.SlotType)
-        {
-            // ★★ Same Slot Type + Same Item Type
-            if (dragItemType == targetItemType)
-            {
-                // ★★★ Same Slot Type + Same Item Type + Same Item
-                if (dragItem == targetSlot.Item)
-                {
-                    SameItemProcess(dragItem, dragItemCount, targetSlot);
-                    return;
-                }
-                // ★★★ Same Slot Type + Same Item Type + Different Item
-                else
-                {
-                    targetSlot.AddItemToSlot(dragItem, dragItemCount);
-                    DragSlot.Instance.ExchangeItem(temporaryItem, temporaryItemCount);
-                    return;
-                }
-            }
-            // ★★ Same Slot Type + Different Item Type
-            else
-            {
-                if (targetSlot.SlotType == SLOT_TYPE.ALL)
-                {
-                    targetSlot.AddItemToSlot(dragItem, dragItemCount);
-                    DragSlot.Instance.ExchangeItem(temporaryItem, temporaryItemCount);
-                    return;
-                }
-                else
-                {
-                    DragSlot.Instance.CancelItem();
-                    return;
-                }
-            }
-        }
-
-        // ★ Different Slot Type
-        else
-        {
-            // ★★ Different Slot Type + Same Item Type
-            if (dragItemType == targetItemType)
-            {
-                // ★★★ Different Slot Type + Same Item Type + Same Item
-                if (dragItem == targetSlot.Item)
-                {
-                    SameItemProcess(dragItem, dragItemCount, targetSlot);
-                    return;
-                }
-                // ★★★ Different Slot Type + Same Item Type + Different Item
-                else
-                {
-                    targetSlot.AddItemToSlot(dragItem, dragItemCount);
-                    DragSlot.Instance.ExchangeItem(temporaryItem, temporaryItemCount);
-                    return;
-                }
-            }
-            // ★★ Different Slot Type + Different Item Type
-            else
-            {
-                // ★★★ Different Slot Type + Different Item Type + Empty
-                if (targetItemType == ITEM_TYPE.EMPTY)
-                {
-                    switch (targetSlot.SlotType)
-                    {
-                        case SLOT_TYPE.WEAPON:
-                        case SLOT_TYPE.HELMET:
-                        case SLOT_TYPE.ARMOR:
-                        case SLOT_TYPE.BOOTS:
-                        case SLOT_TYPE.CONSUMPTION:
-                        case SLOT_TYPE.OTHER:
-                        case SLOT_TYPE.QUEST:
-                            {
-                                if ((int)targetSlot.SlotType == (int)dragItemType)
-                                {
-                                    targetSlot.AddItemToSlot(dragItem, dragItemCount);
-                                    DragSlot.Instance.ExchangeItem(temporaryItem, temporaryItemCount);
-                                }
-                                else
-                                {
-                                    DragSlot.Instance.CancelItem();
-                                }
-                                return;
-                            }
-                        case SLOT_TYPE.ALL:
-                            {
-                                targetSlot.AddItemToSlot(dragItem, dragItemCount);
-                                DragSlot.Instance.ExchangeItem(temporaryItem, temporaryItemCount);
-                                return;
-                            }
-                    }
-                }
-
-                // ★★★ Different Slot Type + Different Item Type + Not Empty
-                else
-                {
-                    DragSlot.Instance.CancelItem();
-                    return;
-                }
-            }
-        }
-        */
     }
 
     #region Property

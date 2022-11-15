@@ -252,7 +252,7 @@ MonoBehaviour:
   mapName: "\uBCC4\uBE5B \uC232"
   sceneType: 4
   scene: 3
-  playerSpawnPoint: {fileID: 1302018557}
+  spawnPosition: {x: 0, y: 0, z: 0}
   normalMonsterSpawnPoint:
   - {fileID: 489472539}
   - {fileID: 2109673987}
@@ -268,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453528135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4783592, y: 0.11011696, z: -9.389269}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
