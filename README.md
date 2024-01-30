@@ -10,9 +10,6 @@ Creator: Sungbin Lee
 
 Period: 6 Weeks
 
-Video: https://www.youtube.com/watch?v=-oXw_7Kr9hA
-
-
 # Mercenary Refactoring
 2022 10 13: Start refactoring
 
